@@ -21,7 +21,7 @@ async function initializeNBUAuth() {
             domain: "dev-qajzo556g32cbm5b.us.auth0.com",
             clientId: "MCa52JMm0fAX4uAxRMOW636zkNU1wYN3",
             authorizationParams: {
-                redirect_uri: "https://niubiuniversity.dpdns.org"
+                redirect_uri: "https://princess-anny.github.io/nbu/"
             },
             cacheLocation: 'localstorage' // 明确指定使用localStorage持久化
         });
@@ -154,7 +154,7 @@ async function nbuHandleLogout() {
     console.log("🚪 执行登出...");
     await nbuAuthClient.logout({
         logoutParams: {
-            returnTo: "https://niubiuniversity.dpdns.org"
+            returnTo: "https://princess-anny.github.io/nbu/"
         }
     });
 }
