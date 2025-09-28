@@ -248,8 +248,8 @@ async function verifyNBUSecretKey() {
     
     // 定义密钥
     const secretKeys = {
-        student: "NBU_STUDENT_2024",
-        faculty: "NBU_PROFESSOR_2024"
+        student: "NBU_STUDENT_2010",
+        faculty: "NBU_PROFESSOR_2010"
     };
     
     const expectedKey = secretKeys[selectedRole];
