@@ -73,6 +73,7 @@
 
 
   
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
 <meta name="generator" content="Hexo 8.0.0"></head>
 
 
@@ -88,6 +89,24 @@
     <a class="navbar-brand" href="/">
       <strong>Fluid</strong>
     </a>
+    <!-- NBU用户认证组件 -->
+    <div id="nbu-auth-widget" class="navbar-nav ml-auto d-none d-lg-flex align-items-center">
+        <!-- 未登录状态 -->
+        <div id="nbu-login-section">
+            <button class="btn btn-outline-light btn-sm" onclick="nbuHandleLogin()">
+                <i class="iconfont icon-user"></i> 登录NBU
+            </button>
+        </div>
+        
+        <!-- 登录后状态 -->
+        <div id="nbu-user-section" style="display: none;">
+            <div class="d-flex align-items-center">
+                <img id="nbu-user-avatar" src="" srcset="/img/loading.gif" lazyload alt="头像" class="rounded-circle mr-2" style="width: 28px; height: 28px;">
+                <span id="nbu-user-name" class="text-light small mr-2"></span>
+                <button class="btn btn-outline-light btn-sm" onclick="nbuHandleLogout()">退出</button>
+            </div>
+        </div>
+    </div>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -384,6 +403,19 @@
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
+
+<!-- NBU用户认证逻辑 -->
+<script>
+    // 确保Auth0库已加载后再执行
+    if (typeof auth0 !== 'undefined') {
+        // 动态创建脚本元素加载认证逻辑
+        var script = document.createElement('script');
+        script.src = '/js/nbu-auth.js';
+        document.head.appendChild(script);
+    } else {
+        console.warn('Auth0库未加载，跳过认证逻辑初始化');
+    }
+</script>
 
 
   
