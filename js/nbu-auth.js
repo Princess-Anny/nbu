@@ -1,4 +1,4 @@
-// NBU用户认证逻辑 - 修复重复登录版
+// NBU用户认证逻辑 - 修复刷新问题版
 console.log("🔧 nbu-auth.js 开始加载");
 
 let nbuAuthClient = null;
@@ -21,29 +21,27 @@ async function initializeNBUAuth() {
             domain: "dev-qajzo556g32cbm5b.us.auth0.com",
             clientId: "MCa52JMm0fAX4uAxRMOW636zkNU1wYN3",
             authorizationParams: {
-                redirect_uri: "https://niubiuniversity.dpdns.org:4001"
-            }
+                redirect_uri: "https://niubiuniversity.dpdns.org"
+            },
+            cacheLocation: 'localstorage' // 明确指定使用localStorage持久化
         });
 
         console.log("🎉 Auth0客户端初始化成功!");
         
-        // 检查并处理可能的回调
-        await handleAuthCallback();
-        
-        // 更新UI状态
-        await updateAuthUI();
+        // 处理认证流程（包括回调和状态检查）
+        await handleAuthentication();
         
     } catch (error) {
         console.error("💥 Auth0初始化失败:", error);
     }
 }
 
-// 处理认证回调
-async function handleAuthCallback() {
+// 处理所有认证相关逻辑
+async function handleAuthentication() {
     const query = window.location.search;
-    console.log("🔍 检查URL参数:", query);
+    console.log("🔍 当前URL参数:", query);
     
-    // 如果有回调参数，处理它们
+    // 情况1：有回调参数（刚从Auth0跳转回来）
     if (query.includes('state=') && query.includes('code=')) {
         console.log("🔄 检测到Auth0回调，正在处理...");
         try {
@@ -54,6 +52,27 @@ async function handleAuthCallback() {
         } catch (error) {
             console.error("❌ 回调处理失败:", error);
         }
+    }
+    
+    // 情况2：检查持久化登录状态（页面刷新或导航）
+    await checkLoginStatus();
+}
+
+// 检查登录状态
+async function checkLoginStatus() {
+    if (!nbuAuthClient) {
+        console.log("⚠️ 客户端未就绪，跳过状态检查");
+        return;
+    }
+    
+    try {
+        const isAuthenticated = await nbuAuthClient.isAuthenticated();
+        console.log("🔐 持久化登录状态:", isAuthenticated);
+        
+        await updateAuthUI();
+        
+    } catch (error) {
+        console.error("❌ 检查登录状态时出错:", error);
     }
 }
 
@@ -66,7 +85,7 @@ async function updateAuthUI() {
     
     try {
         const isAuthenticated = await nbuAuthClient.isAuthenticated();
-        console.log("🔐 当前登录状态:", isAuthenticated);
+        console.log("🎨 更新UI，登录状态:", isAuthenticated);
         
         const loginSection = document.getElementById('nbu-login-section');
         const userSection = document.getElementById('nbu-user-section');
@@ -82,13 +101,14 @@ async function updateAuthUI() {
             userSection.style.display = 'block';
             
             const user = await nbuAuthClient.getUser();
-            document.getElementById('nbu-user-name').textContent = user.name || user.nickname || user.email || 'NBU用户';
+            const displayName = user.name || user.nickname || user.email || 'NBU用户';
+            document.getElementById('nbu-user-name').textContent = displayName;
             document.getElementById('nbu-user-avatar').src = user.picture;
-            console.log("👤 用户信息已显示:", user.email);
+            console.log("👤 显示用户信息:", displayName);
         } else {
             // 用户未登录
             loginSection.style.display = 'block';
-            userSection.display = 'none';
+            userSection.style.display = 'none';
             console.log("🔓 显示登录按钮");
         }
         
@@ -97,7 +117,7 @@ async function updateAuthUI() {
     }
 }
 
-// 登录函数 - 只通过onclick调用
+// 登录函数
 async function nbuHandleLogin() {
     console.log("🎯 登录按钮被点击");
     
@@ -122,7 +142,7 @@ async function nbuHandleLogin() {
     await nbuAuthClient.loginWithRedirect();
 }
 
-// 登出函数 - 只通过onclick调用
+// 登出函数
 async function nbuHandleLogout() {
     console.log("🎯 退出按钮被点击");
     
@@ -134,7 +154,7 @@ async function nbuHandleLogout() {
     console.log("🚪 执行登出...");
     await nbuAuthClient.logout({
         logoutParams: {
-            returnTo: "https://niubiuniversity.dpdns.org:4001"
+            returnTo: "https://niubiuniversity.dpdns.org"
         }
     });
 }
@@ -148,5 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // 确保函数在全局可用
 window.nbuHandleLogin = nbuHandleLogin;
 window.nbuHandleLogout = nbuHandleLogout;
+initializeNBUAuth();
+updateAuthUI();
 
 console.log("✅ nbu-auth.js 加载完成，等待DOMContentLoaded");

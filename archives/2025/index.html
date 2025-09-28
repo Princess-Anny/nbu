@@ -89,16 +89,17 @@
     <a class="navbar-brand" href="/">
       <strong>Fluid</strong>
     </a>
+
     <!-- NBU用户认证组件 -->
     <div id="nbu-auth-widget" class="navbar-nav ml-auto d-none d-lg-flex align-items-center">
-        <!-- 未登录状态 -->
-        <div id="nbu-login-section">
+        <!-- 未登录状态 - 默认隐藏 -->
+        <div id="nbu-login-section" style="display: none;">
             <button class="btn btn-outline-light btn-sm" onclick="nbuHandleLogin()">
                 <i class="iconfont icon-user"></i> 登录NBU
             </button>
         </div>
         
-        <!-- 登录后状态 -->
+        <!-- 登录后状态 - 默认隐藏 -->
         <div id="nbu-user-section" style="display: none;">
             <div class="d-flex align-items-center">
                 <img id="nbu-user-avatar" src="" srcset="/img/loading.gif" lazyload alt="头像" class="rounded-circle mr-2" style="width: 28px; height: 28px;">
