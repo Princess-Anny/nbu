@@ -119,10 +119,95 @@ async function updateAuthUI() {
 
 // 登录函数
 async function nbuHandleLogin() {
-    console.log("🎯 登录按钮被点击");
+    console.log("🎯 登录按钮被点击，显示身份选择");
+    
+    // 先检查是否已经登录
+    if (!nbuAuthClient) {
+        console.log("🔄 Auth客户端未初始化，正在初始化...");
+        await initializeNBUAuth();
+    }
+    
+    if (nbuAuthClient) {
+        const isAuthenticated = await nbuAuthClient.isAuthenticated();
+        if (isAuthenticated) {
+            console.log("ℹ️ 用户已登录，无需重复登录");
+            return;
+        }
+    }
+    
+    // 显示身份选择模态框（停止后续执行）
+    showNBURoleModal();
+}
+
+// 显示身份选择模态框
+function showNBURoleModal() {
+    console.log("🔄 显示身份选择模态框");
+    const modal = document.getElementById('nbu-role-modal');
+    if (modal) {
+        modal.style.display = 'flex';
+        resetRoleSelection();
+    }
+}
+
+// 隐藏身份选择模态框
+function hideNBURoleModal() {
+    const modal = document.getElementById('nbu-role-modal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// 重置选择状态
+function resetRoleSelection() {
+    const secretSection = document.getElementById('nbu-secret-section');
+    const secretKey = document.getElementById('nbu-secret-key');
+    const secretHint = document.getElementById('nbu-secret-hint');
+    
+    if (secretSection) secretSection.style.display = 'none';
+    if (secretKey) secretKey.value = '';
+    if (secretHint) secretHint.textContent = '';
+    
+    selectedRole = null;
+}
+
+// 存储选择的身份
+let selectedRole = null;
+
+// 选择身份
+function selectNBURole(role) {
+    console.log("🎯 选择身份:", role);
+    selectedRole = role;
+    
+    const secretSection = document.getElementById('nbu-secret-section');
+    const secretLabel = document.getElementById('nbu-secret-label');
+    
+    if (!secretSection || !secretLabel) {
+        console.error("❌ 找不到密钥相关元素");
+        return;
+    }
+    
+    if (role === 'visitor') {
+        // 访客直接进入Auth0登录
+        secretSection.style.display = 'none';
+        proceedToAuth0Login();
+    } else {
+        // 学生/教职需要密钥
+        secretSection.style.display = 'block';
+        secretLabel.textContent = role === 'student' 
+            ? '请输入学生密钥：' 
+            : '请输入教职密钥：';
+    }
+}
+
+// 继续Auth0登录流程
+async function proceedToAuth0Login() {
+    console.log("🚀 继续Auth0登录流程，选择的身份:", selectedRole);
+    
+    // 隐藏身份选择模态框
+    hideNBURoleModal();
     
     if (!nbuAuthClient) {
-        console.error("❌ Auth客户端未初始化，正在尝试紧急初始化...");
+        console.error("❌ Auth客户端未初始化");
         await initializeNBUAuth();
         
         if (!nbuAuthClient) {
@@ -131,15 +216,61 @@ async function nbuHandleLogin() {
         }
     }
     
-    // 检查是否已经登录
+    // 最终检查是否已经登录
     const isAuthenticated = await nbuAuthClient.isAuthenticated();
     if (isAuthenticated) {
         console.log("ℹ️ 用户已登录，无需重复登录");
         return;
     }
     
-    console.log("🚀 跳转到Auth0登录页面...");
+    console.log("🔑 跳转到Auth0登录页面...");
     await nbuAuthClient.loginWithRedirect();
+}
+
+// 验证密钥函数
+async function verifyNBUSecretKey() {
+    const secretKeyInput = document.getElementById('nbu-secret-key');
+    const hintElement = document.getElementById('nbu-secret-hint');
+    
+    if (!secretKeyInput || !hintElement) {
+        console.error("❌ 找不到密钥输入元素");
+        return;
+    }
+    
+    const secretKey = secretKeyInput.value;
+    console.log("🔐 验证密钥，身份:", selectedRole, "密钥:", secretKey);
+    
+    if (!secretKey) {
+        hintElement.textContent = '请输入密钥';
+        hintElement.style.color = '#e74c3c';
+        return;
+    }
+    
+    // 定义密钥
+    const secretKeys = {
+        student: "NBU_STUDENT_2024",
+        faculty: "NBU_PROFESSOR_2024"
+    };
+    
+    const expectedKey = secretKeys[selectedRole];
+    
+    if (secretKey === expectedKey) {
+        // 密钥正确
+        hintElement.textContent = '✓ 密钥验证成功！';
+        hintElement.style.color = '#27ae60';
+        
+        // 延迟一下让用户看到成功提示
+        setTimeout(() => {
+            proceedToAuth0Login();
+        }, 1000);
+        
+    } else {
+        // 密钥错误
+        hintElement.textContent = '✗ 密钥错误，请重新输入';
+        hintElement.style.color = '#e74c3c';
+        secretKeyInput.value = '';
+        secretKeyInput.focus(); // 重新聚焦到输入框
+    }
 }
 
 // 登出函数

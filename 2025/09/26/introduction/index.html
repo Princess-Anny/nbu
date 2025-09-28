@@ -32,6 +32,160 @@
   
   <title>美国牛逼大学官网</title>
 
+<style>
+  .nbu-role-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nbu-modal-content {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .nbu-modal-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .nbu-modal-header h3 {
+    margin: 0 0 0.5rem 0;
+    color: #2c3e50;
+  }
+
+  .nbu-role-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .nbu-role-card {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+
+  .nbu-role-card:hover {
+    border-color: #3498db;
+    background: #f8f9fa;
+  }
+
+  .nbu-role-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+
+  .nbu-role-info h4 {
+    margin: 0 0 0.25rem 0;
+    color: #2c3e50;
+  }
+
+  .nbu-role-info p {
+    margin: 0 0 0.25rem 0;
+    color: #6c757d;
+    font-size: 0.9rem;
+  }
+
+  .nbu-role-info small {
+    color: #e74c3c;
+    font-weight: 500;
+  }
+
+  .nbu-secret-section {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+
+  .nbu-secret-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .nbu-secret-input input {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .nbu-verify-btn {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .nbu-verify-btn:hover {
+    background: #219a52;
+  }
+
+  .nbu-secret-hint {
+    margin: 0.5rem 0 0 0;
+    font-size: 0.85rem;
+    color: #7f8c8d;
+  }
+
+  .nbu-modal-footer {
+    text-align: center;
+  }
+
+  .nbu-cancel-btn {
+    background: #95a5a6;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .nbu-cancel-btn:hover {
+    background: #7f8c8d;
+  }
+
+  /* 移动端适配 */
+  @media (max-width: 768px) {
+    .nbu-modal-content {
+      padding: 1.5rem;
+      margin: 1rem;
+    }
+    
+    .nbu-role-card {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .nbu-role-icon {
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+    }
+  }
+</style>
+
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
@@ -115,6 +269,61 @@
                 <button class="btn btn-outline-light btn-sm" onclick="nbuHandleLogout()">退出</button>
             </div>
         </div>
+    </div>
+
+    <!-- NBU身份选择模态框 -->
+    <div id="nbu-role-modal" class="nbu-role-modal" style="display: none;">
+      <div class="nbu-modal-overlay">
+        <div class="nbu-modal-content">
+          <div class="nbu-modal-header">
+            <h3>🎓 欢迎来到美国牛逼大学</h3>
+            <p>请选择你的身份加入我们的学术社区</p>
+          </div>
+          
+          <div class="nbu-role-options">
+            <div class="nbu-role-card" onclick="selectNBURole('student')">
+              <div class="nbu-role-icon">👨‍🎓</div>
+              <div class="nbu-role-info">
+                <h4>学生</h4>
+                <p>加入NBU学习社区，参与课程和活动</p>
+                <small>需要学生密钥</small>
+              </div>
+            </div>
+            
+            <div class="nbu-role-card" onclick="selectNBURole('faculty')">
+              <div class="nbu-role-icon">👨‍🏫</div>
+              <div class="nbu-role-info">
+                <h4>教职人员</h4>
+                <p>作为教师或工作人员加入NBU</p>
+                <small>需要教职密钥</small>
+              </div>
+            </div>
+            
+            <div class="nbu-role-card" onclick="selectNBURole('visitor')">
+              <div class="nbu-role-icon">👀</div>
+              <div class="nbu-role-info">
+                <h4>访客</h4>
+                <p>参观校园，了解NBU文化</p>
+                <small>自由访问</small>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 密钥输入区域 -->
+          <div id="nbu-secret-section" class="nbu-secret-section" style="display: none;">
+            <div class="nbu-secret-input">
+              <label id="nbu-secret-label">请输入密钥：</label>
+              <input type="password" id="nbu-secret-key" placeholder="输入准入密钥...">
+              <button onclick="verifyNBUSecretKey()" class="nbu-verify-btn">验证</button>
+            </div>
+            <p class="nbu-secret-hint" id="nbu-secret-hint"></p>
+          </div>
+          
+          <div class="nbu-modal-footer">
+            <button onclick="hideNBURoleModal()" class="nbu-cancel-btn">取消</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
