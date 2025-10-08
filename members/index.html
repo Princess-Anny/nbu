@@ -1,0 +1,2891 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="NBU社区成员">
+<meta property="og:url" content="http://example.com/members/index.html">
+<meta property="og:site_name" content="美国牛逼大学官网">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-10-08T01:48:25.925Z">
+<meta property="article:modified_time" content="2025-10-08T01:48:25.925Z">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>NBU社区成员 - 美国牛逼大学官网</title>
+
+<style>
+  .nbu-role-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nbu-modal-content {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .nbu-modal-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .nbu-modal-header h3 {
+    margin: 0 0 0.5rem 0;
+    color: #2c3e50;
+  }
+
+  .nbu-role-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .nbu-role-card {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+
+  .nbu-role-card:hover {
+    border-color: #3498db;
+    background: #f8f9fa;
+  }
+
+  .nbu-role-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+
+  .nbu-role-info h4 {
+    margin: 0 0 0.25rem 0;
+    color: #2c3e50;
+  }
+
+  .nbu-role-info p {
+    margin: 0 0 0.25rem 0;
+    color: #6c757d;
+    font-size: 0.9rem;
+  }
+
+  .nbu-role-info small {
+    color: #e74c3c;
+    font-weight: 500;
+  }
+
+  .nbu-secret-section {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+
+  .nbu-secret-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .nbu-secret-input input {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .nbu-verify-btn {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .nbu-verify-btn:hover {
+    background: #219a52;
+  }
+
+  .nbu-secret-hint {
+    margin: 0.5rem 0 0 0;
+    font-size: 0.85rem;
+    color: #7f8c8d;
+  }
+
+  .nbu-modal-footer {
+    text-align: center;
+  }
+
+  .nbu-cancel-btn {
+    background: #95a5a6;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .nbu-cancel-btn:hover {
+    background: #7f8c8d;
+  }
+
+  /* 资料编辑表单样式 */
+  .nbu-form-section {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .nbu-form-section h4 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    font-size: 1.1rem;
+  }
+
+  .nbu-form-group {
+    margin-bottom: 1rem;
+  }
+
+  .nbu-form-row {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nbu-form-row .nbu-form-group {
+    flex: 1;
+  }
+
+  .nbu-form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #2c3e50;
+  }
+
+  .nbu-form-group input,
+  .nbu-form-group select,
+  .nbu-form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .nbu-form-group input:focus,
+  .nbu-form-group select:focus,
+  .nbu-form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+  }
+
+  .nbu-form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  /* 头像上传样式 */
+  .nbu-avatar-preview {
+      text-align: center;
+  }
+
+  .nbu-upload-options {
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 1rem;
+      background: #f8f9fa;
+  }
+
+  .btn-outline-primary {
+      border-color: #3498db;
+      color: #3498db;
+  }
+
+  .btn-outline-primary:hover {
+      background-color: #3498db;
+      color: white;
+  }
+
+  .progress {
+      background-color: #e9ecef;
+      border-radius: 4px;
+      overflow: hidden;
+  }
+
+  .progress-bar {
+      background-color: #3498db;
+      transition: width 0.3s ease;
+  }
+
+  /* 头像容器 - 强制尺寸和样式 */
+  .nbu-avatar-container {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      flex-shrink: 0;
+  }
+
+  .nbu-profile-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      background: #f8f9fa;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .nbu-avatar-frame {
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+  }
+
+  /* 导航栏头像强制样式 */
+  #nbu-user-avatar {
+      width: 28px !important;
+      height: 28px !important;
+      object-fit: cover !important;
+      border-radius: 50% !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  }
+
+  /* 编辑模态框中的头像预览 */
+  #avatar-preview {
+      width: 80px !important;
+      height: 80px !important;
+      object-fit: cover !important;
+      border-radius: 50% !important;
+      border: 2px solid #ddd !important;
+      background: #f8f9fa;
+  }
+
+  /* 响应式调整 */
+  @media (max-width: 768px) {
+      .nbu-avatar-container {
+          width: 100px;
+          height: 100px;
+      }
+      
+      .nbu-profile-avatar {
+          border-width: 3px;
+      }
+  }
+
+  /* 移动端适配 */
+  @media (max-width: 768px) {
+    .nbu-modal-content {
+      padding: 1.5rem;
+      margin: 1rem;
+    }  
+    .nbu-role-card {
+      flex-direction: column;
+      text-align: center;
+    } 
+    .nbu-role-icon {
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+    }
+    .nbu-form-row {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
+  /* 注销账户样式 */
+  .nbu-profile-actions {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e9ecef;
+  }
+
+  .nbu-danger-zone {
+      padding: 1.5rem;
+      background: #fff5f5;
+      border: 1px solid #fed7d7;
+      border-radius: 8px;
+  }
+
+  .nbu-danger-zone h4 {
+      color: #c53030;
+      margin-bottom: 0.5rem;
+  }
+
+  .nbu-delete-warning {
+      background: #fff5f5;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+      border-left: 4px solid #e53e3e;
+  }
+
+  .nbu-warning-item {
+      margin-bottom: 1rem;
+  }
+
+  .nbu-warning-item:last-child {
+      margin-bottom: 0;
+  }
+
+  .nbu-warning-item ul {
+      margin: 0.5rem 0 0 1rem;
+      color: #744210;
+  }
+
+  .nbu-warning-item li {
+      margin-bottom: 0.25rem;
+  }
+
+  .nbu-confirm-section {
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: #f7fafc;
+      border-radius: 8px;
+  }
+
+  .nbu-confirm-section label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      cursor: pointer;
+  }
+
+  .nbu-confirm-section input[type="checkbox"] {
+      margin-top: 0.2rem;
+  }
+
+  .btn-danger {
+      background: #e53e3e;
+      border-color: #e53e3e;
+  }
+
+  .btn-danger:hover:not(:disabled) {
+      background: #c53030;
+      border-color: #c53030;
+  }
+
+  .btn-danger:disabled {
+      background: #a0aec0;
+      border-color: #a0aec0;
+      cursor: not-allowed;
+  }
+
+  /* 学号样式 */
+  .nbu-student-id-preview {
+      padding: 1rem;
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+  }
+
+  .nbu-student-id-display {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  .nbu-student-id {
+      font-family: 'Courier New', monospace;
+      font-weight: bold;
+      font-size: 1.1rem;
+  }
+
+  .nbu-student-id.generating {
+      color: #f59e0b;
+  }
+
+  .nbu-student-id.generated {
+      color: #059669;
+  }
+
+  .nbu-student-id.error {
+      color: #dc2626;
+  }
+
+  /* 专业搜索下拉框样式 */
+  .nbu-search-select {
+      position: relative;
+  }
+
+  .nbu-search-select input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+  }
+
+  .nbu-search-select input:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+  }
+
+  .nbu-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      max-height: 300px;
+      overflow-y: auto;
+  }
+
+  .nbu-dropdown-list {
+      padding: 0.5rem 0;
+  }
+
+  .nbu-category-header {
+      padding: 0.5rem 1rem;
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #6c757d;
+      font-size: 0.85rem;
+      border-bottom: 1px solid #e9ecef;
+  }
+
+  .nbu-dropdown-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      border-bottom: 1px solid #f8f9fa;
+  }
+
+  .nbu-dropdown-item:hover {
+      background: #f8f9fa;
+  }
+
+  .nbu-dropdown-item:last-child {
+      border-bottom: none;
+  }
+
+  .nbu-major-name {
+      flex: 1;
+  }
+
+  .nbu-major-code {
+      background: #e9ecef;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-family: 'Courier New', monospace;
+  }
+
+  .nbu-dropdown-empty {
+      padding: 2rem 1rem;
+      text-align: center;
+      color: #6c757d;
+  }
+
+  /* 高亮文本 */
+  mark {
+      background: #fff3cd;
+      padding: 0.1rem 0.2rem;
+      border-radius: 2px;
+  }
+
+  /* 滚动条样式 */
+  .nbu-dropdown::-webkit-scrollbar {
+      width: 6px;
+  }
+
+  .nbu-dropdown::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 3px;
+  }
+
+  .nbu-dropdown::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 3px;
+  }
+
+  .nbu-dropdown::-webkit-scrollbar-thumb:hover {
+      background: #a8a8a8;
+  }
+
+  /* 查看他人资料样式 */
+  .nbu-viewing-other {
+      background: #e3f2fd;
+      color: #1976d2;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin-top: 0.5rem;
+  }
+
+  .nbu-profile-actions .btn {
+      margin-right: 0.5rem;
+  }
+
+  .nbu-profile-actions .btn:last-child {
+      margin-right: 0;
+  }
+</style>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <!-- NBU用户认证组件 -->
+    <div id="nbu-auth-widget" class="navbar-nav ml-auto align-items-center">
+        <!-- 未登录状态 - 默认隐藏 -->
+        <div id="nbu-login-section" style="display: none;">
+            <button class="btn btn-outline-light btn-sm" onclick="nbuHandleLogin()">
+                <i class="iconfont icon-user"></i> 登录NBU
+            </button>
+        </div>
+        
+        <div id="nbu-user-section" style="display: none;">
+          <div class="d-flex align-items-center">
+            <a href="/profile/" class="d-flex align-items-center text-decoration-none text-light">
+              <img id="nbu-user-avatar" src="" srcset="/img/loading.gif" lazyload alt="头像" class="rounded-circle mr-2" style="width: 28px; height: 28px;">
+              <span id="nbu-user-name" class="small mr-2"></span>
+            </a>
+            <button class="btn btn-outline-light btn-sm ml-1" onclick="nbuHandleLogout()">退出</button>
+            <button class="btn btn-outline-info btn-sm ml-2" onclick="showEditProfileModal()">编辑资料</button>
+              <i class="iconfont icon-edit"></i>
+            </button>
+          </div>
+        </div>
+    </div>
+
+    <!-- NBU身份选择模态框 -->
+    <div id="nbu-role-modal" class="nbu-role-modal" style="display: none;">
+      <div class="nbu-modal-overlay">
+        <div class="nbu-modal-content">
+          <div class="nbu-modal-header">
+            <h3>🎓 欢迎来到美国牛逼大学</h3>
+            <p>请选择你的身份加入我们的学术社区</p>
+          </div>
+          
+          <div class="nbu-role-options">
+            <div class="nbu-role-card" onclick="selectNBURole('student')">
+              <div class="nbu-role-icon">👨‍🎓</div>
+              <div class="nbu-role-info">
+                <h4>学生</h4>
+                <p>加入NBU学习社区，参与课程和活动</p>
+                <small>需要学生密钥</small>
+              </div>
+            </div>
+            
+            <div class="nbu-role-card" onclick="selectNBURole('faculty')">
+              <div class="nbu-role-icon">👨‍🏫</div>
+              <div class="nbu-role-info">
+                <h4>教职人员</h4>
+                <p>作为教师或工作人员加入NBU</p>
+                <small>需要教职密钥</small>
+              </div>
+            </div>
+            
+            <div class="nbu-role-card" onclick="selectNBURole('visitor')">
+              <div class="nbu-role-icon">👀</div>
+              <div class="nbu-role-info">
+                <h4>访客</h4>
+                <p>参观校园，了解NBU文化</p>
+                <small>自由访问</small>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 密钥输入区域 -->
+          <div id="nbu-secret-section" class="nbu-secret-section" style="display: none;">
+            <div class="nbu-secret-input">
+              <label id="nbu-secret-label">请输入密钥：</label>
+              <input type="password" id="nbu-secret-key" placeholder="输入准入密钥...">
+              <button onclick="verifyNBUSecretKey()" class="nbu-verify-btn">验证</button>
+            </div>
+            <p class="nbu-secret-hint" id="nbu-secret-hint"></p>
+          </div>
+          
+          <div class="nbu-modal-footer">
+            <button onclick="hideNBURoleModal()" class="nbu-cancel-btn">取消</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 资料编辑模态框 -->
+    <div id="nbu-edit-profile-modal" class="nbu-role-modal" style="display: none;">
+      <div class="nbu-modal-overlay">
+        <div class="nbu-modal-content" style="max-width: 600px;">
+          <div class="nbu-modal-header">
+            <h3>📝 编辑个人资料</h3>
+            <p>完善你的身份信息</p>
+          </div>
+          
+          <form id="nbu-profile-form">
+            <!-- 基础信息 -->
+            <div class="nbu-form-section">
+              <h4>基础信息</h4>
+              
+              <div class="nbu-form-group">
+                <label for="edit-display-name">显示名称 *</label>
+                <input type="text" id="edit-display-name" required>
+              </div>
+              
+              <!-- 替换原来的头像URL输入框 -->
+              <div class="nbu-form-group">
+                  <label for="edit-avatar-url">头像</label>
+                  
+                  <!-- 当前头像预览 -->
+                  <div class="nbu-avatar-preview" style="margin-bottom: 1rem;">
+                      <img id="avatar-preview" src="" srcset="/img/loading.gif" lazyload alt="头像预览" 
+                          style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #ddd;">
+                  </div>
+                  
+                  <!-- 上传选项 -->
+                  <div class="nbu-upload-options">
+                      <!-- 方式1：文件上传 -->
+                      <div style="margin-bottom: 0.5rem;">
+                          <label class="btn btn-outline-primary btn-sm">
+                              📁 选择图片
+                              <input type="file" id="avatar-upload" accept="image/*" style="display: none;" 
+                                    onchange="handleAvatarUpload(event)">
+                          </label>
+                          <small class="text-muted" style="margin-left: 0.5rem;">支持 JPG, PNG, GIF</small>
+                      </div>
+                      
+                      <!-- 方式2：URL输入（备用） -->
+                      <div>
+                          <label>或者输入图片URL：</label>
+                          <input type="url" id="edit-avatar-url" placeholder="https://example.com/avatar.jpg"
+                                onchange="updateAvatarPreview(this.value)">
+                      </div>
+                  </div>
+                  
+                  <!-- 上传进度 -->
+                  <div id="upload-progress" style="display: none; margin-top: 0.5rem;">
+                      <div class="progress" style="height: 6px;">
+                          <div id="upload-progress-bar" class="progress-bar" style="width: 0%"></div>
+                      </div>
+                      <small id="upload-status">上传中...</small>
+                  </div>
+              </div>
+              
+              <div class="nbu-form-group">
+                <label for="edit-bio">个人简介</label>
+                <textarea id="edit-bio" rows="3" placeholder="介绍一下你自己..."></textarea>
+              </div>
+            </div>
+            
+            <!-- OC信息（学生/教职显示） -->
+            <div id="nbu-oc-section" class="nbu-form-section" style="display: none;">
+              <h4>🎭 OC角色信息</h4>
+              
+              <div class="nbu-form-row">
+                <div class="nbu-form-group">
+                  <label for="edit-oc-name">角色名</label>
+                  <input type="text" id="edit-oc-name">
+                </div>
+                
+                <div class="nbu-form-group">
+                  <label for="edit-oc-age">年龄</label>
+                  <input type="number" id="edit-oc-age" min="1" max="150">
+                </div>
+              </div>
+              
+              <div class="nbu-form-row">
+                <div class="nbu-form-group">
+                  <label for="edit-oc-nationality">国籍</label>
+                  <input type="text" id="edit-oc-nationality">
+                </div>
+                
+                <div class="nbu-form-group">
+                  <label for="edit-oc-gender">性别</label>
+                  <select id="edit-oc-gender">
+                    <option value="">选择性别</option>
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                    <option value="其他">其他</option>
+                    <option value="不愿透露">不愿透露</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="nbu-form-group">
+                <label for="edit-oc-title">称谓</label>
+                <select id="edit-oc-title">
+                  <option value="">选择称谓</option>
+                  <option value="Mr.">Mr.</option>
+                  <option value="Ms.">Ms.</option>
+                  <option value="Mrs.">Mrs.</option>
+                  <option value="Dr.">Dr.</option>
+                  <option value="Prof.">Prof.</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- 学生专属字段 -->
+            <div id="nbu-student-section" class="nbu-form-section" style="display: none;">
+              <h4>🎓 学生信息</h4>
+              
+              <div class="nbu-form-row">
+                <div class="nbu-form-group">
+                  <label for="major-search">专业 *</label>
+                  <!-- 搜索输入框 -->
+                  <div class="nbu-search-select">
+                      <input type="text" 
+                            id="major-search" 
+                            placeholder="搜索或选择专业..."
+                            autocomplete="off"
+                            onfocus="showMajorDropdown()"
+                            oninput="filterMajors(this.value)">
+                      
+                      <!-- 下拉选项 -->
+                      <div id="major-dropdown" class="nbu-dropdown">
+                          <div class="nbu-dropdown-list" id="major-options">
+                              <!-- 选项将通过JS动态生成 -->
+                          </div>
+                      </div>
+                  </div>
+                  <!-- 隐藏的实际值存储 -->
+                  <input type="hidden" id="edit-major" name="major" required>
+                </div>
+                
+                <div class="nbu-form-group">
+                  <label for="edit-student-id">学号</label>
+                  <input type="text" id="edit-student-id" placeholder="2024123456">
+                </div>
+                <!-- 添加学号预览 -->
+                <div id="student-id-preview" class="nbu-student-id-preview" style="display: none;">
+                    <label>学号预览</label>
+                    <div class="nbu-student-id-display">
+                        <span id="student-id-preview-text" class="nbu-student-id"></span>
+                        <small class="text-muted">系统自动生成</small>
+                    </div>
+                </div>
+              </div>
+              
+              <div class="nbu-form-row">
+                <div class="nbu-form-group">
+                  <label for="edit-dormitory">宿舍</label>
+                  <input type="text" id="edit-dormitory" placeholder="1号楼101">
+                </div>
+                
+                <div class="nbu-form-group">
+                  <label for="edit-enrollment-year">入学年份</label>
+                  <input type="number" id="edit-enrollment-year" min="2000" max="2030" placeholder="2010" oninput="updateStudentIdPreview()">
+                </div>
+              </div>
+              
+              <div class="nbu-form-group">
+                <label for="edit-clubs">社团（每行一个）</label>
+                <textarea id="edit-clubs" rows="3" placeholder="篮球社&#10;天体物理社"></textarea>
+                <small class="form-hint">每行输入一个社团名称</small>
+              </div>
+            </div>
+
+            <!-- 教职专属字段 -->
+            <div id="nbu-faculty-section" class="nbu-form-section" style="display: none;">
+              <h4>👨‍🏫 教职信息</h4>
+              
+              <div class="nbu-form-row">
+                <div class="nbu-form-group">
+                  <label for="edit-department">院系</label>
+                  <input type="text" id="edit-department" placeholder="计算机学院">
+                </div>
+                
+                <div class="nbu-form-group">
+                  <label for="edit-faculty-rank">职称</label>
+                  <select id="edit-faculty-rank">
+                    <option value="">选择职称</option>
+                    <option value="教授">教授</option>
+                    <option value="副教授">副教授</option>
+                    <option value="助理教授">助理教授</option>
+                    <option value="讲师">讲师</option>
+                    <option value="助教">助教</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="nbu-form-group">
+                <label for="edit-office-location">办公室</label>
+                <input type="text" id="edit-office-location" placeholder="主教学楼A座301">
+              </div>
+              
+              <div class="nbu-form-group">
+                <label for="edit-office-hours">办公时间</label>
+                <input type="text" id="edit-office-hours" placeholder="周一、三 14:00-16:00">
+              </div>
+              
+              <div class="nbu-form-group">
+                <label for="edit-courses">负责科目（每行一个）</label>
+                <textarea id="edit-courses" rows="3" placeholder="计算机导论&#10;数据结构"></textarea>
+              </div>
+              
+              <div class="nbu-form-group">
+                <label for="edit-degrees">学位信息（每行一个）</label>
+                <textarea id="edit-degrees" rows="3" placeholder="清华大学 计算机科学 博士&#10;北京大学 数学 学士"></textarea>
+              </div>
+            </div>
+            
+            <div class="nbu-modal-footer">
+              <button type="button" onclick="hideEditProfileModal()" class="nbu-cancel-btn">取消</button>
+              <button type="submit" class="nbu-verify-btn">保存资料</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- 注销账户确认模态框 -->
+    <div id="nbu-delete-account-modal" class="nbu-role-modal" style="display: none;">
+      <div class="nbu-modal-overlay">
+        <div class="nbu-modal-content" style="max-width: 500px;">
+          <div class="nbu-modal-header">
+            <h3 style="color: #e74c3c;">⚠️ 确认注销账户</h3>
+            <p>此操作不可撤销，请谨慎操作</p>
+          </div>
+          
+          <div class="nbu-delete-warning">
+            <div class="nbu-warning-item">
+              <strong>🗑️ 将被删除的数据：</strong>
+              <ul>
+                <li>所有资料信息</li>
+                <li>所有关联的账户数据</li>
+              </ul>
+            </div>
+            
+            <div class="nbu-warning-item">
+              <strong>🔐 认证信息：</strong>
+              <ul>
+                <li>Auth0认证记录</li>
+                <li>浏览器本地登录状态</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="nbu-confirm-section">
+            <label>
+              <input type="checkbox" id="confirm-delete">
+              我理解此操作不可撤销，确认删除我的账户
+            </label>
+          </div>
+          
+          <div class="nbu-modal-footer">
+            <button onclick="hideDeleteAccountModal()" class="nbu-cancel-btn">取消</button>
+            <button id="confirm-delete-btn" onclick="deleteUserAccount()" class="btn btn-danger" disabled>
+              确认注销
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="NBU社区成员"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="NBU社区成员">
+<meta property="og:url" content="http://example.com/members/index.html">
+<meta property="og:site_name" content="美国牛逼大学官网">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-10-08T01:48:25.925Z">
+<meta property="article:modified_time" content="2025-10-08T01:48:25.925Z">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>NBU社区成员 - 美国牛逼大学官网</title>
+
+<style>
+  .nbu-role-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nbu-modal-content {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .nbu-modal-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .nbu-modal-header h3 {
+    margin: 0 0 0.5rem 0;
+    color: #2c3e50;
+  }
+
+  .nbu-role-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .nbu-role-card {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+
+  .nbu-role-card:hover {
+    border-color: #3498db;
+    background: #f8f9fa;
+  }
+
+  .nbu-role-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+
+  .nbu-role-info h4 {
+    margin: 0 0 0.25rem 0;
+    color: #2c3e50;
+  }
+
+  .nbu-role-info p {
+    margin: 0 0 0.25rem 0;
+    color: #6c757d;
+    font-size: 0.9rem;
+  }
+
+  .nbu-role-info small {
+    color: #e74c3c;
+    font-weight: 500;
+  }
+
+  .nbu-secret-section {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+
+  .nbu-secret-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .nbu-secret-input input {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .nbu-verify-btn {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .nbu-verify-btn:hover {
+    background: #219a52;
+  }
+
+  .nbu-secret-hint {
+    margin: 0.5rem 0 0 0;
+    font-size: 0.85rem;
+    color: #7f8c8d;
+  }
+
+  .nbu-modal-footer {
+    text-align: center;
+  }
+
+  .nbu-cancel-btn {
+    background: #95a5a6;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .nbu-cancel-btn:hover {
+    background: #7f8c8d;
+  }
+
+  /* 资料编辑表单样式 */
+  .nbu-form-section {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .nbu-form-section h4 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    font-size: 1.1rem;
+  }
+
+  .nbu-form-group {
+    margin-bottom: 1rem;
+  }
+
+  .nbu-form-row {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nbu-form-row .nbu-form-group {
+    flex: 1;
+  }
+
+  .nbu-form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #2c3e50;
+  }
+
+  .nbu-form-group input,
+  .nbu-form-group select,
+  .nbu-form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .nbu-form-group input:focus,
+  .nbu-form-group select:focus,
+  .nbu-form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+  }
+
+  .nbu-form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  /* 头像上传样式 */
+  .nbu-avatar-preview {
+      text-align: center;
+  }
+
+  .nbu-upload-options {
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 1rem;
+      background: #f8f9fa;
+  }
+
+  .btn-outline-primary {
+      border-color: #3498db;
+      color: #3498db;
+  }
+
+  .btn-outline-primary:hover {
+      background-color: #3498db;
+      color: white;
+  }
+
+  .progress {
+      background-color: #e9ecef;
+      border-radius: 4px;
+      overflow: hidden;
+  }
+
+  .progress-bar {
+      background-color: #3498db;
+      transition: width 0.3s ease;
+  }
+
+  /* 头像容器 - 强制尺寸和样式 */
+  .nbu-avatar-container {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      flex-shrink: 0;
+  }
+
+  .nbu-profile-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      background: #f8f9fa;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .nbu-avatar-frame {
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+  }
+
+  /* 导航栏头像强制样式 */
+  #nbu-user-avatar {
+      width: 28px !important;
+      height: 28px !important;
+      object-fit: cover !important;
+      border-radius: 50% !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  }
+
+  /* 编辑模态框中的头像预览 */
+  #avatar-preview {
+      width: 80px !important;
+      height: 80px !important;
+      object-fit: cover !important;
+      border-radius: 50% !important;
+      border: 2px solid #ddd !important;
+      background: #f8f9fa;
+  }
+
+  /* 响应式调整 */
+  @media (max-width: 768px) {
+      .nbu-avatar-container {
+          width: 100px;
+          height: 100px;
+      }
+      
+      .nbu-profile-avatar {
+          border-width: 3px;
+      }
+  }
+
+  /* 移动端适配 */
+  @media (max-width: 768px) {
+    .nbu-modal-content {
+      padding: 1.5rem;
+      margin: 1rem;
+    }  
+    .nbu-role-card {
+      flex-direction: column;
+      text-align: center;
+    } 
+    .nbu-role-icon {
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+    }
+    .nbu-form-row {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
+  /* 注销账户样式 */
+  .nbu-profile-actions {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e9ecef;
+  }
+
+  .nbu-danger-zone {
+      padding: 1.5rem;
+      background: #fff5f5;
+      border: 1px solid #fed7d7;
+      border-radius: 8px;
+  }
+
+  .nbu-danger-zone h4 {
+      color: #c53030;
+      margin-bottom: 0.5rem;
+  }
+
+  .nbu-delete-warning {
+      background: #fff5f5;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+      border-left: 4px solid #e53e3e;
+  }
+
+  .nbu-warning-item {
+      margin-bottom: 1rem;
+  }
+
+  .nbu-warning-item:last-child {
+      margin-bottom: 0;
+  }
+
+  .nbu-warning-item ul {
+      margin: 0.5rem 0 0 1rem;
+      color: #744210;
+  }
+
+  .nbu-warning-item li {
+      margin-bottom: 0.25rem;
+  }
+
+  .nbu-confirm-section {
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: #f7fafc;
+      border-radius: 8px;
+  }
+
+  .nbu-confirm-section label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      cursor: pointer;
+  }
+
+  .nbu-confirm-section input[type="checkbox"] {
+      margin-top: 0.2rem;
+  }
+
+  .btn-danger {
+      background: #e53e3e;
+      border-color: #e53e3e;
+  }
+
+  .btn-danger:hover:not(:disabled) {
+      background: #c53030;
+      border-color: #c53030;
+  }
+
+  .btn-danger:disabled {
+      background: #a0aec0;
+      border-color: #a0aec0;
+      cursor: not-allowed;
+  }
+
+  /* 学号样式 */
+  .nbu-student-id-preview {
+      padding: 1rem;
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+  }
+
+  .nbu-student-id-display {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  .nbu-student-id {
+      font-family: 'Courier New', monospace;
+      font-weight: bold;
+      font-size: 1.1rem;
+  }
+
+  .nbu-student-id.generating {
+      color: #f59e0b;
+  }
+
+  .nbu-student-id.generated {
+      color: #059669;
+  }
+
+  .nbu-student-id.error {
+      color: #dc2626;
+  }
+
+  /* 专业搜索下拉框样式 */
+  .nbu-search-select {
+      position: relative;
+  }
+
+  .nbu-search-select input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+  }
+
+  .nbu-search-select input:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+  }
+
+  .nbu-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      max-height: 300px;
+      overflow-y: auto;
+  }
+
+  .nbu-dropdown-list {
+      padding: 0.5rem 0;
+  }
+
+  .nbu-category-header {
+      padding: 0.5rem 1rem;
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #6c757d;
+      font-size: 0.85rem;
+      border-bottom: 1px solid #e9ecef;
+  }
+
+  .nbu-dropdown-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      border-bottom: 1px solid #f8f9fa;
+  }
+
+  .nbu-dropdown-item:hover {
+      background: #f8f9fa;
+  }
+
+  .nbu-dropdown-item:last-child {
+      border-bottom: none;
+  }
+
+  .nbu-major-name {
+      flex: 1;
+  }
+
+  .nbu-major-code {
+      background: #e9ecef;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-family: 'Courier New', monospace;
+  }
+
+  .nbu-dropdown-empty {
+      padding: 2rem 1rem;
+      text-align: center;
+      color: #6c757d;
+  }
+
+  /* 高亮文本 */
+  mark {
+      background: #fff3cd;
+      padding: 0.1rem 0.2rem;
+      border-radius: 2px;
+  }
+
+  /* 滚动条样式 */
+  .nbu-dropdown::-webkit-scrollbar {
+      width: 6px;
+  }
+
+  .nbu-dropdown::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 3px;
+  }
+
+  .nbu-dropdown::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 3px;
+  }
+
+  .nbu-dropdown::-webkit-scrollbar-thumb:hover {
+      background: #a8a8a8;
+  }
+
+  /* 查看他人资料样式 */
+  .nbu-viewing-other {
+      background: #e3f2fd;
+      color: #1976d2;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin-top: 0.5rem;
+  }
+
+  .nbu-profile-actions .btn {
+      margin-right: 0.5rem;
+  }
+
+  .nbu-profile-actions .btn:last-child {
+      margin-right: 0;
+  }
+</style>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+
+    <!-- 添加Supabase客户端配置 -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Supabase配置
+        const supabaseUrl_t = "https://grgpsujmjbeuphwvxhpg.supabase.co";
+        const supabaseServiceKey_t = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdyZ3BzdWptamJldXBod3Z4aHBnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1OTIzNzExNCwiZXhwIjoyMDc0ODEzMTE0fQ.hy4_n74vuailNkPHWkt9YWINfQFsNuwLHNcg7knUlL4";
+        const supabaseAdmin_t = supabase.createClient(supabaseUrl_t, supabaseServiceKey_t);
+        
+        console.log("✅ 成员目录Supabase客户端已初始化");
+    </script>
+    
+    <style>
+        .members-container {
+            min-height: 80vh;
+            padding: 2rem 0;
+        }
+        
+        .members-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .members-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            min-width: 120px;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #3498db;
+            display: block;
+        }
+        
+        .stat-label {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .member-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .member-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+        
+        .member-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .member-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            object-fit: cover;
+        }
+        
+        .member-basic h3 {
+            margin: 0 0 0.25rem 0;
+            font-size: 1.2rem;
+        }
+        
+        .member-role {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        .member-details {
+            padding: 1.5rem;
+        }
+        
+        .member-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .meta-label {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-bottom: 0.25rem;
+        }
+        
+        .meta-value {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .member-bio {
+            color: #5a6c7d;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .member-actions {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid #e9ecef;
+            text-align: center;
+        }
+        
+        .view-profile-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s ease;
+        }
+        
+        .view-profile-btn:hover {
+            background: #2980b9;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+        
+        .search-box {
+            max-width: 400px;
+            margin: 0 auto 2rem;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <!-- NBU用户认证组件 -->
+    <div id="nbu-auth-widget" class="navbar-nav ml-auto align-items-center">
+        <!-- 未登录状态 - 默认隐藏 -->
+        <div id="nbu-login-section" style="display: none;">
+            <button class="btn btn-outline-light btn-sm" onclick="nbuHandleLogin()">
+                <i class="iconfont icon-user"></i> 登录NBU
+            </button>
+        </div>
+        
+        <div id="nbu-user-section" style="display: none;">
+          <div class="d-flex align-items-center">
+            <a href="/profile/" class="d-flex align-items-center text-decoration-none text-light">
+              <img id="nbu-user-avatar" src="" srcset="/img/loading.gif" lazyload alt="头像" class="rounded-circle mr-2" style="width: 28px; height: 28px;">
+              <span id="nbu-user-name" class="small mr-2"></span>
+            </a>
+            <button class="btn btn-outline-light btn-sm ml-1" onclick="nbuHandleLogout()">退出</button>
+            <button class="btn btn-outline-info btn-sm ml-2" onclick="showEditProfileModal()">编辑资料</button>
+              <i class="iconfont icon-edit"></i>
+            </button>
+          </div>
+        </div>
+    </div>
+
+    <!-- NBU身份选择模态框 -->
+    <div id="nbu-role-modal" class="nbu-role-modal" style="display: none;">
+      <div class="nbu-modal-overlay">
+        <div class="nbu-modal-content">
+          <div class="nbu-modal-header">
+            <h3>🎓 欢迎来到美国牛逼大学</h3>
+            <p>请选择你的身份加入我们的学术社区</p>
+          </div>
+          
+          <div class="nbu-role-options">
+            <div class="nbu-role-card" onclick="selectNBURole('student')">
+              <div class="nbu-role-icon">👨‍🎓</div>
+              <div class="nbu-role-info">
+                <h4>学生</h4>
+                <p>加入NBU学习社区，参与课程和活动</p>
+                <small>需要学生密钥</small>
+              </div>
+            </div>
+            
+            <div class="nbu-role-card" onclick="selectNBURole('faculty')">
+              <div class="nbu-role-icon">👨‍🏫</div>
+              <div class="nbu-role-info">
+                <h4>教职人员</h4>
+                <p>作为教师或工作人员加入NBU</p>
+                <small>需要教职密钥</small>
+              </div>
+            </div>
+            
+            <div class="nbu-role-card" onclick="selectNBURole('visitor')">
+              <div class="nbu-role-icon">👀</div>
+              <div class="nbu-role-info">
+                <h4>访客</h4>
+                <p>参观校园，了解NBU文化</p>
+                <small>自由访问</small>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 密钥输入区域 -->
+          <div id="nbu-secret-section" class="nbu-secret-section" style="display: none;">
+            <div class="nbu-secret-input">
+              <label id="nbu-secret-label">请输入密钥：</label>
+              <input type="password" id="nbu-secret-key" placeholder="输入准入密钥...">
+              <button onclick="verifyNBUSecretKey()" class="nbu-verify-btn">验证</button>
+            </div>
+            <p class="nbu-secret-hint" id="nbu-secret-hint"></p>
+          </div>
+          
+          <div class="nbu-modal-footer">
+            <button onclick="hideNBURoleModal()" class="nbu-cancel-btn">取消</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 资料编辑模态框 -->
+    <div id="nbu-edit-profile-modal" class="nbu-role-modal" style="display: none;">
+      <div class="nbu-modal-overlay">
+        <div class="nbu-modal-content" style="max-width: 600px;">
+          <div class="nbu-modal-header">
+            <h3>📝 编辑个人资料</h3>
+            <p>完善你的身份信息</p>
+          </div>
+          
+          <form id="nbu-profile-form">
+            <!-- 基础信息 -->
+            <div class="nbu-form-section">
+              <h4>基础信息</h4>
+              
+              <div class="nbu-form-group">
+                <label for="edit-display-name">显示名称 *</label>
+                <input type="text" id="edit-display-name" required>
+              </div>
+              
+              <!-- 替换原来的头像URL输入框 -->
+              <div class="nbu-form-group">
+                  <label for="edit-avatar-url">头像</label>
+                  
+                  <!-- 当前头像预览 -->
+                  <div class="nbu-avatar-preview" style="margin-bottom: 1rem;">
+                      <img id="avatar-preview" src="" srcset="/img/loading.gif" lazyload alt="头像预览" 
+                          style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #ddd;">
+                  </div>
+                  
+                  <!-- 上传选项 -->
+                  <div class="nbu-upload-options">
+                      <!-- 方式1：文件上传 -->
+                      <div style="margin-bottom: 0.5rem;">
+                          <label class="btn btn-outline-primary btn-sm">
+                              📁 选择图片
+                              <input type="file" id="avatar-upload" accept="image/*" style="display: none;" 
+                                    onchange="handleAvatarUpload(event)">
+                          </label>
+                          <small class="text-muted" style="margin-left: 0.5rem;">支持 JPG, PNG, GIF</small>
+                      </div>
+                      
+                      <!-- 方式2：URL输入（备用） -->
+                      <div>
+                          <label>或者输入图片URL：</label>
+                          <input type="url" id="edit-avatar-url" placeholder="https://example.com/avatar.jpg"
+                                onchange="updateAvatarPreview(this.value)">
+                      </div>
+                  </div>
+                  
+                  <!-- 上传进度 -->
+                  <div id="upload-progress" style="display: none; margin-top: 0.5rem;">
+                      <div class="progress" style="height: 6px;">
+                          <div id="upload-progress-bar" class="progress-bar" style="width: 0%"></div>
+                      </div>
+                      <small id="upload-status">上传中...</small>
+                  </div>
+              </div>
+              
+              <div class="nbu-form-group">
+                <label for="edit-bio">个人简介</label>
+                <textarea id="edit-bio" rows="3" placeholder="介绍一下你自己..."></textarea>
+              </div>
+            </div>
+            
+            <!-- OC信息（学生/教职显示） -->
+            <div id="nbu-oc-section" class="nbu-form-section" style="display: none;">
+              <h4>🎭 OC角色信息</h4>
+              
+              <div class="nbu-form-row">
+                <div class="nbu-form-group">
+                  <label for="edit-oc-name">角色名</label>
+                  <input type="text" id="edit-oc-name">
+                </div>
+                
+                <div class="nbu-form-group">
+                  <label for="edit-oc-age">年龄</label>
+                  <input type="number" id="edit-oc-age" min="1" max="150">
+                </div>
+              </div>
+              
+              <div class="nbu-form-row">
+                <div class="nbu-form-group">
+                  <label for="edit-oc-nationality">国籍</label>
+                  <input type="text" id="edit-oc-nationality">
+                </div>
+                
+                <div class="nbu-form-group">
+                  <label for="edit-oc-gender">性别</label>
+                  <select id="edit-oc-gender">
+                    <option value="">选择性别</option>
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                    <option value="其他">其他</option>
+                    <option value="不愿透露">不愿透露</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="nbu-form-group">
+                <label for="edit-oc-title">称谓</label>
+                <select id="edit-oc-title">
+                  <option value="">选择称谓</option>
+                  <option value="Mr.">Mr.</option>
+                  <option value="Ms.">Ms.</option>
+                  <option value="Mrs.">Mrs.</option>
+                  <option value="Dr.">Dr.</option>
+                  <option value="Prof.">Prof.</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- 学生专属字段 -->
+            <div id="nbu-student-section" class="nbu-form-section" style="display: none;">
+              <h4>🎓 学生信息</h4>
+              
+              <div class="nbu-form-row">
+                <div class="nbu-form-group">
+                  <label for="major-search">专业 *</label>
+                  <!-- 搜索输入框 -->
+                  <div class="nbu-search-select">
+                      <input type="text" 
+                            id="major-search" 
+                            placeholder="搜索或选择专业..."
+                            autocomplete="off"
+                            onfocus="showMajorDropdown()"
+                            oninput="filterMajors(this.value)">
+                      
+                      <!-- 下拉选项 -->
+                      <div id="major-dropdown" class="nbu-dropdown">
+                          <div class="nbu-dropdown-list" id="major-options">
+                              <!-- 选项将通过JS动态生成 -->
+                          </div>
+                      </div>
+                  </div>
+                  <!-- 隐藏的实际值存储 -->
+                  <input type="hidden" id="edit-major" name="major" required>
+                </div>
+                
+                <div class="nbu-form-group">
+                  <label for="edit-student-id">学号</label>
+                  <input type="text" id="edit-student-id" placeholder="2024123456">
+                </div>
+                <!-- 添加学号预览 -->
+                <div id="student-id-preview" class="nbu-student-id-preview" style="display: none;">
+                    <label>学号预览</label>
+                    <div class="nbu-student-id-display">
+                        <span id="student-id-preview-text" class="nbu-student-id"></span>
+                        <small class="text-muted">系统自动生成</small>
+                    </div>
+                </div>
+              </div>
+              
+              <div class="nbu-form-row">
+                <div class="nbu-form-group">
+                  <label for="edit-dormitory">宿舍</label>
+                  <input type="text" id="edit-dormitory" placeholder="1号楼101">
+                </div>
+                
+                <div class="nbu-form-group">
+                  <label for="edit-enrollment-year">入学年份</label>
+                  <input type="number" id="edit-enrollment-year" min="2000" max="2030" placeholder="2010" oninput="updateStudentIdPreview()">
+                </div>
+              </div>
+              
+              <div class="nbu-form-group">
+                <label for="edit-clubs">社团（每行一个）</label>
+                <textarea id="edit-clubs" rows="3" placeholder="篮球社&#10;天体物理社"></textarea>
+                <small class="form-hint">每行输入一个社团名称</small>
+              </div>
+            </div>
+
+            <!-- 教职专属字段 -->
+            <div id="nbu-faculty-section" class="nbu-form-section" style="display: none;">
+              <h4>👨‍🏫 教职信息</h4>
+              
+              <div class="nbu-form-row">
+                <div class="nbu-form-group">
+                  <label for="edit-department">院系</label>
+                  <input type="text" id="edit-department" placeholder="计算机学院">
+                </div>
+                
+                <div class="nbu-form-group">
+                  <label for="edit-faculty-rank">职称</label>
+                  <select id="edit-faculty-rank">
+                    <option value="">选择职称</option>
+                    <option value="教授">教授</option>
+                    <option value="副教授">副教授</option>
+                    <option value="助理教授">助理教授</option>
+                    <option value="讲师">讲师</option>
+                    <option value="助教">助教</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="nbu-form-group">
+                <label for="edit-office-location">办公室</label>
+                <input type="text" id="edit-office-location" placeholder="主教学楼A座301">
+              </div>
+              
+              <div class="nbu-form-group">
+                <label for="edit-office-hours">办公时间</label>
+                <input type="text" id="edit-office-hours" placeholder="周一、三 14:00-16:00">
+              </div>
+              
+              <div class="nbu-form-group">
+                <label for="edit-courses">负责科目（每行一个）</label>
+                <textarea id="edit-courses" rows="3" placeholder="计算机导论&#10;数据结构"></textarea>
+              </div>
+              
+              <div class="nbu-form-group">
+                <label for="edit-degrees">学位信息（每行一个）</label>
+                <textarea id="edit-degrees" rows="3" placeholder="清华大学 计算机科学 博士&#10;北京大学 数学 学士"></textarea>
+              </div>
+            </div>
+            
+            <div class="nbu-modal-footer">
+              <button type="button" onclick="hideEditProfileModal()" class="nbu-cancel-btn">取消</button>
+              <button type="submit" class="nbu-verify-btn">保存资料</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- 注销账户确认模态框 -->
+    <div id="nbu-delete-account-modal" class="nbu-role-modal" style="display: none;">
+      <div class="nbu-modal-overlay">
+        <div class="nbu-modal-content" style="max-width: 500px;">
+          <div class="nbu-modal-header">
+            <h3 style="color: #e74c3c;">⚠️ 确认注销账户</h3>
+            <p>此操作不可撤销，请谨慎操作</p>
+          </div>
+          
+          <div class="nbu-delete-warning">
+            <div class="nbu-warning-item">
+              <strong>🗑️ 将被删除的数据：</strong>
+              <ul>
+                <li>所有资料信息</li>
+                <li>所有关联的账户数据</li>
+              </ul>
+            </div>
+            
+            <div class="nbu-warning-item">
+              <strong>🔐 认证信息：</strong>
+              <ul>
+                <li>Auth0认证记录</li>
+                <li>浏览器本地登录状态</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="nbu-confirm-section">
+            <label>
+              <input type="checkbox" id="confirm-delete">
+              我理解此操作不可撤销，确认删除我的账户
+            </label>
+          </div>
+          
+          <div class="nbu-modal-footer">
+            <button onclick="hideDeleteAccountModal()" class="nbu-cancel-btn">取消</button>
+            <button id="confirm-delete-btn" onclick="deleteUserAccount()" class="btn btn-danger" disabled>
+              确认注销
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="NBU社区成员"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+    
+    <main class="container members-container">
+        <div class="members-header">
+            <h1>👥 NBU社区成员</h1>
+            <p class="lead">认识我们的学生、教职人员和访客</p>
+        </div>
+        
+        <!-- 统计卡片 -->
+        <div class="members-stats" id="members-stats">
+            <div class="stat-card">
+                <span class="stat-number" id="total-count">0</span>
+                <span class="stat-label">总成员</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="students-count">0</span>
+                <span class="stat-label">学生</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="faculty-count">0</span>
+                <span class="stat-label">教职</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="visitors-count">0</span>
+                <span class="stat-label">访客</span>
+            </div>
+        </div>
+        
+        <!-- 搜索和筛选 -->
+        <div class="search-box">
+            <input type="text" id="member-search" placeholder="搜索成员..." autocomplete="off">
+        </div>
+        
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">全部</button>
+            <button class="filter-btn" data-filter="student">学生</button>
+            <button class="filter-btn" data-filter="faculty">教职</button>
+            <button class="filter-btn" data-filter="visitor">访客</button>
+        </div>
+        
+        <!-- 成员网格 -->
+        <div id="members-grid" class="members-grid">
+            <div class="empty-state">
+                <h3>加载中...</h3>
+                <p>正在获取成员信息</p>
+            </div>
+        </div>
+    </main>
+    
+    <div class="footer-inner">
+  
+    <div class="footer-links">
+    <a href="/members/" class="footer-link">
+        👥 社区成员
+    </a>
+</div>
+  
+  
+  
+</div>
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+<!-- NBU用户认证逻辑 -->
+<script>
+    // 确保Auth0库已加载后再执行
+    if (typeof auth0 !== 'undefined') {
+        // 动态创建脚本元素加载认证逻辑
+        var script = document.createElement('script');
+        script.src = '/js/nbu-auth.js';
+        document.head.appendChild(script);
+    } else {
+        console.warn('Auth0库未加载，跳过认证逻辑初始化');
+    }
+</script>
+<script src="/js/nbu-profile-display.js"></script>
+<script src="/js/nbu-upload.js"></script>
+
+    
+    <!-- 成员目录专属脚本 -->
+    <script>
+        // 成员目录功能
+        class MembersDirectory {
+            constructor() {
+                this.allMembers = [];
+                this.filteredMembers = [];
+                this.currentFilter = 'all';
+                this.searchTerm = '';
+                this.init();
+            }
+            
+            async init() {
+                await this.loadMembers();
+                this.renderStats();
+                this.renderMembers();
+                this.bindEvents();
+            }
+            
+            // 加载成员数据
+            async loadMembers() {
+                try {
+                    console.log('👥 加载成员数据...');
+                    
+                    const { data: members, error } = await supabaseAdmin_t
+                        .from('user_profiles')
+                        .select('*')
+                        .order('created_at', { ascending: false });
+                    
+                    if (error) {
+                        throw new Error('加载成员数据失败: ' + error.message);
+                    }
+                    
+                    this.allMembers = members || [];
+                    this.filteredMembers = [...this.allMembers];
+                    
+                    console.log(`✅ 加载成功: ${this.allMembers.length} 位成员`);
+                    
+                } catch (error) {
+                    console.error('❌ 加载成员失败:', error);
+                    this.showError('加载成员数据失败');
+                }
+            }
+            
+            // 渲染统计信息
+            renderStats() {
+                const total = this.allMembers.length;
+                const students = this.allMembers.filter(m => m.role === 'student').length;
+                const faculty = this.allMembers.filter(m => m.role === 'faculty').length;
+                const visitors = this.allMembers.filter(m => m.role === 'visitor').length;
+                
+                document.getElementById('total-count').textContent = total;
+                document.getElementById('students-count').textContent = students;
+                document.getElementById('faculty-count').textContent = faculty;
+                document.getElementById('visitors-count').textContent = visitors;
+            }
+            
+            // 渲染成员网格
+            renderMembers() {
+                const grid = document.getElementById('members-grid');
+                
+                if (this.filteredMembers.length === 0) {
+                    grid.innerHTML = `
+                        <div class="empty-state">
+                            <h3>没有找到成员</h3>
+                            <p>${this.searchTerm ? '尝试调整搜索条件' : '还没有成员加入'}</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                grid.innerHTML = this.filteredMembers.map(member => this.createMemberCard(member)).join('');
+            }
+
+            // 创建成员卡片
+            createMemberCard(member) {
+                const roleDisplay = {
+                    'student': '🎓 学生',
+                    'faculty': '👨‍🏫 教职人员',
+                    'visitor': '👀 访客'
+                };
+                
+                const roleIcon = {
+                    'student': '🎓',
+                    'faculty': '👨‍🏫', 
+                    'visitor': '👀'
+                };
+                
+                return `
+                    <div class="member-card" data-role="${member.role}">
+                        <div class="member-header">
+                            <img src="${member.avatar_url || this.getDefaultAvatar()}" srcset="/img/loading.gif" lazyload 
+                                 alt="${member.display_name}" 
+                                 class="member-avatar"
+                                 onerror="this.src='${this.getDefaultAvatar()}'">
+                            <div class="member-basic">
+                                <h3>${member.oc_name || member.display_name || 'NBU成员'}</h3>
+                                <p class="member-role">${roleDisplay[member.role] || '未知身份'}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="member-details">
+                            <div class="member-meta">
+                                ${member.oc_age ? `
+                                    <div class="meta-item">
+                                        <span class="meta-label">年龄</span>
+                                        <span class="meta-value">${member.oc_age}</span>
+                                    </div>
+                                ` : ''}
+                                
+                                ${member.oc_nationality ? `
+                                    <div class="meta-item">
+                                        <span class="meta-label">国籍</span>
+                                        <span class="meta-value">${member.oc_nationality}</span>
+                                    </div>
+                                ` : ''}
+                                
+                                ${member.major ? `
+                                    <div class="meta-item">
+                                        <span class="meta-label">专业</span>
+                                        <span class="meta-value">${member.major}</span>
+                                    </div>
+                                ` : ''}
+                                
+                                ${member.student_id ? `
+                                    <div class="meta-item">
+                                        <span class="meta-label">学号</span>
+                                        <span class="meta-value">${member.student_id}</span>
+                                    </div>
+                                ` : ''}
+                            </div>
+                            
+                            ${member.bio ? `
+                                <div class="member-bio">${member.bio}</div>
+                            ` : ''}
+                        </div>
+                        
+                        <div class="member-actions">
+                            <a href="/profile/?user=${encodeURIComponent(member.auth0_user_id)}" class="view-profile-btn">
+                                查看资料
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // 获取默认头像
+            getDefaultAvatar() {
+                return 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjgwIiByPSI0MCIgZmlsbD0jQ0VDRkQxLz4KPHBhdGggZD0iTTQwIDE2MEM0MCAxMzEuMDQ2IDYzLjA0NiAxMDggOTIgMTA4SDEwOEMxMzYuOTU0IDEwOCAxNjAgMTMxLjA0NiAxNjAgMTYwVjE4MEg0MFYxNjBaIiBmaWxsPSIjQ0VDRkQxIi8+Cjwvc3ZnPg==';
+            }
+            
+            // 绑定事件
+            bindEvents() {
+                // 筛选按钮
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                        e.target.classList.add('active');
+                        
+                        this.currentFilter = e.target.dataset.filter;
+                        this.applyFilters();
+                    });
+                });
+                
+                // 搜索框
+                document.getElementById('member-search').addEventListener('input', (e) => {
+                    this.searchTerm = e.target.value.toLowerCase();
+                    this.applyFilters();
+                });
+            }
+            
+            // 应用筛选和搜索
+            applyFilters() {
+                this.filteredMembers = this.allMembers.filter(member => {
+                    // 角色筛选
+                    if (this.currentFilter !== 'all' && member.role !== this.currentFilter) {
+                        return false;
+                    }
+                    
+                    // 搜索筛选
+                    if (this.searchTerm) {
+                        const searchFields = [
+                            member.oc_name,
+                            member.display_name, 
+                            member.major,
+                            member.oc_nationality,
+                            member.bio,
+                            member.student_id
+                        ].filter(Boolean).join(' ').toLowerCase();
+                        
+                        return searchFields.includes(this.searchTerm);
+                    }
+                    
+                    return true;
+                });
+                
+                this.renderMembers();
+            }
+            
+            // 显示错误
+            showError(message) {
+                const grid = document.getElementById('members-grid');
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <h3>❌ 加载失败</h3>
+                        <p>${message}</p>
+                        <button onclick="membersDirectory.init()" class="view-profile-btn" style="margin-top: 1rem;">
+                            重试
+                        </button>
+                    </div>
+                `;
+            }
+        }
+        
+        // 创建全局实例
+        const membersDirectory = new MembersDirectory();
+    </script>
+</body>
+</html>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-links">
+    <a href="/members/" class="footer-link">
+        👥 社区成员
+    </a>
+</div>
+  
+  
+  
+</div>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+<!-- NBU用户认证逻辑 -->
+<script>
+    // 确保Auth0库已加载后再执行
+    if (typeof auth0 !== 'undefined') {
+        // 动态创建脚本元素加载认证逻辑
+        var script = document.createElement('script');
+        script.src = '/js/nbu-auth.js';
+        document.head.appendChild(script);
+    } else {
+        console.warn('Auth0库未加载，跳过认证逻辑初始化');
+    }
+</script>
+<script src="/js/nbu-profile-display.js"></script>
+<script src="/js/nbu-upload.js"></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
