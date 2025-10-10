@@ -45,9 +45,6 @@ function createProfileCardHTML(userProfile, isOtherUser = false) {
                 <div class="nbu-profile-basic">
                     <h3>${userProfile.oc_name || userProfile.display_name || 'NBU用户'}</h3>
                     <p class="nbu-profile-role">${roleDisplay[userProfile.role] || '未知身份'}</p>
-                    <p class="nbu-profile-title">${userProfile.oc_title || ''}</p>
-                    ${isOtherUser ? '<div class="nbu-viewing-other">👀 查看资料</div>' : ''}
-                </div>
             </div>
             
             <div class="nbu-profile-details">

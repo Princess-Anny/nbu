@@ -42,7 +42,7 @@ async function initializeNBUAuth() {
             domain: "dev-qajzo556g32cbm5b.us.auth0.com",
             clientId: "MCa52JMm0fAX4uAxRMOW636zkNU1wYN3",
             authorizationParams: {
-                redirect_uri: "https://niubiuniversity.dpdns.org/"
+                redirect_uri: "http://localhost:4000/"
             },
             cacheLocation: 'localstorage' // 明确指定使用localStorage持久化
         });
@@ -165,7 +165,8 @@ async function updateAuthUI() {
         if (!originalUrl) return getDefaultAvatar();
         
         if (originalUrl.includes('supabase.co/storage/v1/object/public/avatars/')) {
-            return originalUrl + '?width=56&height=56&quality=80&fit=cover';
+            const baseUrl = originalUrl.split('?')[0];
+            return baseUrl + '?width=56&height=56&quality=80&fit=cover';
         }
         
         return originalUrl;
@@ -416,7 +417,7 @@ async function nbuHandleLogout() {
     console.log("🚪 执行登出...");
     await nbuAuthClient.logout({
         logoutParams: {
-            returnTo: "https://niubiuniversity.dpdns.org/"
+            returnTo: "http://localhost:4000/"
         }
     });
 }

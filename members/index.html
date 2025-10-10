@@ -24,7 +24,7 @@
 <meta property="og:url" content="http://example.com/members/index.html">
 <meta property="og:site_name" content="美国牛逼大学官网">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-10-08T01:48:25.925Z">
+<meta property="article:published_time" content="2025-10-10T03:29:58.144Z">
 <meta property="article:modified_time" content="2025-10-08T01:48:25.925Z">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -1134,7 +1134,7 @@
 <meta property="og:url" content="http://example.com/members/index.html">
 <meta property="og:site_name" content="美国牛逼大学官网">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-10-08T01:48:25.925Z">
+<meta property="article:published_time" content="2025-10-10T03:29:58.144Z">
 <meta property="article:modified_time" content="2025-10-08T01:48:25.925Z">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -1732,208 +1732,38 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
-
-    <!-- 添加Supabase客户端配置 -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script>
-        // Supabase配置
-        const supabaseUrl_t = "https://grgpsujmjbeuphwvxhpg.supabase.co";
-        const supabaseServiceKey_t = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdyZ3BzdWptamJldXBod3Z4aHBnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1OTIzNzExNCwiZXhwIjoyMDc0ODEzMTE0fQ.hy4_n74vuailNkPHWkt9YWINfQFsNuwLHNcg7knUlL4";
-        const supabaseAdmin_t = supabase.createClient(supabaseUrl_t, supabaseServiceKey_t);
-        
-        console.log("✅ 成员目录Supabase客户端已初始化");
-    </script>
     
+    <!-- 引入成员目录CSS -->
     <style>
-        .members-container {
-            min-height: 80vh;
-            padding: 2rem 0;
-        }
-        
-        .members-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .members-stats {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .stat-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            min-width: 120px;
-        }
-        
-        .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #3498db;
-            display: block;
-        }
-        
-        .stat-label {
-            color: #6c757d;
-            font-size: 0.9rem;
-        }
-        
-        .members-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .member-card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .member-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-        }
-        
-        .member-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .member-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            object-fit: cover;
-        }
-        
-        .member-basic h3 {
-            margin: 0 0 0.25rem 0;
-            font-size: 1.2rem;
-        }
-        
-        .member-role {
-            margin: 0;
-            opacity: 0.9;
-            font-size: 0.9rem;
-        }
-        
-        .member-details {
-            padding: 1.5rem;
-        }
-        
-        .member-meta {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .meta-item {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .meta-label {
-            font-size: 0.8rem;
-            color: #6c757d;
-            margin-bottom: 0.25rem;
-        }
-        
-        .meta-value {
-            font-weight: 500;
-            color: #2c3e50;
-        }
-        
-        .member-bio {
-            color: #5a6c7d;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        
-        .member-actions {
-            padding: 1rem 1.5rem;
-            border-top: 1px solid #e9ecef;
-            text-align: center;
-        }
-        
-        .view-profile-btn {
-            background: #3498db;
-            color: white;
-            border: none;
-            padding: 0.5rem 1.5rem;
-            border-radius: 6px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: background 0.3s ease;
-        }
-        
-        .view-profile-btn:hover {
-            background: #2980b9;
-            color: white;
-            text-decoration: none;
-        }
-        
-        .filters {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .filter-btn {
-            padding: 0.5rem 1.5rem;
-            border: 1px solid #ddd;
-            background: white;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .filter-btn.active {
-            background: #3498db;
-            color: white;
-            border-color: #3498db;
-        }
-        
-        .search-box {
-            max-width: 400px;
-            margin: 0 auto 2rem;
-        }
-        
-        .search-box input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 1rem;
-        }
-        
-        .empty-state {
-            text-align: center;
-            padding: 4rem 2rem;
-            color: #6c757d;
-        }
+        /* 从原来的members.ejs中复制所有CSS样式到这里 */
+        .members-container { min-height: 80vh; padding: 2rem 0; }
+        .members-header { text-align: center; margin-bottom: 3rem; }
+        .members-stats { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .stat-card { background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); text-align: center; min-width: 120px; }
+        .stat-number { font-size: 2rem; font-weight: bold; color: #3498db; display: block; }
+        .stat-label { color: #6c757d; font-size: 0.9rem; }
+        .members-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .member-card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .member-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); }
+        .member-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+        .member-avatar { width: 60px; height: 60px; border-radius: 50%; border: 3px solid rgba(255, 255, 255, 0.3); object-fit: cover; background: #f8f9fa; }
+        .member-basic h3 { margin: 0 0 0.25rem 0; font-size: 1.2rem; }
+        .member-role { margin: 0; opacity: 0.9; font-size: 0.9rem; }
+        .member-details { padding: 1.5rem; }
+        .member-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+        .meta-item { display: flex; flex-direction: column; }
+        .meta-label { font-size: 0.8rem; color: #6c757d; margin-bottom: 0.25rem; }
+        .meta-value { font-weight: 500; color: #2c3e50; }
+        .member-bio { color: #5a6c7d; font-size: 0.9rem; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        .member-actions { padding: 1rem 1.5rem; border-top: 1px solid #e9ecef; text-align: center; }
+        .view-profile-btn { background: #3498db; color: white; border: none; padding: 0.5rem 1.5rem; border-radius: 6px; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.3s ease; }
+        .view-profile-btn:hover { background: #2980b9; color: white; text-decoration: none; }
+        .filters { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .filter-btn { padding: 0.5rem 1.5rem; border: 1px solid #ddd; background: white; border-radius: 6px; cursor: pointer; transition: all 0.3s ease; }
+        .filter-btn.active { background: #3498db; color: white; border-color: #3498db; }
+        .search-box { max-width: 400px; margin: 0 auto 2rem; }
+        .search-box input { width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; }
+        .empty-state { text-align: center; padding: 4rem 2rem; color: #6c757d; }
     </style>
 </head>
 <body>
@@ -2536,224 +2366,19 @@
 </script>
 <script src="/js/nbu-profile-display.js"></script>
 <script src="/js/nbu-upload.js"></script>
+<script src="/js/supabase-config.js"></script>
+<script src="/js/nbu-members-directory.js"></script>
 
     
-    <!-- 成员目录专属脚本 -->
+    <!-- 引入成员目录JS模块 -->
+    <script src="/js/nbu-members-directory.js"></script>
+    
+    <!-- 初始化 -->
     <script>
-        // 成员目录功能
-        class MembersDirectory {
-            constructor() {
-                this.allMembers = [];
-                this.filteredMembers = [];
-                this.currentFilter = 'all';
-                this.searchTerm = '';
-                this.init();
-            }
-            
-            async init() {
-                await this.loadMembers();
-                this.renderStats();
-                this.renderMembers();
-                this.bindEvents();
-            }
-            
-            // 加载成员数据
-            async loadMembers() {
-                try {
-                    console.log('👥 加载成员数据...');
-                    
-                    const { data: members, error } = await supabaseAdmin_t
-                        .from('user_profiles')
-                        .select('*')
-                        .order('created_at', { ascending: false });
-                    
-                    if (error) {
-                        throw new Error('加载成员数据失败: ' + error.message);
-                    }
-                    
-                    this.allMembers = members || [];
-                    this.filteredMembers = [...this.allMembers];
-                    
-                    console.log(`✅ 加载成功: ${this.allMembers.length} 位成员`);
-                    
-                } catch (error) {
-                    console.error('❌ 加载成员失败:', error);
-                    this.showError('加载成员数据失败');
-                }
-            }
-            
-            // 渲染统计信息
-            renderStats() {
-                const total = this.allMembers.length;
-                const students = this.allMembers.filter(m => m.role === 'student').length;
-                const faculty = this.allMembers.filter(m => m.role === 'faculty').length;
-                const visitors = this.allMembers.filter(m => m.role === 'visitor').length;
-                
-                document.getElementById('total-count').textContent = total;
-                document.getElementById('students-count').textContent = students;
-                document.getElementById('faculty-count').textContent = faculty;
-                document.getElementById('visitors-count').textContent = visitors;
-            }
-            
-            // 渲染成员网格
-            renderMembers() {
-                const grid = document.getElementById('members-grid');
-                
-                if (this.filteredMembers.length === 0) {
-                    grid.innerHTML = `
-                        <div class="empty-state">
-                            <h3>没有找到成员</h3>
-                            <p>${this.searchTerm ? '尝试调整搜索条件' : '还没有成员加入'}</p>
-                        </div>
-                    `;
-                    return;
-                }
-                
-                grid.innerHTML = this.filteredMembers.map(member => this.createMemberCard(member)).join('');
-            }
-
-            // 创建成员卡片
-            createMemberCard(member) {
-                const roleDisplay = {
-                    'student': '🎓 学生',
-                    'faculty': '👨‍🏫 教职人员',
-                    'visitor': '👀 访客'
-                };
-                
-                const roleIcon = {
-                    'student': '🎓',
-                    'faculty': '👨‍🏫', 
-                    'visitor': '👀'
-                };
-                
-                return `
-                    <div class="member-card" data-role="${member.role}">
-                        <div class="member-header">
-                            <img src="${member.avatar_url || this.getDefaultAvatar()}" srcset="/img/loading.gif" lazyload 
-                                 alt="${member.display_name}" 
-                                 class="member-avatar"
-                                 onerror="this.src='${this.getDefaultAvatar()}'">
-                            <div class="member-basic">
-                                <h3>${member.oc_name || member.display_name || 'NBU成员'}</h3>
-                                <p class="member-role">${roleDisplay[member.role] || '未知身份'}</p>
-                            </div>
-                        </div>
-                        
-                        <div class="member-details">
-                            <div class="member-meta">
-                                ${member.oc_age ? `
-                                    <div class="meta-item">
-                                        <span class="meta-label">年龄</span>
-                                        <span class="meta-value">${member.oc_age}</span>
-                                    </div>
-                                ` : ''}
-                                
-                                ${member.oc_nationality ? `
-                                    <div class="meta-item">
-                                        <span class="meta-label">国籍</span>
-                                        <span class="meta-value">${member.oc_nationality}</span>
-                                    </div>
-                                ` : ''}
-                                
-                                ${member.major ? `
-                                    <div class="meta-item">
-                                        <span class="meta-label">专业</span>
-                                        <span class="meta-value">${member.major}</span>
-                                    </div>
-                                ` : ''}
-                                
-                                ${member.student_id ? `
-                                    <div class="meta-item">
-                                        <span class="meta-label">学号</span>
-                                        <span class="meta-value">${member.student_id}</span>
-                                    </div>
-                                ` : ''}
-                            </div>
-                            
-                            ${member.bio ? `
-                                <div class="member-bio">${member.bio}</div>
-                            ` : ''}
-                        </div>
-                        
-                        <div class="member-actions">
-                            <a href="/profile/?user=${encodeURIComponent(member.auth0_user_id)}" class="view-profile-btn">
-                                查看资料
-                            </a>
-                        </div>
-                    </div>
-                `;
-            }
-            
-            // 获取默认头像
-            getDefaultAvatar() {
-                return 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjgwIiByPSI0MCIgZmlsbD0jQ0VDRkQxLz4KPHBhdGggZD0iTTQwIDE2MEM0MCAxMzEuMDQ2IDYzLjA0NiAxMDggOTIgMTA4SDEwOEMxMzYuOTU0IDEwOCAxNjAgMTMxLjA0NiAxNjAgMTYwVjE4MEg0MFYxNjBaIiBmaWxsPSIjQ0VDRkQxIi8+Cjwvc3ZnPg==';
-            }
-            
-            // 绑定事件
-            bindEvents() {
-                // 筛选按钮
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                        e.target.classList.add('active');
-                        
-                        this.currentFilter = e.target.dataset.filter;
-                        this.applyFilters();
-                    });
-                });
-                
-                // 搜索框
-                document.getElementById('member-search').addEventListener('input', (e) => {
-                    this.searchTerm = e.target.value.toLowerCase();
-                    this.applyFilters();
-                });
-            }
-            
-            // 应用筛选和搜索
-            applyFilters() {
-                this.filteredMembers = this.allMembers.filter(member => {
-                    // 角色筛选
-                    if (this.currentFilter !== 'all' && member.role !== this.currentFilter) {
-                        return false;
-                    }
-                    
-                    // 搜索筛选
-                    if (this.searchTerm) {
-                        const searchFields = [
-                            member.oc_name,
-                            member.display_name, 
-                            member.major,
-                            member.oc_nationality,
-                            member.bio,
-                            member.student_id
-                        ].filter(Boolean).join(' ').toLowerCase();
-                        
-                        return searchFields.includes(this.searchTerm);
-                    }
-                    
-                    return true;
-                });
-                
-                this.renderMembers();
-            }
-            
-            // 显示错误
-            showError(message) {
-                const grid = document.getElementById('members-grid');
-                grid.innerHTML = `
-                    <div class="empty-state">
-                        <h3>❌ 加载失败</h3>
-                        <p>${message}</p>
-                        <button onclick="membersDirectory.init()" class="view-profile-btn" style="margin-top: 1rem;">
-                            重试
-                        </button>
-                    </div>
-                `;
-            }
-        }
-        
-        // 创建全局实例
-        const membersDirectory = new MembersDirectory();
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("📄 成员目录页面加载完成");
+            membersDirectory.init();
+        });
     </script>
 </body>
 </html>
@@ -2880,6 +2505,8 @@
 </script>
 <script src="/js/nbu-profile-display.js"></script>
 <script src="/js/nbu-upload.js"></script>
+<script src="/js/supabase-config.js"></script>
+<script src="/js/nbu-members-directory.js"></script>
 
 
   
