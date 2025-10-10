@@ -40,7 +40,7 @@ class MembersDirectory {
         try {
             console.log('👥 加载成员数据...');
             
-            const { data: members, error } = await supabaseClient
+            const { data: members, error } = await supabaseAdmin
                 .from('user_profiles')
                 .select('*')
                 .order('created_at', { ascending: false });
