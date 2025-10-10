@@ -1,6 +1,6 @@
-//const supabaseUrl = "https://grgpsujmjbeuphwvxhpg.supabase.co";
-//const supabaseServiceKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdyZ3BzdWptamJldXBod3Z4aHBnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1OTIzNzExNCwiZXhwIjoyMDc0ODEzMTE0fQ.hy4_n74vuailNkPHWkt9YWINfQFsNuwLHNcg7knUlL4";
-//const supabaseClient = supabase.createClient(supabaseUrl, supabaseServiceKey);
+const supabaseUrl_m = "https://grgpsujmjbeuphwvxhpg.supabase.co";
+const supabaseServiceKey_m = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdyZ3BzdWptamJldXBod3Z4aHBnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1OTIzNzExNCwiZXhwIjoyMDc0ODEzMTE0fQ.hy4_n74vuailNkPHWkt9YWINfQFsNuwLHNcg7knUlL4";
+const supabaseClient_m = supabase.createClient(supabaseUrl_m, supabaseServiceKey_m);
 
 // nbu-members-directory.js - 成员目录模块
 class MembersDirectory {
@@ -9,6 +9,7 @@ class MembersDirectory {
         this.filteredMembers = [];
         this.currentFilter = 'all';
         this.searchTerm = '';
+        this.init();
     }
     
     async init() {
@@ -40,7 +41,7 @@ class MembersDirectory {
         try {
             console.log('👥 加载成员数据...');
             
-            const { data: members, error } = await supabaseAdmin
+            const { data: members, error } = await supabaseClient_m
                 .from('user_profiles')
                 .select('*')
                 .order('created_at', { ascending: false });
