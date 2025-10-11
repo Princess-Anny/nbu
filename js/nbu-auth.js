@@ -548,6 +548,7 @@ const MAJOR_DATA = [
     { id: 'psy', name: '心理学', code: 'PSY', category: '社会科学' },
     { id: 'cmn', name: '犯罪心理学', code: 'CMN', category: '社会科学' },
     { id: 'soc', name: '社会学', code: 'SOC', category: '社会科学' },
+    { id: 'dps', name: '外交学', code: 'DPS', category: '社会科学' },
     { id: 'com', name: '传播学', code: 'COM', category: '社会科学' },
     { id: 'jou', name: '新闻学', code: 'JOU', category: '社会科学' },
     { id: 'int', name: '国际关系', code: 'INT', category: '社会科学' },
