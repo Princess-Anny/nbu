@@ -20,15 +20,15 @@
   <meta name="keywords" content="">
   
     <meta property="og:type" content="website">
-<meta property="og:title" content="美国牛逼大学官网">
+<meta property="og:title" content="美国牛逼大学 NiuBi University of America">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="美国牛逼大学官网">
+<meta property="og:site_name" content="美国牛逼大学 NiuBi University of America">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>美国牛逼大学官网</title>
+  <title>美国牛逼大学 NiuBi University of America</title>
 
 <style>
   .nbu-role-modal {
@@ -571,6 +571,118 @@
   .nbu-profile-actions .btn:last-child {
       margin-right: 0;
   }
+
+  /* NBU简介区块样式 */
+  .nbu-intro-section {
+      background: linear-gradient(135deg, #0F6F6D 0%, #111d74 100%);
+      color: white;
+      padding: 4rem 0;
+      margin-bottom: 3rem;
+  }
+
+  .nbu-intro-header {
+      text-align: center;
+      margin-bottom: 3rem;
+  }
+
+  .nbu-intro-header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+  }
+
+  .nbu-intro-header .lead {
+      font-size: 1.5rem;
+      opacity: 0.9;
+      font-style: italic;
+  }
+
+  .nbu-intro-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+      align-items: start;
+  }
+
+  .nbu-intro-text h2 {
+      color: #ffd700;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+  }
+
+  .nbu-intro-text h3 {
+      color: #a8e6cf;
+      margin: 2rem 0 1rem 0;
+      font-size: 1.4rem;
+  }
+
+  .nbu-intro-text p {
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+  }
+
+  .nbu-intro-text ul {
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+  }
+
+  .nbu-intro-text li {
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+  }
+
+  .nbu-intro-text strong {
+      color: #ffd700;
+  }
+
+  .nbu-intro-stats {
+      display: flex;
+      gap: 2rem;
+      margin: 2rem 0;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+  }
+
+  .stat-item {
+      text-align: center;
+      flex: 1;
+  }
+
+  .stat-number {
+      display: block;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #ffd700;
+  }
+
+  .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 768px) {
+      .nbu-intro-header h1 {
+          font-size: 2rem;
+      }
+      
+      .nbu-intro-header .lead {
+          font-size: 1.2rem;
+      }
+      
+      .nbu-intro-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+      }
+      
+      .nbu-intro-stats {
+          flex-direction: column;
+          gap: 1rem;
+      }
+  }
 </style>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
@@ -1079,7 +1191,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="美国牛逼大学官网"></span>
+            <span id="subtitle" data-typed-text="美国牛逼大学 NiuBi University of America"></span>
           
         </div>
 
@@ -1110,7 +1222,40 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
-<h1 style="display: none">美国牛逼大学官网</h1>
+<!-- NBU简介区块 -->
+<section class="nbu-intro-section">
+    <div class="container">
+        <div class="nbu-intro-header">
+            <h1>🎓 欢迎来到美国牛逼大学</h1>
+            <p class="lead">Veritas et Awesome</p>
+        </div>
+        
+        <div class="nbu-intro-content">
+            <div class="nbu-intro-text">
+                <h2>🏛️ 关于NBU</h2>
+                <p>美国佛罗里达牛逼国际大学成立于1997年，是一所充满活力的新兴公立大学。2010年，我们迎来了来自三十个国家左右的约800名国际学生，在阳光明媚的佛罗里达西南部打造了一个亲切友善的国际化学习社区。我们提供50多个本科专业和10个硕士项目，以小班教学著称，平均班级规模25人。校园内设有6栋四人间公寓式套房学生宿舍。我们在2010年完成了宿舍无线网络覆盖升级，并新建了一个配备计算机实验室的学生活动中心。餐饮服务提供美式餐点和国际风味窗口。
+美国佛罗里达牛逼国际大学欢迎您的加入！</p>
+                <div class="nbu-intro-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="intro-total-members">--</span>
+                        <span class="stat-label">社区成员</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="intro-active-students">--</span>
+                        <span class="stat-label">在校学生</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="intro-faculty-count">--</span>
+                        <span class="stat-label">教职人员</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<h1 style="display: none">美国牛逼大学 NiuBi University of America</h1>
 
   <div class="row mx-auto index-card">
     
@@ -1146,8 +1291,858 @@
   </div>
 
 
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="美国牛逼大学 NiuBi University of America">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="美国牛逼大学 NiuBi University of America">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>美国牛逼大学 NiuBi University of America</title>
+
+<style>
+  .nbu-role-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nbu-modal-content {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .nbu-modal-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .nbu-modal-header h3 {
+    margin: 0 0 0.5rem 0;
+    color: #2c3e50;
+  }
+
+  .nbu-role-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .nbu-role-card {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+
+  .nbu-role-card:hover {
+    border-color: #3498db;
+    background: #f8f9fa;
+  }
+
+  .nbu-role-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+
+  .nbu-role-info h4 {
+    margin: 0 0 0.25rem 0;
+    color: #2c3e50;
+  }
+
+  .nbu-role-info p {
+    margin: 0 0 0.25rem 0;
+    color: #6c757d;
+    font-size: 0.9rem;
+  }
+
+  .nbu-role-info small {
+    color: #e74c3c;
+    font-weight: 500;
+  }
+
+  .nbu-secret-section {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+
+  .nbu-secret-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .nbu-secret-input input {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .nbu-verify-btn {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .nbu-verify-btn:hover {
+    background: #219a52;
+  }
+
+  .nbu-secret-hint {
+    margin: 0.5rem 0 0 0;
+    font-size: 0.85rem;
+    color: #7f8c8d;
+  }
+
+  .nbu-modal-footer {
+    text-align: center;
+  }
+
+  .nbu-cancel-btn {
+    background: #95a5a6;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .nbu-cancel-btn:hover {
+    background: #7f8c8d;
+  }
+
+  /* 资料编辑表单样式 */
+  .nbu-form-section {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .nbu-form-section h4 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    font-size: 1.1rem;
+  }
+
+  .nbu-form-group {
+    margin-bottom: 1rem;
+  }
+
+  .nbu-form-row {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nbu-form-row .nbu-form-group {
+    flex: 1;
+  }
+
+  .nbu-form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #2c3e50;
+  }
+
+  .nbu-form-group input,
+  .nbu-form-group select,
+  .nbu-form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .nbu-form-group input:focus,
+  .nbu-form-group select:focus,
+  .nbu-form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+  }
+
+  .nbu-form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  /* 头像上传样式 */
+  .nbu-avatar-preview {
+      text-align: center;
+  }
+
+  .nbu-upload-options {
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 1rem;
+      background: #f8f9fa;
+  }
+
+  .btn-outline-primary {
+      border-color: #3498db;
+      color: #3498db;
+  }
+
+  .btn-outline-primary:hover {
+      background-color: #3498db;
+      color: white;
+  }
+
+  .progress {
+      background-color: #e9ecef;
+      border-radius: 4px;
+      overflow: hidden;
+  }
+
+  .progress-bar {
+      background-color: #3498db;
+      transition: width 0.3s ease;
+  }
+
+  /* 头像容器 - 强制尺寸和样式 */
+  .nbu-avatar-container {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      flex-shrink: 0;
+  }
+
+  .nbu-profile-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      background: #f8f9fa;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .nbu-avatar-frame {
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+  }
+
+  /* 导航栏头像强制样式 */
+  #nbu-user-avatar {
+      width: 28px !important;
+      height: 28px !important;
+      object-fit: cover !important;
+      border-radius: 50% !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  }
+
+  /* 编辑模态框中的头像预览 */
+  #avatar-preview {
+      width: 80px !important;
+      height: 80px !important;
+      object-fit: cover !important;
+      border-radius: 50% !important;
+      border: 2px solid #ddd !important;
+      background: #f8f9fa;
+  }
+
+  /* 响应式调整 */
+  @media (max-width: 768px) {
+      .nbu-avatar-container {
+          width: 100px;
+          height: 100px;
+      }
+      
+      .nbu-profile-avatar {
+          border-width: 3px;
+      }
+  }
+
+  /* 移动端适配 */
+  @media (max-width: 768px) {
+    .nbu-modal-content {
+      padding: 1.5rem;
+      margin: 1rem;
+    }  
+    .nbu-role-card {
+      flex-direction: column;
+      text-align: center;
+    } 
+    .nbu-role-icon {
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+    }
+    .nbu-form-row {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
+  /* 注销账户样式 */
+  .nbu-profile-actions {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e9ecef;
+  }
+
+  .nbu-danger-zone {
+      padding: 1.5rem;
+      background: #fff5f5;
+      border: 1px solid #fed7d7;
+      border-radius: 8px;
+  }
+
+  .nbu-danger-zone h4 {
+      color: #c53030;
+      margin-bottom: 0.5rem;
+  }
+
+  .nbu-delete-warning {
+      background: #fff5f5;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+      border-left: 4px solid #e53e3e;
+  }
+
+  .nbu-warning-item {
+      margin-bottom: 1rem;
+  }
+
+  .nbu-warning-item:last-child {
+      margin-bottom: 0;
+  }
+
+  .nbu-warning-item ul {
+      margin: 0.5rem 0 0 1rem;
+      color: #744210;
+  }
+
+  .nbu-warning-item li {
+      margin-bottom: 0.25rem;
+  }
+
+  .nbu-confirm-section {
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: #f7fafc;
+      border-radius: 8px;
+  }
+
+  .nbu-confirm-section label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      cursor: pointer;
+  }
+
+  .nbu-confirm-section input[type="checkbox"] {
+      margin-top: 0.2rem;
+  }
+
+  .btn-danger {
+      background: #e53e3e;
+      border-color: #e53e3e;
+  }
+
+  .btn-danger:hover:not(:disabled) {
+      background: #c53030;
+      border-color: #c53030;
+  }
+
+  .btn-danger:disabled {
+      background: #a0aec0;
+      border-color: #a0aec0;
+      cursor: not-allowed;
+  }
+
+  /* 学号样式 */
+  .nbu-student-id-preview {
+      padding: 1rem;
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+  }
+
+  .nbu-student-id-display {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  .nbu-student-id {
+      font-family: 'Courier New', monospace;
+      font-weight: bold;
+      font-size: 1.1rem;
+  }
+
+  .nbu-student-id.generating {
+      color: #f59e0b;
+  }
+
+  .nbu-student-id.generated {
+      color: #059669;
+  }
+
+  .nbu-student-id.error {
+      color: #dc2626;
+  }
+
+  /* 专业搜索下拉框样式 */
+  .nbu-search-select {
+      position: relative;
+  }
+
+  .nbu-search-select input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+  }
+
+  .nbu-search-select input:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+  }
+
+  .nbu-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      max-height: 300px;
+      overflow-y: auto;
+  }
+
+  .nbu-dropdown-list {
+      padding: 0.5rem 0;
+  }
+
+  .nbu-category-header {
+      padding: 0.5rem 1rem;
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #6c757d;
+      font-size: 0.85rem;
+      border-bottom: 1px solid #e9ecef;
+  }
+
+  .nbu-dropdown-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      border-bottom: 1px solid #f8f9fa;
+  }
+
+  .nbu-dropdown-item:hover {
+      background: #f8f9fa;
+  }
+
+  .nbu-dropdown-item:last-child {
+      border-bottom: none;
+  }
+
+  .nbu-major-name {
+      flex: 1;
+  }
+
+  .nbu-major-code {
+      background: #e9ecef;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-family: 'Courier New', monospace;
+  }
+
+  .nbu-dropdown-empty {
+      padding: 2rem 1rem;
+      text-align: center;
+      color: #6c757d;
+  }
+
+  /* 高亮文本 */
+  mark {
+      background: #fff3cd;
+      padding: 0.1rem 0.2rem;
+      border-radius: 2px;
+  }
+
+  /* 滚动条样式 */
+  .nbu-dropdown::-webkit-scrollbar {
+      width: 6px;
+  }
+
+  .nbu-dropdown::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 3px;
+  }
+
+  .nbu-dropdown::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 3px;
+  }
+
+  .nbu-dropdown::-webkit-scrollbar-thumb:hover {
+      background: #a8a8a8;
+  }
+
+  /* 查看他人资料样式 */
+  .nbu-viewing-other {
+      background: #e3f2fd;
+      color: #1976d2;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin-top: 0.5rem;
+  }
+
+  .nbu-profile-actions .btn {
+      margin-right: 0.5rem;
+  }
+
+  .nbu-profile-actions .btn:last-child {
+      margin-right: 0;
+  }
+
+  /* NBU简介区块样式 */
+  .nbu-intro-section {
+      background: linear-gradient(135deg, #0F6F6D 0%, #111d74 100%);
+      color: white;
+      padding: 4rem 0;
+      margin-bottom: 3rem;
+  }
+
+  .nbu-intro-header {
+      text-align: center;
+      margin-bottom: 3rem;
+  }
+
+  .nbu-intro-header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+  }
+
+  .nbu-intro-header .lead {
+      font-size: 1.5rem;
+      opacity: 0.9;
+      font-style: italic;
+  }
+
+  .nbu-intro-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+      align-items: start;
+  }
+
+  .nbu-intro-text h2 {
+      color: #ffd700;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+  }
+
+  .nbu-intro-text h3 {
+      color: #a8e6cf;
+      margin: 2rem 0 1rem 0;
+      font-size: 1.4rem;
+  }
+
+  .nbu-intro-text p {
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+  }
+
+  .nbu-intro-text ul {
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+  }
+
+  .nbu-intro-text li {
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+  }
+
+  .nbu-intro-text strong {
+      color: #ffd700;
+  }
+
+  .nbu-intro-stats {
+      display: flex;
+      gap: 2rem;
+      margin: 2rem 0;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+  }
+
+  .stat-item {
+      text-align: center;
+      flex: 1;
+  }
+
+  .stat-number {
+      display: block;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #ffd700;
+  }
+
+  .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 768px) {
+      .nbu-intro-header h1 {
+          font-size: 2rem;
+      }
+      
+      .nbu-intro-header .lead {
+          font-size: 1.2rem;
+      }
+      
+      .nbu-intro-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+      }
+      
+      .nbu-intro-stats {
+          flex-direction: column;
+          gap: 1rem;
+      }
+  }
+</style>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Supabase配置
+        const supabaseUrl_f = "https://grgpsujmjbeuphwvxhpg.supabase.co";
+        const supabaseServiceKey_f = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdyZ3BzdWptamJldXBod3Z4aHBnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1OTIzNzExNCwiZXhwIjoyMDc0ODEzMTE0fQ.hy4_n74vuailNkPHWkt9YWINfQFsNuwLHNcg7knUlL4";
+        const supabaseAdmin_f = supabase.createClient(supabaseUrl_f, supabaseServiceKey_f);
+        
+        console.log("✅ 成员目录Supabase客户端已初始化");
+    </script>
+</head>
+<body>
+  
+
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+<!-- NBU用户认证逻辑 -->
+<script>
+    // 确保Auth0库已加载后再执行
+    if (typeof auth0 !== 'undefined') {
+        // 动态创建脚本元素加载认证逻辑
+        var script = document.createElement('script');
+        script.src = '/js/nbu-auth.js';
+        document.head.appendChild(script);
+    } else {
+        console.warn('Auth0库未加载，跳过认证逻辑初始化');
+    }
+</script>
+<script src="/js/nbu-profile-display.js"></script>
+<script src="/js/nbu-upload.js"></script>
+<script src="/js/supabase-config.js"></script>
+<script src="/js/nbu-members-directory.js"></script>
+
+
+  <script>
+    // 首页统计数据更新
+    async function updateHomepageStats() {
+        try {
+            const { data: members, error } = await supabaseAdmin_f
+                .from('user_profiles')
+                .select('role');
+            
+            if (error) throw error;
+            
+            const total = members.length;
+            const students = members.filter(m => m.role === 'student').length;
+            const faculty = members.filter(m => m.role === 'faculty').length;
+            
+            document.getElementById('intro-total-members').textContent = total;
+            document.getElementById('intro-active-students').textContent = students;
+            document.getElementById('intro-faculty-count').textContent = faculty;
+            
+        } catch (error) {
+            console.error('❌ 更新首页统计失败:', error);
+            // 设置默认值
+            document.getElementById('intro-total-members').textContent = '50+';
+            document.getElementById('intro-active-students').textContent = '40+';
+            document.getElementById('intro-faculty-count').textContent = '10+';
+        }
+    }
+
+    // 页面加载后执行
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.getElementById('intro-total-members')) {
+            updateHomepageStats();
+        }
+    });
+  document.addEventListener('DOMContentLoaded', updateHomepageStats);
+  </script>
+</body>
+</html>
 
               </div>
             </div>
