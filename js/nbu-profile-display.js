@@ -45,14 +45,33 @@ function createProfileCardHTML(userProfile, isOtherUser = false) {
                 <div class="nbu-profile-basic">
                     <h3>${userProfile.oc_name || userProfile.display_name || 'NBU用户'}</h3>
                     <p class="nbu-profile-role">${roleDisplay[userProfile.role] || '未知身份'}</p>
+                </div>
+            
+                <div class="nbu-profile-details">
+                    ${createOCDetailsHTML(userProfile)}
+                    ${createRoleSpecificHTML(userProfile)}
+                    ${createBioHTML(userProfile)}
+                </div>
             </div>
             
-            <div class="nbu-profile-details">
-                ${createOCDetailsHTML(userProfile)}
-                ${createRoleSpecificHTML(userProfile)}
-                ${createBioHTML(userProfile)}
+            <div class="nbu-export-options">
+                    <h4>💾 导出资料</h4>
+                    <p class="text-muted">将资料保存为文件</p>
+                    <div class="export-buttons">
+                        <button onclick="exportProfile('png', '${userProfile.auth0_user_id}')" 
+                                class="btn btn-outline-primary">
+                            🖼️ 图片格式
+                        </button>
+                        <button onclick="exportProfile('json', '${userProfile.auth0_user_id}')" 
+                                class="btn btn-outline-secondary">
+                            ⚙️ JSON数据
+                        </button>
+                    </div>
+                    <small class="form-text text-muted">
+                        图片适合分享，JSON适合数据备份
+                    </small>
             </div>
-            
+                
             ${!isOtherUser ? `
                 <div class="nbu-profile-actions">
                     <hr>

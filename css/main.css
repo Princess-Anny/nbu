@@ -325,8 +325,8 @@ sup > a::before,
 }
 @media (min-width: 600px) {
   .navbar.scrolling-navbar {
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 7px;
+    padding-bottom: 7px;
   }
   .navbar.scrolling-navbar .navbar-nav > li {
     -webkit-transition-duration: 1s;
