@@ -28,7 +28,7 @@
                 document.getElementById('visitors-count').textContent = visitors;
             }
 
-                    // 加载其他用户资料
+        // 加载其他用户资料
         async loadMembers() {
             try {
                 console.log('👥 加载成员数据...');
@@ -223,6 +223,3 @@
         
         // 创建全局实例
         const membersDirectory = new MembersDirectory();
-    </script>
-</body>
-</html>
