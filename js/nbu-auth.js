@@ -42,7 +42,7 @@ async function initializeNBUAuth() {
             domain: "dev-qajzo556g32cbm5b.us.auth0.com",
             clientId: "MCa52JMm0fAX4uAxRMOW636zkNU1wYN3",
             authorizationParams: {
-                redirect_uri: "https://niubiuniversity.dpdns.org/"
+                redirect_uri: "http://localhost:4000/"
             },
             cacheLocation: 'localstorage' // 明确指定使用localStorage持久化
         });
@@ -125,6 +125,8 @@ async function updateAuthUI() {
             const userProfile = await handleUserProfile(user);
             console.log("📊 用户资料:", userProfile);
             currentUserProfile = userProfile;
+            socialManager.setCurrentUser(userProfile.auth0_user_id);
+            await initializeNotificationCenter();
             
             // 更新UI显示
             loginSection.style.display = 'none';
@@ -176,7 +178,7 @@ async function updateAuthUI() {
 // 修改所有使用supabase的函数，添加检查
 async function handleUserProfile(auth0User) {
     // 检查Supabase是否初始化
-    if (!supabaseClient) {
+    if (!supabaseAdmin) {
         console.error('❌ Supabase客户端未初始化');
         return null;
     }
@@ -417,7 +419,7 @@ async function nbuHandleLogout() {
     console.log("🚪 执行登出...");
     await nbuAuthClient.logout({
         logoutParams: {
-            returnTo: "https://niubiuniversity.dpdns.org/"
+            returnTo: "http://localhost:4000/"
         }
     });
 }
@@ -793,7 +795,7 @@ class StudentIdGenerator {
         
         const deptCode = major.code;
         const sequence = await this.getNextSequence(year, deptCode);
-        
+
         console.log(`🎓 生成学号: 专业=${majorName}, 年份=${year}, 序列=${sequence}`);
         return `${year}${deptCode}${sequence.toString().padStart(3, '0')}`;
     }
@@ -815,14 +817,7 @@ class StudentIdGenerator {
             if (!existingStudents || existingStudents.length === 0) {
                 return 1;
             }
-            
-            // 提取最大序列号
-            const maxSequence = existingStudents.reduce((max, student) => {
-                const sequence = parseInt(student.student_id.slice(6)) || 0;
-                return Math.max(max, sequence);
-            }, 0);
-            
-            return maxSequence + 1;
+            return existingStudents.length+1;
             
         } catch (error) {
             console.error('❌ 获取序列号失败:', error);
