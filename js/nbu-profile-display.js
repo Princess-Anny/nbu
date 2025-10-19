@@ -46,14 +46,110 @@ function createProfileCardHTML(userProfile, isOtherUser = false) {
                     <h3>${userProfile.oc_name || userProfile.display_name || 'NBU用户'}</h3>
                     <p class="nbu-profile-role">${roleDisplay[userProfile.role] || '未知身份'}</p>
                 </div>
-            
+
+                <!-- 社交统计区域 -->
+                <div class="nbu-social-stats" id="social-stats">
+                    ${isOtherUser ? `
+                        <div class="nbu-stat-item">
+                            <span class="nbu-stat-number" id="followers-count">0</span>
+                            <span class="nbu-stat-label">粉丝</span>
+                        </div>
+                        <div class="nbu-stat-item">
+                            <span class="nbu-stat-number" id="following-count">0</span>
+                            <span class="nbu-stat-label">关注</span>
+                        </div>
+                    ` : ''}
+                    ${!isOtherUser ? `
+                        <a href="/follow/followers/" class="nbu-stat-item">
+                            <span class="nbu-stat-number" id="followers-count">0</span>
+                            <span class="nbu-stat-label">粉丝</span>
+                        </a>
+                        <a href="/follow/following/" class="nbu-stat-item">  
+                            <span class="nbu-stat-number" id="following-count">0</span>
+                            <span class="nbu-stat-label">关注</span>
+                        </a>
+                    ` : ''}
+                    <div class="nbu-stat-item">
+                        <span class="nbu-stat-number" id="likes-count">0</span>
+                        <span class="nbu-stat-label">获赞</span>
+                    </div>
+                    <div class="nbu-stat-item">
+                        <span class="nbu-stat-number" id="dislikes-count">0</span>
+                        <span class="nbu-stat-label">被踩</span>
+                    </div>
+                    <!-- 关注操作按钮（仅当查看他人资料时显示） -->
+                    ${isOtherUser ? `
+                        <div class="nbu-social-actions">
+                            <button id="follow-btn" class="nbu-follow-btn" onclick="toggleFollow('${userProfile.auth0_user_id}')">
+                                <span id="follow-text">加载中...</span>
+                            </button>
+                        </div>
+                    ` : ''}
+                </div>
+
                 <div class="nbu-profile-details">
                     ${createOCDetailsHTML(userProfile)}
                     ${createRoleSpecificHTML(userProfile)}
                     ${createBioHTML(userProfile)}
                 </div>
             </div>
-            
+
+            <!-- 点赞点踩按钮区域（仅当查看他人资料时显示） -->
+            ${isOtherUser ? `
+                <div class="nbu-reaction-actions">
+                    <div class="nbu-reaction-buttons">
+                        <button id="like-btn" class="nbu-reaction-btn nbu-like-btn" onclick="handleReaction('like', '${userProfile.auth0_user_id}')">
+                            <span class="nbu-reaction-icon">👍</span>
+                            <span class="nbu-reaction-count" id="like-count">0</span>
+                        </button>
+                        <button id="dislike-btn" class="nbu-reaction-btn nbu-dislike-btn" onclick="handleReaction('dislike', '${userProfile.auth0_user_id}')">
+                            <span class="nbu-reaction-icon">👎</span>
+                            <span class="nbu-reaction-count" id="dislike-count">0</span>
+                        </button>
+                    </div>
+                    <div class="nbu-reaction-hint">
+                        <small>为ta的主页点赞/点踩</small>
+                    </div>
+                </div>
+            ` : ''}
+
+            <!-- 评论区域 -->
+            <div class="nbu-comments-section">
+                <div class="nbu-comments-header">
+                    <h4>💬 评论</h4>
+                    <span class="nbu-comments-count" id="comments-count">0 条评论</span>
+                </div>
+                    
+                <!-- 评论发表框 -->
+                <div class="nbu-comment-form">
+                    <div class="nbu-comment-input-container">
+                        <textarea 
+                            id="comment-input" 
+                            placeholder="写下你的评论..." 
+                            rows="3"
+                            maxlength="500"
+                        ></textarea>
+                        <div class="nbu-comment-actions">
+                            <div class="nbu-comment-counter">
+                                <span id="comment-chars">0</span>/500
+                            </div>
+                            <button id="submit-comment" class="nbu-comment-submit" onclick="submitComment('${userProfile.auth0_user_id}')">
+                                发表评论
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                    
+                <!-- 评论列表 -->
+                <div class="nbu-comments-list" id="comments-list">
+                    <div class="nbu-comments-loading">
+                        <div class="nbu-loading-spinner"></div>
+                        <span>加载评论中...</span>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="nbu-export-options">
                     <h4>💾 导出资料</h4>
                     <p class="text-muted">将资料保存为文件</p>

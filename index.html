@@ -731,6 +731,7 @@
           min-width: auto;
       }
   }
+
   .nbu-profile-role{
       margin-bottom: 1px;
   }
@@ -738,6 +739,224 @@
   .nbu-detail-section h4{
       margin-top: 11px;
       margin-bottom: 5px;
+  }
+
+  /* 社交功能样式 */
+  .nbu-social-stats {
+      display: flex;
+      justify-content: left;
+      gap: 0.6rem;
+      padding: 0.2rem;
+  }
+
+  .nbu-stat-item {
+      text-align: left;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+  }
+
+  .nbu-stat-item:hover {
+      transform: translateY(-2px);
+  }
+
+  .nbu-stat-number {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #719cc6;
+  }
+
+  .nbu-stat-label {
+      font-size: 0.65rem;
+      color: #d3e3f0;
+  }
+
+  .nbu-social-actions {
+      margin-top: 5px;
+      margin-bottom: 12px;
+      margin-left: 18px;
+      text-align: left;
+  }
+
+  .nbu-follow-btn {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 0.46rem 1.4rem;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-width: 100px;
+  }
+
+  .nbu-follow-btn:hover {
+      background: #2980b9;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+  }
+
+  .nbu-follow-btn.following {
+      background: #27ae60;
+  }
+
+  .nbu-follow-btn.following:hover {
+      background: #219a52;
+  }
+
+  .nbu-follow-btn:disabled {
+      background: #bdc3c7;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+  }
+
+  /* 加载动画 */
+  .nbu-loading {
+      opacity: 0.7;
+      pointer-events: none;
+  }
+
+  .nbu-loading::after {
+      content: '...';
+      animation: loading-dots 1.5s infinite;
+  }
+
+  @keyframes loading-dots {
+      0%, 20% { content: '.'; }
+      40% { content: '..'; }
+      60%, 100% { content: '...'; }
+  }
+
+    /* 点赞点踩按钮样式 */
+  .nbu-reaction-actions {
+      padding: 1rem 0.8rem;
+      text-align: center;
+  }
+
+  .nbu-reaction-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 0.5rem;
+  }
+
+  .nbu-reaction-btn {
+      width: 80px;
+      height: 80px;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .nbu-reaction-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .nbu-reaction-btn:active {
+      transform: translateY(-1px) scale(1.02);
+  }
+
+  .nbu-reaction-btn.active {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  /* 点赞按钮样式 */
+  .nbu-like-btn {
+      background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+      color: white;
+  }
+
+  .nbu-like-btn:hover {
+      background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+  }
+
+  .nbu-like-btn.active {
+      background: linear-gradient(135deg, #3d8b40 0%, #357a38 100%);
+      box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+  }
+
+  /* 点踩按钮样式 */
+  .nbu-dislike-btn {
+      background: linear-gradient(135deg, #f44336 0%, #da190b 100%);
+      color: white;
+  }
+
+  .nbu-dislike-btn:hover {
+      background: linear-gradient(135deg, #da190b 0%, #c41408 100%);
+  }
+
+  .nbu-dislike-btn.active {
+      background: linear-gradient(135deg, #c41408 0%, #ad1207 100%);
+      box-shadow: 0 6px 20px rgba(244, 67, 54, 0.4);
+  }
+
+  .nbu-reaction-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.25rem;
+      display: block;
+  }
+
+  .nbu-reaction-count {
+      font-size: 0.85rem;
+      font-weight: 600;
+      opacity: 0.9;
+  }
+
+  .nbu-reaction-hint {
+      color: #6c757d;
+      font-size: 0.9rem;
+  }
+
+  /* 按钮禁用状态 */
+  .nbu-reaction-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .nbu-reaction-btn:disabled:hover {
+      transform: none !important;
+  }
+
+  /* 脉冲动画效果 */
+  @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+  }
+
+  .nbu-reaction-btn.pulse {
+      animation: pulse 0.3s ease;
+  }
+
+  /* 移动端适配 */
+  @media (max-width: 768px) {
+      .nbu-reaction-buttons {
+          gap: 1.5rem;
+      }
+      
+      .nbu-reaction-btn {
+          width: 70px;
+          height: 70px;
+          font-size: 1.3rem;
+      }
+      
+      .nbu-reaction-icon {
+          font-size: 1.5rem;
+      }
   }
   .navbar-logo {
       transition: transform 0.3s ease;
@@ -758,6 +977,510 @@
   [data-color-scheme="dark"] .navbar-logo {
       filter: brightness(1.2);
   }
+
+    /* 评论功能样式 */
+  .nbu-comments-section {
+      padding: 2rem 1.5rem;
+      border-top: 1px solid #e9ecef;
+      background: #fafbfc;
+      opacity: 0.98;
+  }
+
+  .nbu-comments-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid #e9ecef;
+  }
+
+  .nbu-comments-header h4 {
+      margin: 0;
+      color: #2c3e50;
+      font-size: 1.25rem;
+  }
+
+  .nbu-comments-count {
+      color: #6c757d;
+      font-size: 0.9rem;
+  }
+
+  /* 评论表单 */
+  .nbu-comment-form {
+      margin-bottom: 2rem;
+  }
+
+  .nbu-comment-input-container {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .nbu-comment-input-container textarea {
+      width: 100%;
+      border: none;
+      resize: vertical;
+      font-size: 1rem;
+      line-height: 1.5;
+      min-height: 80px;
+      outline: none;
+      font-family: inherit;
+  }
+
+  .nbu-comment-input-container textarea::placeholder {
+      color: #9ca3af;
+  }
+
+  .nbu-comment-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid #f1f3f4;
+  }
+
+  .nbu-comment-counter {
+      color: #6c757d;
+      font-size: 0.85rem;
+  }
+
+  .nbu-comment-counter.warning {
+      color: #e74c3c;
+  }
+
+  .nbu-comment-submit {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 0.5rem 1.5rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+  }
+
+  .nbu-comment-submit:hover:not(:disabled) {
+      background: #2980b9;
+      transform: translateY(-1px);
+  }
+
+  .nbu-comment-submit:disabled {
+      background: #bdc3c7;
+      cursor: not-allowed;
+      transform: none;
+  }
+
+  /* 评论列表 */
+  .nbu-comments-list {
+      space-y: 1rem;
+  }
+
+  .nbu-comments-loading {
+      text-align: center;
+      padding: 2rem;
+      color: #6c757d;
+  }
+
+  .nbu-loading-spinner {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #f3f3f3;
+      border-top: 2px solid #3498db;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 0.5rem;
+  }
+
+  @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+  }
+
+  .nbu-comment-item {
+      background: white;
+      border: 1px solid #e9ecef;
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .nbu-comment-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+  }
+
+.nbu-comment-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 0.05rem;
+    object-fit: cover;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.nbu-comment-user-link:hover .nbu-comment-avatar {
+    border-color: #3498db;
+    transform: scale(1.1);
+}
+
+/* 点击动画 */
+@keyframes avatar-click {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+.nbu-comment-avatar:active {
+    animation: avatar-click 0.2s ease;
+}
+
+.nbu-comment-author:active {
+    color: #2980b9;
+}
+
+  .nbu-comment-author {
+      font-weight: 600;
+      color: #2c3e50;
+      font-size: 0.95rem;
+  }
+
+  .nbu-comment-time {
+      color: #6c757d;
+      font-size: 0.8rem;
+      margin-left: auto;
+  }
+
+  .nbu-comment-content {
+      color: #374151;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+      white-space: pre-wrap;
+      word-break: break-word;
+  }
+
+  .nbu-comment-actions {
+      display: flex;
+      justify-content: flex-end;
+  }
+
+  .nbu-comment-delete {
+      background: none;
+      border: none;
+      color: #e74c3c;
+      font-size: 0.8rem;
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      transition: background 0.2s ease;
+  }
+
+  .nbu-comment-delete:hover {
+      background: #fee;
+  }
+
+  .nbu-comment-own {
+      border-left: 4px solid #3498db;
+  }
+
+  .nbu-empty-comments {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: #6c757d;
+  }
+
+  .nbu-empty-comments .nbu-empty-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+  }
+
+  /* 移动端适配 */
+  @media (max-width: 768px) {
+      .nbu-comments-section {
+          padding: 1.5rem 1rem;
+      }
+      
+      .nbu-comments-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+      }
+      
+      .nbu-comment-item {
+          padding: 1rem;
+      }
+      
+      .nbu-comment-actions {
+          flex-direction: column;
+          gap: 0.5rem;
+          align-items: flex-end;
+      }
+  }
+
+    /* 评论用户链接样式 */
+  .nbu-comment-user-link {
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+  }
+
+  .nbu-comment-user-link:hover {
+      text-decoration: none;
+  }
+
+  .nbu-comment-user-link:hover .nbu-comment-avatar {
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .nbu-comment-user-link:hover .nbu-comment-author {
+      color: #3498db;
+      transform: translateX(2px);
+  }
+
+  .nbu-comment-header .nbu-comment-user-link:first-child {
+      margin-right: 0.75rem;
+  }
+
+  .nbu-comment-header .nbu-comment-user-link:last-child {
+      margin-right: auto;
+  }
+
+  .nbu-comment-author {
+      transition: all 0.2s ease;
+      font-weight: 600;
+      color: #2c3e50;
+      cursor: pointer;
+  }
+
+  /* 防止链接样式影响布局 */
+  .nbu-comment-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+  }
+
+  .nbu-comment-header .nbu-comment-user-link {
+      display: flex;
+      align-items: center;
+  }
+
+  /* 自己评论的链接样式 */
+  .nbu-comment-self {
+      pointer-events: auto; /* 保持可点击，但可以有不同的样式 */
+  }
+
+  .nbu-comment-self:hover .nbu-comment-author {
+      color: #27ae60; /* 绿色表示自己 */
+  }
+
+  .nbu-comment-self:hover .nbu-comment-avatar {
+      border-color: #27ae60;
+  }
+
+  /* 工具提示 */
+  .nbu-comment-user-link {
+      position: relative;
+  }
+
+  .nbu-comment-user-link::after {
+      content: '查看资料';
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 1000;
+  }
+
+  .nbu-comment-user-link:hover::after {
+      opacity: 1;
+  }
+
+  /* 通知系统样式 */
+  .nbu-notification-container {
+    position: relative;
+    margin-right: 1rem;
+  }
+
+  .nbu-notification-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.2rem;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+    position: relative;
+  }
+
+  .nbu-notification-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .nbu-notification-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+
+  .nbu-notification-center {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 350px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: none;
+    max-height: 500px;
+    overflow-y: auto;
+  }
+
+  .nbu-notification-center.show {
+    display: block;
+  }
+
+  .nbu-notification-header {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nbu-notification-header h5 {
+    margin: 0;
+    color: #2c3e50;
+  }
+
+  .nbu-mark-all-read {
+    background: none;
+    border: none;
+    color: #3498db;
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .nbu-mark-all-read:hover {
+    background: #f8f9fa;
+  }
+
+  .nbu-notification-list {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .nbu-notification-item {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #f8f9fa;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .nbu-notification-item:hover {
+    background: #f8f9fa;
+  }
+
+  .nbu-notification-item.unread {
+    background: #f0f7ff;
+    border-left: 3px solid #3498db;
+  }
+
+  .nbu-notification-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .nbu-notification-content {
+    flex: 1;
+  }
+
+  .nbu-notification-message {
+    color: #2c3e50;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 0.25rem;
+  }
+
+  .nbu-notification-time {
+    color: #6c757d;
+    font-size: 0.75rem;
+  }
+
+  .nbu-notification-type {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+  }
+
+  .nbu-notification-type.follow { background: #3498db; }
+  .nbu-notification-type.like { background: #27ae60; }
+  .nbu-notification-type.dislike { background: #e74c3c; }
+  .nbu-notification-type.comment { background: #f39c12; }
+
+  .nbu-notification-empty {
+    padding: 2rem 1.25rem;
+    text-align: center;
+    color: #6c757d;
+  }
+
+  .nbu-notification-empty .nbu-empty-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.5;
+  }
+
+  /* 移动端适配 */
+  @media (max-width: 768px) {
+    .nbu-notification-center {
+      width: 300px;
+      right: -50px;
+    }
+  }
+
 </style>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
@@ -806,7 +1529,6 @@
   <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <meta name="generator" content="Hexo 8.0.0"></head>
-
 
 <body>
   
@@ -2027,6 +2749,7 @@
           min-width: auto;
       }
   }
+
   .nbu-profile-role{
       margin-bottom: 1px;
   }
@@ -2034,6 +2757,224 @@
   .nbu-detail-section h4{
       margin-top: 11px;
       margin-bottom: 5px;
+  }
+
+  /* 社交功能样式 */
+  .nbu-social-stats {
+      display: flex;
+      justify-content: left;
+      gap: 0.6rem;
+      padding: 0.2rem;
+  }
+
+  .nbu-stat-item {
+      text-align: left;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+  }
+
+  .nbu-stat-item:hover {
+      transform: translateY(-2px);
+  }
+
+  .nbu-stat-number {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #719cc6;
+  }
+
+  .nbu-stat-label {
+      font-size: 0.65rem;
+      color: #d3e3f0;
+  }
+
+  .nbu-social-actions {
+      margin-top: 5px;
+      margin-bottom: 12px;
+      margin-left: 18px;
+      text-align: left;
+  }
+
+  .nbu-follow-btn {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 0.46rem 1.4rem;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-width: 100px;
+  }
+
+  .nbu-follow-btn:hover {
+      background: #2980b9;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+  }
+
+  .nbu-follow-btn.following {
+      background: #27ae60;
+  }
+
+  .nbu-follow-btn.following:hover {
+      background: #219a52;
+  }
+
+  .nbu-follow-btn:disabled {
+      background: #bdc3c7;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+  }
+
+  /* 加载动画 */
+  .nbu-loading {
+      opacity: 0.7;
+      pointer-events: none;
+  }
+
+  .nbu-loading::after {
+      content: '...';
+      animation: loading-dots 1.5s infinite;
+  }
+
+  @keyframes loading-dots {
+      0%, 20% { content: '.'; }
+      40% { content: '..'; }
+      60%, 100% { content: '...'; }
+  }
+
+    /* 点赞点踩按钮样式 */
+  .nbu-reaction-actions {
+      padding: 1rem 0.8rem;
+      text-align: center;
+  }
+
+  .nbu-reaction-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 0.5rem;
+  }
+
+  .nbu-reaction-btn {
+      width: 80px;
+      height: 80px;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .nbu-reaction-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .nbu-reaction-btn:active {
+      transform: translateY(-1px) scale(1.02);
+  }
+
+  .nbu-reaction-btn.active {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  /* 点赞按钮样式 */
+  .nbu-like-btn {
+      background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+      color: white;
+  }
+
+  .nbu-like-btn:hover {
+      background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+  }
+
+  .nbu-like-btn.active {
+      background: linear-gradient(135deg, #3d8b40 0%, #357a38 100%);
+      box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+  }
+
+  /* 点踩按钮样式 */
+  .nbu-dislike-btn {
+      background: linear-gradient(135deg, #f44336 0%, #da190b 100%);
+      color: white;
+  }
+
+  .nbu-dislike-btn:hover {
+      background: linear-gradient(135deg, #da190b 0%, #c41408 100%);
+  }
+
+  .nbu-dislike-btn.active {
+      background: linear-gradient(135deg, #c41408 0%, #ad1207 100%);
+      box-shadow: 0 6px 20px rgba(244, 67, 54, 0.4);
+  }
+
+  .nbu-reaction-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.25rem;
+      display: block;
+  }
+
+  .nbu-reaction-count {
+      font-size: 0.85rem;
+      font-weight: 600;
+      opacity: 0.9;
+  }
+
+  .nbu-reaction-hint {
+      color: #6c757d;
+      font-size: 0.9rem;
+  }
+
+  /* 按钮禁用状态 */
+  .nbu-reaction-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .nbu-reaction-btn:disabled:hover {
+      transform: none !important;
+  }
+
+  /* 脉冲动画效果 */
+  @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+  }
+
+  .nbu-reaction-btn.pulse {
+      animation: pulse 0.3s ease;
+  }
+
+  /* 移动端适配 */
+  @media (max-width: 768px) {
+      .nbu-reaction-buttons {
+          gap: 1.5rem;
+      }
+      
+      .nbu-reaction-btn {
+          width: 70px;
+          height: 70px;
+          font-size: 1.3rem;
+      }
+      
+      .nbu-reaction-icon {
+          font-size: 1.5rem;
+      }
   }
   .navbar-logo {
       transition: transform 0.3s ease;
@@ -2054,6 +2995,510 @@
   [data-color-scheme="dark"] .navbar-logo {
       filter: brightness(1.2);
   }
+
+    /* 评论功能样式 */
+  .nbu-comments-section {
+      padding: 2rem 1.5rem;
+      border-top: 1px solid #e9ecef;
+      background: #fafbfc;
+      opacity: 0.98;
+  }
+
+  .nbu-comments-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid #e9ecef;
+  }
+
+  .nbu-comments-header h4 {
+      margin: 0;
+      color: #2c3e50;
+      font-size: 1.25rem;
+  }
+
+  .nbu-comments-count {
+      color: #6c757d;
+      font-size: 0.9rem;
+  }
+
+  /* 评论表单 */
+  .nbu-comment-form {
+      margin-bottom: 2rem;
+  }
+
+  .nbu-comment-input-container {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .nbu-comment-input-container textarea {
+      width: 100%;
+      border: none;
+      resize: vertical;
+      font-size: 1rem;
+      line-height: 1.5;
+      min-height: 80px;
+      outline: none;
+      font-family: inherit;
+  }
+
+  .nbu-comment-input-container textarea::placeholder {
+      color: #9ca3af;
+  }
+
+  .nbu-comment-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid #f1f3f4;
+  }
+
+  .nbu-comment-counter {
+      color: #6c757d;
+      font-size: 0.85rem;
+  }
+
+  .nbu-comment-counter.warning {
+      color: #e74c3c;
+  }
+
+  .nbu-comment-submit {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 0.5rem 1.5rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+  }
+
+  .nbu-comment-submit:hover:not(:disabled) {
+      background: #2980b9;
+      transform: translateY(-1px);
+  }
+
+  .nbu-comment-submit:disabled {
+      background: #bdc3c7;
+      cursor: not-allowed;
+      transform: none;
+  }
+
+  /* 评论列表 */
+  .nbu-comments-list {
+      space-y: 1rem;
+  }
+
+  .nbu-comments-loading {
+      text-align: center;
+      padding: 2rem;
+      color: #6c757d;
+  }
+
+  .nbu-loading-spinner {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #f3f3f3;
+      border-top: 2px solid #3498db;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 0.5rem;
+  }
+
+  @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+  }
+
+  .nbu-comment-item {
+      background: white;
+      border: 1px solid #e9ecef;
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .nbu-comment-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+  }
+
+.nbu-comment-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 0.05rem;
+    object-fit: cover;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.nbu-comment-user-link:hover .nbu-comment-avatar {
+    border-color: #3498db;
+    transform: scale(1.1);
+}
+
+/* 点击动画 */
+@keyframes avatar-click {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+.nbu-comment-avatar:active {
+    animation: avatar-click 0.2s ease;
+}
+
+.nbu-comment-author:active {
+    color: #2980b9;
+}
+
+  .nbu-comment-author {
+      font-weight: 600;
+      color: #2c3e50;
+      font-size: 0.95rem;
+  }
+
+  .nbu-comment-time {
+      color: #6c757d;
+      font-size: 0.8rem;
+      margin-left: auto;
+  }
+
+  .nbu-comment-content {
+      color: #374151;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+      white-space: pre-wrap;
+      word-break: break-word;
+  }
+
+  .nbu-comment-actions {
+      display: flex;
+      justify-content: flex-end;
+  }
+
+  .nbu-comment-delete {
+      background: none;
+      border: none;
+      color: #e74c3c;
+      font-size: 0.8rem;
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      transition: background 0.2s ease;
+  }
+
+  .nbu-comment-delete:hover {
+      background: #fee;
+  }
+
+  .nbu-comment-own {
+      border-left: 4px solid #3498db;
+  }
+
+  .nbu-empty-comments {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: #6c757d;
+  }
+
+  .nbu-empty-comments .nbu-empty-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+  }
+
+  /* 移动端适配 */
+  @media (max-width: 768px) {
+      .nbu-comments-section {
+          padding: 1.5rem 1rem;
+      }
+      
+      .nbu-comments-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+      }
+      
+      .nbu-comment-item {
+          padding: 1rem;
+      }
+      
+      .nbu-comment-actions {
+          flex-direction: column;
+          gap: 0.5rem;
+          align-items: flex-end;
+      }
+  }
+
+    /* 评论用户链接样式 */
+  .nbu-comment-user-link {
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+  }
+
+  .nbu-comment-user-link:hover {
+      text-decoration: none;
+  }
+
+  .nbu-comment-user-link:hover .nbu-comment-avatar {
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .nbu-comment-user-link:hover .nbu-comment-author {
+      color: #3498db;
+      transform: translateX(2px);
+  }
+
+  .nbu-comment-header .nbu-comment-user-link:first-child {
+      margin-right: 0.75rem;
+  }
+
+  .nbu-comment-header .nbu-comment-user-link:last-child {
+      margin-right: auto;
+  }
+
+  .nbu-comment-author {
+      transition: all 0.2s ease;
+      font-weight: 600;
+      color: #2c3e50;
+      cursor: pointer;
+  }
+
+  /* 防止链接样式影响布局 */
+  .nbu-comment-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+  }
+
+  .nbu-comment-header .nbu-comment-user-link {
+      display: flex;
+      align-items: center;
+  }
+
+  /* 自己评论的链接样式 */
+  .nbu-comment-self {
+      pointer-events: auto; /* 保持可点击，但可以有不同的样式 */
+  }
+
+  .nbu-comment-self:hover .nbu-comment-author {
+      color: #27ae60; /* 绿色表示自己 */
+  }
+
+  .nbu-comment-self:hover .nbu-comment-avatar {
+      border-color: #27ae60;
+  }
+
+  /* 工具提示 */
+  .nbu-comment-user-link {
+      position: relative;
+  }
+
+  .nbu-comment-user-link::after {
+      content: '查看资料';
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 1000;
+  }
+
+  .nbu-comment-user-link:hover::after {
+      opacity: 1;
+  }
+
+  /* 通知系统样式 */
+  .nbu-notification-container {
+    position: relative;
+    margin-right: 1rem;
+  }
+
+  .nbu-notification-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.2rem;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+    position: relative;
+  }
+
+  .nbu-notification-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .nbu-notification-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+
+  .nbu-notification-center {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 350px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: none;
+    max-height: 500px;
+    overflow-y: auto;
+  }
+
+  .nbu-notification-center.show {
+    display: block;
+  }
+
+  .nbu-notification-header {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nbu-notification-header h5 {
+    margin: 0;
+    color: #2c3e50;
+  }
+
+  .nbu-mark-all-read {
+    background: none;
+    border: none;
+    color: #3498db;
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .nbu-mark-all-read:hover {
+    background: #f8f9fa;
+  }
+
+  .nbu-notification-list {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .nbu-notification-item {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #f8f9fa;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .nbu-notification-item:hover {
+    background: #f8f9fa;
+  }
+
+  .nbu-notification-item.unread {
+    background: #f0f7ff;
+    border-left: 3px solid #3498db;
+  }
+
+  .nbu-notification-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .nbu-notification-content {
+    flex: 1;
+  }
+
+  .nbu-notification-message {
+    color: #2c3e50;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 0.25rem;
+  }
+
+  .nbu-notification-time {
+    color: #6c757d;
+    font-size: 0.75rem;
+  }
+
+  .nbu-notification-type {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+  }
+
+  .nbu-notification-type.follow { background: #3498db; }
+  .nbu-notification-type.like { background: #27ae60; }
+  .nbu-notification-type.dislike { background: #e74c3c; }
+  .nbu-notification-type.comment { background: #f39c12; }
+
+  .nbu-notification-empty {
+    padding: 2rem 1.25rem;
+    text-align: center;
+    color: #6c757d;
+  }
+
+  .nbu-notification-empty .nbu-empty-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.5;
+  }
+
+  /* 移动端适配 */
+  @media (max-width: 768px) {
+    .nbu-notification-center {
+      width: 300px;
+      right: -50px;
+    }
+  }
+
 </style>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
@@ -2102,7 +3547,6 @@
   <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
-
   
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
@@ -2342,6 +3786,7 @@ document.addEventListener('DOMContentLoaded', updateHomepageStats);
     }
 </script>
 <script src="/js/nbu-profile-display.js"></script>
+<script src="/js/nbu-social.js"></script>
 <script src="/js/nbu-upload.js"></script>
 
 
