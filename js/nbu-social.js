@@ -371,16 +371,15 @@ class SocialManager {
         }
     }
 
-    // 备用方法：不使用关联查询，分别获取用户信息
     async getUserCommentsWithoutJoin(userId, limit = 50) {
         try {
-            console.log('🔄 使用备用方法获取评论');
+            console.log('🔄 使用备用方法获取评论和回复');
             
-            // 先获取评论
+            // 获取该用户的所有评论（包括回复）
             const { data: comments, error } = await supabaseAdmin
                 .from('comments')
                 .select('*')
-                .eq('target_user_id', userId)
+                .or(`target_user_id.eq.${userId},reply_to_id.eq.${userId}`)
                 .order('created_at', { ascending: false })
                 .limit(limit);
             
@@ -390,37 +389,104 @@ class SocialManager {
                 return [];
             }
             
-            // 获取所有评论作者的用户信息
-            const authorIds = [...new Set(comments.map(comment => comment.author_id))];
-            const { data: authors, error: authorsError } = await supabaseAdmin
+            // 获取所有相关用户的用户信息（评论作者 + 被回复用户）
+            const allUserIds = new Set();
+            comments.forEach(comment => {
+                allUserIds.add(comment.author_id);
+                if (comment.reply_to_id) {
+                    allUserIds.add(comment.reply_to_id);
+                }
+            });
+            
+            const userIds = Array.from(allUserIds);
+            const { data: users, error: usersError } = await supabaseAdmin
                 .from('user_profiles')
                 .select('auth0_user_id, display_name, avatar_url, oc_name')
-                .in('auth0_user_id', authorIds);
+                .in('auth0_user_id', userIds);
             
-            if (authorsError) {
-                console.error('❌ 获取作者信息失败:', authorsError);
-                // 即使获取作者信息失败，也返回评论（没有用户信息）
+            if (usersError) {
+                console.error('❌ 获取用户信息失败:', usersError);
+                // 即使获取用户信息失败，也返回评论
                 return comments.map(comment => ({
                     ...comment,
-                    user_profiles: null
+                    user_profiles: null,
+                    reply_to_user: null
                 }));
             }
             
-            // 将用户信息合并到评论中
-            const authorMap = authors.reduce((map, author) => {
-                map[author.auth0_user_id] = author;
+            // 创建用户信息映射
+            const userMap = users.reduce((map, user) => {
+                map[user.auth0_user_id] = user;
                 return map;
             }, {});
             
-            return comments.map(comment => ({
-                ...comment,
-                user_profiles: authorMap[comment.author_id] || null
-            }));
+            // 组织评论结构（主评论 + 回复）
+            const mainComments = comments.filter(comment => !comment.parent_id);
+            const replies = comments.filter(comment => comment.parent_id);
+            
+            // 将回复关联到主评论
+            const commentMap = new Map();
+            mainComments.forEach(comment => {
+                commentMap.set(comment.id, {
+                    ...comment,
+                    user_profiles: userMap[comment.author_id] || null,
+                    replies: []
+                });
+            });
+            
+            // 添加回复到对应主评论
+            replies.forEach(reply => {
+                const parentComment = commentMap.get(reply.parent_id);
+                if (parentComment) {
+                    parentComment.replies.push({
+                        ...reply,
+                        user_profiles: userMap[reply.author_id] || null,
+                        reply_to_user: userMap[reply.reply_to_id] || null
+                    });
+                }
+            });
+            
+            // 按时间排序回复
+            commentMap.forEach(comment => {
+                comment.replies.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+            });
+            
+            return Array.from(commentMap.values());
             
         } catch (error) {
-            console.error('❌ 备用方法也失败:', error);
+            console.error('❌ 获取评论失败:', error);
             throw error;
         }
+    }
+
+    // 添加回复评论的方法
+    async addReply(parentCommentId, targetUserId, replyToUserId, content) {
+        if (!this.currentUserId) {
+            throw new Error('请先登录');
+        }
+        
+        if (!content.trim()) {
+            throw new Error('回复内容不能为空');
+        }
+        
+        const { data, error } = await supabaseClient
+            .from('comments')
+            .insert([
+                {
+                    author_id: this.currentUserId,
+                    target_user_id: targetUserId,
+                    reply_to_id: replyToUserId,
+                    parent_id: parentCommentId,
+                    content: content.trim()
+                }
+            ])
+            .select();
+            
+        if (error) {
+            throw new Error('回复失败: ' + error.message);
+        }
+        
+        return data[0];
     }
     // 删除评论
     async deleteComment(commentId) {
@@ -1015,12 +1081,17 @@ function createCommentHTML(comment) {
                       '匿名用户';
     const avatarUrl = comment.user_profiles?.avatar_url || getDefaultAvatar();
     const timeAgo = getTimeAgo(comment.created_at);
+    const isReply = !!comment.parent_id;
+    // 如果是回复，显示被回复的用户
+    const replyToInfo = comment.is_reply && comment.reply_to_user ? 
+        `<span class="nbu-reply-to">回复 <strong>${comment.reply_to_user.oc_name || comment.reply_to_user.display_name || '匿名用户'}</strong></span>` : 
+        '';
     const userProfileLink = isOwnComment ? 
         '/profile/' : // 自己的主页（无参数）
         `/profile/?user=${encodeURIComponent(comment.author_id)}`;
     
     return `
-        <div class="nbu-comment-item ${isOwnComment ? 'nbu-comment-own' : ''}">
+        <div class="nbu-comment-item ${isOwnComment ? 'nbu-comment-own' : ''} ${isReply ? 'nbu-comment-reply' : ''}">
             <div class="nbu-comment-header">
                 <a href="${userProfileLink}" 
                    class="nbu-comment-user-link ${isOwnComment ? 'nbu-comment-self' : ''}">
@@ -1028,19 +1099,53 @@ function createCommentHTML(comment) {
                          alt="${authorName}" 
                          class="nbu-comment-avatar"
                          onerror="this.src='${getDefaultAvatar()}'">
+                    <span class="nbu-comment-author">${authorName}</span>
+                    ${replyToInfo}
                 </a>
                 <a href="${userProfileLink}" 
                    class="nbu-comment-user-link ${isOwnComment ? 'nbu-comment-self' : ''}">
-                    <span class="nbu-comment-author">${authorName}</span>
                 </a>
                 <span class="nbu-comment-time">${timeAgo}</span>
             </div>
             <div class="nbu-comment-content">${escapeHtml(comment.content)}</div>
+            ${!isReply ? `
+                <button class="nbu-comment-reply-btn" onclick="showReplyForm('${comment.id}', '${comment.author_id}', '${escapeHtml(authorName)}')">
+                    💬 回复
+                </button>
+            ` : ''}
             ${isOwnComment ? `
                 <div class="nbu-comment-actions">
                     <button class="nbu-comment-delete" onclick="deleteComment('${comment.id}')">
                         删除
                     </button>
+                </div>
+            ` : ''}
+
+            <!-- 回复表单 -->
+            <div id="reply-form-${comment.id}" class="nbu-reply-form" style="display: none;">
+                <div class="nbu-reply-input-container">
+                    <textarea 
+                        id="reply-input-${comment.id}" 
+                        placeholder="回复 ${authorName}..." 
+                        rows="2"
+                        maxlength="300"
+                    ></textarea>
+                    <div class="nbu-reply-actions">
+                        <div class="nbu-reply-counter">
+                            <span id="reply-chars-${comment.id}">0</span>/300
+                        </div>
+                        <button class="nbu-reply-cancel" onclick="hideReplyForm('${comment.id}')">取消</button>
+                        <button class="nbu-reply-submit" onclick="submitReply('${comment.id}', '${comment.target_user_id}', '${comment.author_id}')">
+                            回复
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 回复列表 -->
+            ${comment.replies && comment.replies.length > 0 ? `
+                <div class="nbu-replies-list">
+                    ${comment.replies.map(reply => createCommentHTML(reply, true)).join('')}
                 </div>
             ` : ''}
         </div>
@@ -1400,3 +1505,108 @@ window.notificationCenter = notificationCenter;
 async function initializeNotificationCenter() {
     await notificationCenter.initialize();
 }
+
+// 回复评论功能
+function showReplyForm(commentId, replyToUserId, replyToName) {
+    // 隐藏所有其他回复表单
+    document.querySelectorAll('.nbu-reply-form').forEach(form => {
+        form.style.display = 'none';
+    });
+    
+    const replyForm = document.getElementById(`reply-form-${commentId}`);
+    const replyInput = document.getElementById(`reply-input-${commentId}`);
+    
+    if (replyForm && replyInput) {
+        replyForm.style.display = 'block';
+        replyInput.focus();
+        replyInput.setAttribute('data-reply-to', replyToUserId);
+        replyInput.setAttribute('data-reply-to-name', replyToName);
+        
+        // 初始化输入监听
+        initializeReplyInput(commentId);
+    }
+}
+
+function hideReplyForm(commentId) {
+    const replyForm = document.getElementById(`reply-form-${commentId}`);
+    if (replyForm) {
+        replyForm.style.display = 'none';
+        
+        // 清空输入框
+        const replyInput = document.getElementById(`reply-input-${commentId}`);
+        if (replyInput) {
+            replyInput.value = '';
+            document.getElementById(`reply-chars-${commentId}`).textContent = '0';
+            document.getElementById(`reply-chars-${commentId}`).classList.remove('warning');
+        }
+    }
+}
+
+function initializeReplyInput(commentId) {
+    const replyInput = document.getElementById(`reply-input-${commentId}`);
+    const replyChars = document.getElementById(`reply-chars-${commentId}`);
+    
+    if (!replyInput || !replyChars) return;
+    
+    replyInput.addEventListener('input', function() {
+        const length = this.value.length;
+        replyChars.textContent = length;
+        
+        if (length > 250) {
+            replyChars.classList.add('warning');
+        } else {
+            replyChars.classList.remove('warning');
+        }
+    });
+    
+    // 回车键提交
+    replyInput.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.key === 'Enter') {
+            e.preventDefault();
+            const targetUserId = this.closest('.nbu-comment-item')
+                .querySelector('[onclick^="submitReply"]')
+                .getAttribute('onclick')
+                .match(/'([^']+)'/)[2];
+            submitReply(commentId, targetUserId, this.getAttribute('data-reply-to'));
+        }
+    });
+}
+
+async function submitReply(parentCommentId, targetUserId, replyToUserId) {
+    const replyInput = document.getElementById(`reply-input-${parentCommentId}`);
+    const submitBtn = document.querySelector(`#reply-form-${parentCommentId} .nbu-reply-submit`);
+    
+    if (!replyInput || !submitBtn || submitBtn.disabled) return;
+    
+    const content = replyInput.value.trim();
+    if (!content) return;
+    
+    try {
+        submitBtn.disabled = true;
+        submitBtn.textContent = '回复中...';
+        
+        console.log('💬 提交回复:', { parentCommentId, targetUserId, replyToUserId, content });
+        
+        await socialManager.addReply(parentCommentId, targetUserId, replyToUserId, content);
+        
+        // 隐藏回复表单
+        hideReplyForm(parentCommentId);
+        
+        // 重新加载评论列表
+        await loadComments(targetUserId);
+        
+        console.log('✅ 回复成功');
+        
+    } catch (error) {
+        console.error('❌ 回复失败:', error);
+        alert('回复失败: ' + error.message);
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = '回复';
+    }
+}
+
+// 全局函数
+window.showReplyForm = showReplyForm;
+window.hideReplyForm = hideReplyForm;
+window.submitReply = submitReply;

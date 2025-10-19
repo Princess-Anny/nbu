@@ -1480,7 +1480,134 @@
       right: -50px;
     }
   }
+  /* 回复评论样式 */
+    .nbu-comment-reply {
+        margin-left: 2rem;
+        border-left: 3px solid #e9ecef;
+        padding-left: 1rem;
+        background: #f8f9fa;
+    }
 
+    .nbu-comment-reply .nbu-comment-item {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0.75rem 0;
+        margin-bottom: 0;
+    }
+
+    .nbu-replies-list {
+        margin-top: 1rem;
+        border-top: 1px solid #e9ecef;
+        padding-top: 1rem;
+    }
+
+    .nbu-reply-to {
+        color: #6c757d;
+        font-size: 0.85rem;
+        margin: 0 0.5rem;
+    }
+
+    .nbu-reply-to strong {
+        color: #3498db;
+    }
+
+    .nbu-comment-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 0.5rem;
+    }
+
+    .nbu-comment-reply-btn {
+        background: none;
+        border: 1px solid #ddd;
+        color: #6c757d;
+        padding: 0.25rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .nbu-comment-reply-btn:hover {
+        background: #3498db;
+        color: white;
+        border-color: #3498db;
+    }
+
+    /* 回复表单 */
+    .nbu-reply-form {
+        margin-top: 1rem;
+    }
+
+    .nbu-reply-input-container {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 0.75rem;
+    }
+
+    .nbu-reply-input-container textarea {
+        width: 100%;
+        border: none;
+        resize: vertical;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        min-height: 60px;
+        outline: none;
+        font-family: inherit;
+    }
+
+    .nbu-reply-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 0.5rem;
+    }
+
+    .nbu-reply-counter {
+        color: #6c757d;
+        font-size: 0.8rem;
+    }
+
+    .nbu-reply-counter.warning {
+        color: #e74c3c;
+    }
+
+    .nbu-reply-cancel {
+        background: none;
+        border: 1px solid #ddd;
+        color: #6c757d;
+        padding: 0.25rem 0.75rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        margin-right: 0.5rem;
+    }
+
+    .nbu-reply-cancel:hover {
+        background: #f8f9fa;
+    }
+
+    .nbu-reply-submit {
+        background: #3498db;
+        color: white;
+        border: none;
+        padding: 0.25rem 0.75rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        cursor: pointer;
+    }
+
+    .nbu-reply-submit:hover:not(:disabled) {
+        background: #2980b9;
+    }
+
+    .nbu-reply-submit:disabled {
+        background: #bdc3c7;
+        cursor: not-allowed;
+    }
 </style>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
@@ -3508,7 +3635,134 @@
       right: -50px;
     }
   }
+  /* 回复评论样式 */
+    .nbu-comment-reply {
+        margin-left: 2rem;
+        border-left: 3px solid #e9ecef;
+        padding-left: 1rem;
+        background: #f8f9fa;
+    }
 
+    .nbu-comment-reply .nbu-comment-item {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0.75rem 0;
+        margin-bottom: 0;
+    }
+
+    .nbu-replies-list {
+        margin-top: 1rem;
+        border-top: 1px solid #e9ecef;
+        padding-top: 1rem;
+    }
+
+    .nbu-reply-to {
+        color: #6c757d;
+        font-size: 0.85rem;
+        margin: 0 0.5rem;
+    }
+
+    .nbu-reply-to strong {
+        color: #3498db;
+    }
+
+    .nbu-comment-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 0.5rem;
+    }
+
+    .nbu-comment-reply-btn {
+        background: none;
+        border: 1px solid #ddd;
+        color: #6c757d;
+        padding: 0.25rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .nbu-comment-reply-btn:hover {
+        background: #3498db;
+        color: white;
+        border-color: #3498db;
+    }
+
+    /* 回复表单 */
+    .nbu-reply-form {
+        margin-top: 1rem;
+    }
+
+    .nbu-reply-input-container {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 0.75rem;
+    }
+
+    .nbu-reply-input-container textarea {
+        width: 100%;
+        border: none;
+        resize: vertical;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        min-height: 60px;
+        outline: none;
+        font-family: inherit;
+    }
+
+    .nbu-reply-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 0.5rem;
+    }
+
+    .nbu-reply-counter {
+        color: #6c757d;
+        font-size: 0.8rem;
+    }
+
+    .nbu-reply-counter.warning {
+        color: #e74c3c;
+    }
+
+    .nbu-reply-cancel {
+        background: none;
+        border: 1px solid #ddd;
+        color: #6c757d;
+        padding: 0.25rem 0.75rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        margin-right: 0.5rem;
+    }
+
+    .nbu-reply-cancel:hover {
+        background: #f8f9fa;
+    }
+
+    .nbu-reply-submit {
+        background: #3498db;
+        color: white;
+        border: none;
+        padding: 0.25rem 0.75rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        cursor: pointer;
+    }
+
+    .nbu-reply-submit:hover:not(:disabled) {
+        background: #2980b9;
+    }
+
+    .nbu-reply-submit:disabled {
+        background: #bdc3c7;
+        cursor: not-allowed;
+    }
 </style>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
