@@ -14,7 +14,8 @@ class SocialManager {
             'follow': '关注了你',
             'like': '赞了你的主页',
             'dislike': '踩了你的主页', 
-            'comment': '评论了你的主页'
+            'comment': '评论了你的主页',
+            'reply': '回复了你的评论'
         };
         
         const actorProfile = await this.getUserProfile(actorId);
@@ -469,7 +470,7 @@ class SocialManager {
             throw new Error('回复内容不能为空');
         }
         
-        const { data, error } = await supabaseClient
+        const { data, error } = await supabaseAdmin
             .from('comments')
             .insert([
                 {
@@ -485,7 +486,14 @@ class SocialManager {
         if (error) {
             throw new Error('回复失败: ' + error.message);
         }
-        
+        if (data) {
+            try {
+                await this.createNotification(replyToUserId, 'reply', this.currentUserId, data[0].id);
+            } catch (error) {
+                console.error('❌ 创建关注通知失败:', error);
+                // 不阻止主要操作
+            }
+        }
         return data[0];
     }
     // 删除评论
@@ -515,7 +523,9 @@ class SocialManager {
             const results = await Promise.allSettled([
                 this.deleteUserFollows(userId),
                 this.deleteUserReactions(userId),
-                this.deleteUserComments(userId)
+                this.deleteUserComments(userId),
+                this.deleteUserReplies(userId),
+                this.deleteUserNotifications(userId)
             ]);
             
             // 检查结果
@@ -577,6 +587,32 @@ class SocialManager {
         }
         
         console.log('✅ 用户评论删除完成');
+    }
+
+    async deleteUserReplies(userId) {
+        const { error } = await supabaseAdmin
+            .from('comments')
+            .delete()
+            .or(`author_id.eq.${userId},reply_to_id.eq.${userId}`);
+            
+        if (error) {
+            throw new Error(`删除评论失败: ${error.message}`);
+        }
+        
+        console.log('✅ 用户回复删除完成');
+    }
+
+    async deleteUserNotifications(userId) {
+        const { error } = await supabaseAdmin
+            .from('notifications')
+            .delete()
+            .or(`user_id.eq.${userId},actor_id.eq.${userId}`);
+            
+        if (error) {
+            throw new Error(`删除评论失败: ${error.message}`);
+        }
+        
+        console.log('✅ 用户回复删除完成');
     }
     
     // 获取用户数据统计（用于确认删除）
@@ -1351,7 +1387,7 @@ class NotificationCenter {
         if (Notification.permission === 'granted') {
             new Notification('NBU社区', {
                 body: notification.message,
-                icon: '/images/logo.png'
+                icon: '/img/nbu-logo.png'
             });
         } else if (Notification.permission === 'default') {
             Notification.requestPermission();
