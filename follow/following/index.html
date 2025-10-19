@@ -1,0 +1,3814 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="我的关注">
+<meta property="og:url" content="http://example.com/follow/following/index.html">
+<meta property="og:site_name" content="美国牛逼大学 NiuBi University of America">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-10-19T02:47:42.672Z">
+<meta property="article:modified_time" content="2025-10-19T02:47:42.672Z">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>我的关注 - 美国牛逼大学 NiuBi University of America</title>
+
+<style>
+  .nbu-role-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nbu-modal-content {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .nbu-modal-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .nbu-modal-header h3 {
+    margin: 0 0 0.5rem 0;
+    color: #2c3e50;
+  }
+
+  .nbu-role-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .nbu-role-card {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+
+  .nbu-role-card:hover {
+    border-color: #3498db;
+    background: #f8f9fa;
+  }
+
+  .nbu-role-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+
+  .nbu-role-info h4 {
+    margin: 0 0 0.25rem 0;
+    color: #2c3e50;
+  }
+
+  .nbu-role-info p {
+    margin: 0 0 0.25rem 0;
+    color: #6c757d;
+    font-size: 0.9rem;
+  }
+
+  .nbu-role-info small {
+    color: #e74c3c;
+    font-weight: 500;
+  }
+
+  .nbu-secret-section {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+
+  .nbu-secret-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .nbu-secret-input input {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .nbu-verify-btn {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .nbu-verify-btn:hover {
+    background: #219a52;
+  }
+
+  .nbu-secret-hint {
+    margin: 0.5rem 0 0 0;
+    font-size: 0.85rem;
+    color: #7f8c8d;
+  }
+
+  .nbu-modal-footer {
+    text-align: center;
+  }
+
+  .nbu-cancel-btn {
+    background: #95a5a6;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .nbu-cancel-btn:hover {
+    background: #7f8c8d;
+  }
+
+  /* 资料编辑表单样式 */
+  .nbu-form-section {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .nbu-form-section h4 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    font-size: 1.1rem;
+  }
+
+  .nbu-form-group {
+    margin-bottom: 1rem;
+  }
+
+  .nbu-form-row {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nbu-form-row .nbu-form-group {
+    flex: 1;
+  }
+
+  .nbu-form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #2c3e50;
+  }
+
+  .nbu-form-group input,
+  .nbu-form-group select,
+  .nbu-form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .nbu-form-group input:focus,
+  .nbu-form-group select:focus,
+  .nbu-form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+  }
+
+  .nbu-form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  /* 头像上传样式 */
+  .nbu-avatar-preview {
+      text-align: center;
+  }
+
+  .nbu-upload-options {
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 1rem;
+      background: #f8f9fa;
+  }
+
+  .btn-outline-primary {
+      border-color: #3498db;
+      color: #3498db;
+  }
+
+  .btn-outline-primary:hover {
+      background-color: #3498db;
+      color: white;
+  }
+
+  .progress {
+      background-color: #e9ecef;
+      border-radius: 4px;
+      overflow: hidden;
+  }
+
+  .progress-bar {
+      background-color: #3498db;
+      transition: width 0.3s ease;
+  }
+
+  /* 头像容器 - 强制尺寸和样式 */
+  .nbu-avatar-container {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      flex-shrink: 0;
+  }
+
+  .nbu-profile-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      background: #f8f9fa;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .nbu-avatar-frame {
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+  }
+
+  /* 导航栏头像强制样式 */
+  #nbu-user-avatar {
+      width: 28px !important;
+      height: 28px !important;
+      object-fit: cover !important;
+      border-radius: 50% !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  }
+
+  /* 编辑模态框中的头像预览 */
+  #avatar-preview {
+      width: 80px !important;
+      height: 80px !important;
+      object-fit: cover !important;
+      border-radius: 50% !important;
+      border: 2px solid #ddd !important;
+      background: #f8f9fa;
+  }
+
+  /* 响应式调整 */
+  @media (max-width: 768px) {
+      .nbu-avatar-container {
+          width: 100px;
+          height: 100px;
+      }
+      
+      .nbu-profile-avatar {
+          border-width: 3px;
+      }
+  }
+
+  /* 移动端适配 */
+  @media (max-width: 768px) {
+    .nbu-modal-content {
+      padding: 1.5rem;
+      margin: 1rem;
+    }  
+    .nbu-role-card {
+      flex-direction: column;
+      text-align: center;
+    } 
+    .nbu-role-icon {
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+    }
+    .nbu-form-row {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
+  /* 注销账户样式 */
+  .nbu-profile-actions {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e9ecef;
+  }
+
+  .nbu-danger-zone {
+      padding: 1.5rem;
+      background: #fff5f5;
+      border: 1px solid #fed7d7;
+      opacity: 0.95;
+      border-radius: 8px;
+  }
+
+  .nbu-danger-zone h4 {
+      color: #c53030;
+      margin-bottom: 0.5rem;
+  }
+
+  .nbu-delete-warning {
+      background: #fff5f5;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+      border-left: 4px solid #e53e3e;
+  }
+
+  .nbu-warning-item {
+      margin-bottom: 1rem;
+  }
+
+  .nbu-warning-item:last-child {
+      margin-bottom: 0;
+  }
+
+  .nbu-warning-item ul {
+      margin: 0.5rem 0 0 1rem;
+      color: #744210;
+  }
+
+  .nbu-warning-item li {
+      margin-bottom: 0.25rem;
+  }
+
+  .nbu-confirm-section {
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: #f7fafc;
+      border-radius: 8px;
+  }
+
+  .nbu-confirm-section label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      cursor: pointer;
+  }
+
+  .nbu-confirm-section input[type="checkbox"] {
+      margin-top: 0.2rem;
+  }
+
+  .btn-danger {
+      background: #e53e3e;
+      border-color: #e53e3e;
+  }
+
+  .btn-danger:hover:not(:disabled) {
+      background: #c53030;
+      border-color: #c53030;
+  }
+
+  .btn-danger:disabled {
+      background: #a0aec0;
+      border-color: #a0aec0;
+      cursor: not-allowed;
+  }
+
+  /* 学号样式 */
+  .nbu-student-id-preview {
+      padding: 1rem;
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+  }
+
+  .nbu-student-id-display {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  .nbu-student-id {
+      font-family: 'Courier New', monospace;
+      font-weight: bold;
+      font-size: 1.1rem;
+  }
+
+  .nbu-student-id.generating {
+      color: #f59e0b;
+  }
+
+  .nbu-student-id.generated {
+      color: #059669;
+  }
+
+  .nbu-student-id.error {
+      color: #dc2626;
+  }
+
+  /* 专业搜索下拉框样式 */
+  .nbu-search-select {
+      position: relative;
+  }
+
+  .nbu-search-select input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+  }
+
+  .nbu-search-select input:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+  }
+
+  .nbu-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      max-height: 300px;
+      overflow-y: auto;
+  }
+
+  .nbu-dropdown-list {
+      padding: 0.5rem 0;
+  }
+
+  .nbu-category-header {
+      padding: 0.5rem 1rem;
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #6c757d;
+      font-size: 0.85rem;
+      border-bottom: 1px solid #e9ecef;
+  }
+
+  .nbu-dropdown-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      border-bottom: 1px solid #f8f9fa;
+  }
+
+  .nbu-dropdown-item:hover {
+      background: #f8f9fa;
+  }
+
+  .nbu-dropdown-item:last-child {
+      border-bottom: none;
+  }
+
+  .nbu-major-name {
+      flex: 1;
+  }
+
+  .nbu-major-code {
+      background: #e9ecef;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-family: 'Courier New', monospace;
+  }
+
+  .nbu-dropdown-empty {
+      padding: 2rem 1rem;
+      text-align: center;
+      color: #6c757d;
+  }
+
+  /* 高亮文本 */
+  mark {
+      background: #fff3cd;
+      padding: 0.1rem 0.2rem;
+      border-radius: 2px;
+  }
+
+  /* 滚动条样式 */
+  .nbu-dropdown::-webkit-scrollbar {
+      width: 6px;
+  }
+
+  .nbu-dropdown::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 3px;
+  }
+
+  .nbu-dropdown::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 3px;
+  }
+
+  .nbu-dropdown::-webkit-scrollbar-thumb:hover {
+      background: #a8a8a8;
+  }
+
+  /* 查看他人资料样式 */
+  .nbu-viewing-other {
+      background: #e3f2fd;
+      color: #1976d2;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin-top: 0.5rem;
+  }
+
+  .nbu-profile-actions .btn {
+      margin-right: 0.5rem;
+  }
+
+  .nbu-profile-actions .btn:last-child {
+      margin-right: 0;
+  }
+  /* NBU简介区块样式 */
+  .nbu-intro-section {
+      background: linear-gradient(135deg, #0F6D6C 0%, #111E74 100%);
+      color: white;
+      padding: 4rem 0;
+      margin-bottom: 3rem;
+  }
+
+  .nbu-intro-header {
+      text-align: center;
+      margin-bottom: 3rem;
+  }
+
+  .nbu-intro-header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+  }
+
+  .nbu-intro-header .lead {
+      font-size: 1.5rem;
+      opacity: 0.9;
+      font-style: italic;
+  }
+
+  .nbu-intro-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+      align-items: start;
+  }
+
+  .nbu-intro-text h2 {
+      color: #ffd700;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+  }
+
+  .nbu-intro-text h3 {
+      color: #a8e6cf;
+      margin: 2rem 0 1rem 0;
+      font-size: 1.4rem;
+  }
+
+  .nbu-intro-text p {
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+  }
+
+  .nbu-intro-text ul {
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+  }
+
+  .nbu-intro-text li {
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+  }
+
+  .nbu-intro-text strong {
+      color: #ffd700;
+  }
+
+  .nbu-intro-stats {
+      display: flex;
+      gap: 2rem;
+      margin: 2rem 0;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+  }
+
+  .stat-item {
+      text-align: center;
+      flex: 1;
+  }
+
+  .stat-number {
+      display: block;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #ffd700;
+  }
+
+  .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 768px) {
+      .nbu-intro-header h1 {
+          font-size: 2rem;
+      }
+      
+      .nbu-intro-header .lead {
+          font-size: 1.2rem;
+      }
+      
+      .nbu-intro-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+      }
+      
+      .nbu-intro-stats {
+          flex-direction: column;
+          gap: 1rem;
+      }
+  }
+
+    .navbar-logo {
+      height: 50px;
+      width: auto;
+      margin-right: 5px;
+  }
+
+  .intro-logo {
+      height: 80px;
+      margin-bottom: 1rem;
+  }
+  /* 导出功能样式 */
+  .nbu-export-options {
+      margin: 1.5rem 0;
+      padding: 1.5rem;
+      background: #f8f9fa;
+      opacity: 0.98;
+      border-radius: 8px;
+      border-left: 4px solid #3498db;
+  }
+
+  .nbu-export-options h4 {
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+  }
+
+  .export-buttons {
+      display: flex;
+      gap: 0.75rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+  }
+
+  .export-buttons .btn {
+      flex: 1;
+      min-width: 120px;
+  }
+
+  /* 响应式调整 */
+  @media (max-width: 768px) {
+      .export-buttons {
+          flex-direction: column;
+      }
+      
+      .export-buttons .btn {
+          min-width: auto;
+      }
+  }
+
+  .nbu-profile-role{
+      margin-bottom: 1px;
+  }
+
+  .nbu-detail-section h4{
+      margin-top: 11px;
+      margin-bottom: 5px;
+  }
+
+  /* 社交功能样式 */
+  .nbu-social-stats {
+      display: flex;
+      justify-content: left;
+      gap: 0.6rem;
+      padding: 0.2rem;
+  }
+
+  .nbu-stat-item {
+      text-align: left;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+  }
+
+  .nbu-stat-item:hover {
+      transform: translateY(-2px);
+  }
+
+  .nbu-stat-number {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #719cc6;
+  }
+
+  .nbu-stat-label {
+      font-size: 0.65rem;
+      color: #d3e3f0;
+  }
+
+  .nbu-social-actions {
+      margin-top: 5px;
+      margin-bottom: 12px;
+      margin-left: 18px;
+      text-align: left;
+  }
+
+  .nbu-follow-btn {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 0.46rem 1.4rem;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-width: 100px;
+  }
+
+  .nbu-follow-btn:hover {
+      background: #2980b9;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+  }
+
+  .nbu-follow-btn.following {
+      background: #27ae60;
+  }
+
+  .nbu-follow-btn.following:hover {
+      background: #219a52;
+  }
+
+  .nbu-follow-btn:disabled {
+      background: #bdc3c7;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+  }
+
+  /* 加载动画 */
+  .nbu-loading {
+      opacity: 0.7;
+      pointer-events: none;
+  }
+
+  .nbu-loading::after {
+      content: '...';
+      animation: loading-dots 1.5s infinite;
+  }
+
+  @keyframes loading-dots {
+      0%, 20% { content: '.'; }
+      40% { content: '..'; }
+      60%, 100% { content: '...'; }
+  }
+
+    /* 点赞点踩按钮样式 */
+  .nbu-reaction-actions {
+      padding: 1rem 0.8rem;
+      text-align: center;
+  }
+
+  .nbu-reaction-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 0.5rem;
+  }
+
+  .nbu-reaction-btn {
+      width: 80px;
+      height: 80px;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .nbu-reaction-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .nbu-reaction-btn:active {
+      transform: translateY(-1px) scale(1.02);
+  }
+
+  .nbu-reaction-btn.active {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  /* 点赞按钮样式 */
+  .nbu-like-btn {
+      background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+      color: white;
+  }
+
+  .nbu-like-btn:hover {
+      background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+  }
+
+  .nbu-like-btn.active {
+      background: linear-gradient(135deg, #3d8b40 0%, #357a38 100%);
+      box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+  }
+
+  /* 点踩按钮样式 */
+  .nbu-dislike-btn {
+      background: linear-gradient(135deg, #f44336 0%, #da190b 100%);
+      color: white;
+  }
+
+  .nbu-dislike-btn:hover {
+      background: linear-gradient(135deg, #da190b 0%, #c41408 100%);
+  }
+
+  .nbu-dislike-btn.active {
+      background: linear-gradient(135deg, #c41408 0%, #ad1207 100%);
+      box-shadow: 0 6px 20px rgba(244, 67, 54, 0.4);
+  }
+
+  .nbu-reaction-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.25rem;
+      display: block;
+  }
+
+  .nbu-reaction-count {
+      font-size: 0.85rem;
+      font-weight: 600;
+      opacity: 0.9;
+  }
+
+  .nbu-reaction-hint {
+      color: #6c757d;
+      font-size: 0.9rem;
+  }
+
+  /* 按钮禁用状态 */
+  .nbu-reaction-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .nbu-reaction-btn:disabled:hover {
+      transform: none !important;
+  }
+
+  /* 脉冲动画效果 */
+  @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+  }
+
+  .nbu-reaction-btn.pulse {
+      animation: pulse 0.3s ease;
+  }
+
+  /* 移动端适配 */
+  @media (max-width: 768px) {
+      .nbu-reaction-buttons {
+          gap: 1.5rem;
+      }
+      
+      .nbu-reaction-btn {
+          width: 70px;
+          height: 70px;
+          font-size: 1.3rem;
+      }
+      
+      .nbu-reaction-icon {
+          font-size: 1.5rem;
+      }
+  }
+  .navbar-logo {
+      transition: transform 0.3s ease;
+  }
+
+  .navbar-logo:hover {
+      transform: scale(1.1);
+  }
+  .intro-logo {
+      animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+  }
+  /* 深色模式适配 */
+  [data-color-scheme="dark"] .navbar-logo {
+      filter: brightness(1.2);
+  }
+
+    /* 评论功能样式 */
+  .nbu-comments-section {
+      padding: 2rem 1.5rem;
+      border-top: 1px solid #e9ecef;
+      background: #fafbfc;
+      opacity: 0.98;
+  }
+
+  .nbu-comments-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid #e9ecef;
+  }
+
+  .nbu-comments-header h4 {
+      margin: 0;
+      color: #2c3e50;
+      font-size: 1.25rem;
+  }
+
+  .nbu-comments-count {
+      color: #6c757d;
+      font-size: 0.9rem;
+  }
+
+  /* 评论表单 */
+  .nbu-comment-form {
+      margin-bottom: 2rem;
+  }
+
+  .nbu-comment-input-container {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .nbu-comment-input-container textarea {
+      width: 100%;
+      border: none;
+      resize: vertical;
+      font-size: 1rem;
+      line-height: 1.5;
+      min-height: 80px;
+      outline: none;
+      font-family: inherit;
+  }
+
+  .nbu-comment-input-container textarea::placeholder {
+      color: #9ca3af;
+  }
+
+  .nbu-comment-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid #f1f3f4;
+  }
+
+  .nbu-comment-counter {
+      color: #6c757d;
+      font-size: 0.85rem;
+  }
+
+  .nbu-comment-counter.warning {
+      color: #e74c3c;
+  }
+
+  .nbu-comment-submit {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 0.5rem 1.5rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+  }
+
+  .nbu-comment-submit:hover:not(:disabled) {
+      background: #2980b9;
+      transform: translateY(-1px);
+  }
+
+  .nbu-comment-submit:disabled {
+      background: #bdc3c7;
+      cursor: not-allowed;
+      transform: none;
+  }
+
+  /* 评论列表 */
+  .nbu-comments-list {
+      space-y: 1rem;
+  }
+
+  .nbu-comments-loading {
+      text-align: center;
+      padding: 2rem;
+      color: #6c757d;
+  }
+
+  .nbu-loading-spinner {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #f3f3f3;
+      border-top: 2px solid #3498db;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 0.5rem;
+  }
+
+  @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+  }
+
+  .nbu-comment-item {
+      background: white;
+      border: 1px solid #e9ecef;
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .nbu-comment-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+  }
+
+.nbu-comment-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 0.05rem;
+    object-fit: cover;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.nbu-comment-user-link:hover .nbu-comment-avatar {
+    border-color: #3498db;
+    transform: scale(1.1);
+}
+
+/* 点击动画 */
+@keyframes avatar-click {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+.nbu-comment-avatar:active {
+    animation: avatar-click 0.2s ease;
+}
+
+.nbu-comment-author:active {
+    color: #2980b9;
+}
+
+  .nbu-comment-author {
+      font-weight: 600;
+      color: #2c3e50;
+      font-size: 0.95rem;
+  }
+
+  .nbu-comment-time {
+      color: #6c757d;
+      font-size: 0.8rem;
+      margin-left: auto;
+  }
+
+  .nbu-comment-content {
+      color: #374151;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+      white-space: pre-wrap;
+      word-break: break-word;
+  }
+
+  .nbu-comment-actions {
+      display: flex;
+      justify-content: flex-end;
+  }
+
+  .nbu-comment-delete {
+      background: none;
+      border: none;
+      color: #e74c3c;
+      font-size: 0.8rem;
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      transition: background 0.2s ease;
+  }
+
+  .nbu-comment-delete:hover {
+      background: #fee;
+  }
+
+  .nbu-comment-own {
+      border-left: 4px solid #3498db;
+  }
+
+  .nbu-empty-comments {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: #6c757d;
+  }
+
+  .nbu-empty-comments .nbu-empty-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+  }
+
+  /* 移动端适配 */
+  @media (max-width: 768px) {
+      .nbu-comments-section {
+          padding: 1.5rem 1rem;
+      }
+      
+      .nbu-comments-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+      }
+      
+      .nbu-comment-item {
+          padding: 1rem;
+      }
+      
+      .nbu-comment-actions {
+          flex-direction: column;
+          gap: 0.5rem;
+          align-items: flex-end;
+      }
+  }
+
+    /* 评论用户链接样式 */
+  .nbu-comment-user-link {
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+  }
+
+  .nbu-comment-user-link:hover {
+      text-decoration: none;
+  }
+
+  .nbu-comment-user-link:hover .nbu-comment-avatar {
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .nbu-comment-user-link:hover .nbu-comment-author {
+      color: #3498db;
+      transform: translateX(2px);
+  }
+
+  .nbu-comment-header .nbu-comment-user-link:first-child {
+      margin-right: 0.75rem;
+  }
+
+  .nbu-comment-header .nbu-comment-user-link:last-child {
+      margin-right: auto;
+  }
+
+  .nbu-comment-author {
+      transition: all 0.2s ease;
+      font-weight: 600;
+      color: #2c3e50;
+      cursor: pointer;
+  }
+
+  /* 防止链接样式影响布局 */
+  .nbu-comment-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+  }
+
+  .nbu-comment-header .nbu-comment-user-link {
+      display: flex;
+      align-items: center;
+  }
+
+  /* 自己评论的链接样式 */
+  .nbu-comment-self {
+      pointer-events: auto; /* 保持可点击，但可以有不同的样式 */
+  }
+
+  .nbu-comment-self:hover .nbu-comment-author {
+      color: #27ae60; /* 绿色表示自己 */
+  }
+
+  .nbu-comment-self:hover .nbu-comment-avatar {
+      border-color: #27ae60;
+  }
+
+  /* 工具提示 */
+  .nbu-comment-user-link {
+      position: relative;
+  }
+
+  .nbu-comment-user-link::after {
+      content: '查看资料';
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 1000;
+  }
+
+  .nbu-comment-user-link:hover::after {
+      opacity: 1;
+  }
+
+  /* 通知系统样式 */
+  .nbu-notification-container {
+    position: relative;
+    margin-right: 1rem;
+  }
+
+  .nbu-notification-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.2rem;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+    position: relative;
+  }
+
+  .nbu-notification-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .nbu-notification-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+
+  .nbu-notification-center {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 350px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: none;
+    max-height: 500px;
+    overflow-y: auto;
+  }
+
+  .nbu-notification-center.show {
+    display: block;
+  }
+
+  .nbu-notification-header {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nbu-notification-header h5 {
+    margin: 0;
+    color: #2c3e50;
+  }
+
+  .nbu-mark-all-read {
+    background: none;
+    border: none;
+    color: #3498db;
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .nbu-mark-all-read:hover {
+    background: #f8f9fa;
+  }
+
+  .nbu-notification-list {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .nbu-notification-item {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #f8f9fa;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .nbu-notification-item:hover {
+    background: #f8f9fa;
+  }
+
+  .nbu-notification-item.unread {
+    background: #f0f7ff;
+    border-left: 3px solid #3498db;
+  }
+
+  .nbu-notification-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .nbu-notification-content {
+    flex: 1;
+  }
+
+  .nbu-notification-message {
+    color: #2c3e50;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 0.25rem;
+  }
+
+  .nbu-notification-time {
+    color: #6c757d;
+    font-size: 0.75rem;
+  }
+
+  .nbu-notification-type {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+  }
+
+  .nbu-notification-type.follow { background: #3498db; }
+  .nbu-notification-type.like { background: #27ae60; }
+  .nbu-notification-type.dislike { background: #e74c3c; }
+  .nbu-notification-type.comment { background: #f39c12; }
+
+  .nbu-notification-empty {
+    padding: 2rem 1.25rem;
+    text-align: center;
+    color: #6c757d;
+  }
+
+  .nbu-notification-empty .nbu-empty-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.5;
+  }
+
+  /* 移动端适配 */
+  @media (max-width: 768px) {
+    .nbu-notification-center {
+      width: 300px;
+      right: -50px;
+    }
+  }
+
+</style>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <img src="/img/nbu-logo.png" srcset="/img/loading.gif" lazyload alt="NBU校徽" class="navbar-logo" href="/">
+
+    <!-- NBU用户认证组件 -->
+    <div id="nbu-auth-widget" class="navbar-nav ml-auto align-items-center">
+        <!-- 未登录状态 - 默认隐藏 -->
+        <div id="nbu-login-section" style="display: none;">
+            <button class="btn btn-outline-light btn-sm" onclick="nbuHandleLogin()">
+                <i class="iconfont icon-user"></i> 登录NBU
+            </button>
+        </div>
+        
+        <div id="nbu-user-section" style="display: none;">
+          <div class="d-flex align-items-center">
+            <a href="/profile/" class="d-flex align-items-center text-decoration-none text-light">
+              <img id="nbu-user-avatar" src="" srcset="/img/loading.gif" lazyload alt="头像" class="rounded-circle mr-2" style="width: 28px; height: 28px;">
+              <span id="nbu-user-name" class="small mr-2"></span>
+            </a>
+            <button class="btn btn-outline-light btn-sm ml-1" onclick="nbuHandleLogout()">退出</button>
+            <button class="btn btn-outline-info btn-sm ml-2" onclick="showEditProfileModal()">编辑资料</button>
+              <i class="iconfont icon-edit"></i>
+            </button>
+          </div>
+        </div>
+    </div>
+
+    <!-- NBU身份选择模态框 -->
+    <div id="nbu-role-modal" class="nbu-role-modal" style="display: none;">
+      <div class="nbu-modal-overlay">
+        <div class="nbu-modal-content">
+          <div class="nbu-modal-header">
+            <h3>🎓 欢迎来到美国牛逼大学</h3>
+            <p>请选择你的身份加入我们的学术社区</p>
+          </div>
+          
+          <div class="nbu-role-options">
+            <div class="nbu-role-card" onclick="selectNBURole('student')">
+              <div class="nbu-role-icon">👨‍🎓</div>
+              <div class="nbu-role-info">
+                <h4>学生</h4>
+                <p>加入NBU学习社区，参与课程和活动</p>
+                <small>需要学生密钥</small>
+              </div>
+            </div>
+            
+            <div class="nbu-role-card" onclick="selectNBURole('faculty')">
+              <div class="nbu-role-icon">👨‍🏫</div>
+              <div class="nbu-role-info">
+                <h4>教职人员</h4>
+                <p>作为教师或工作人员加入NBU</p>
+                <small>需要教职密钥</small>
+              </div>
+            </div>
+            
+            <div class="nbu-role-card" onclick="selectNBURole('visitor')">
+              <div class="nbu-role-icon">👀</div>
+              <div class="nbu-role-info">
+                <h4>访客</h4>
+                <p>参观校园，了解NBU文化</p>
+                <small>自由访问</small>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 密钥输入区域 -->
+          <div id="nbu-secret-section" class="nbu-secret-section" style="display: none;">
+            <div class="nbu-secret-input">
+              <label id="nbu-secret-label">请输入密钥：</label>
+              <input type="password" id="nbu-secret-key" placeholder="输入准入密钥...">
+              <button onclick="verifyNBUSecretKey()" class="nbu-verify-btn">验证</button>
+            </div>
+            <p class="nbu-secret-hint" id="nbu-secret-hint"></p>
+          </div>
+          
+          <div class="nbu-modal-footer">
+            <button onclick="hideNBURoleModal()" class="nbu-cancel-btn">取消</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 资料编辑模态框 -->
+    <div id="nbu-edit-profile-modal" class="nbu-role-modal" style="display: none;">
+      <div class="nbu-modal-overlay">
+        <div class="nbu-modal-content" style="max-width: 600px;">
+          <div class="nbu-modal-header">
+            <h3>📝 编辑个人资料</h3>
+            <p>完善你的身份信息</p>
+          </div>
+          
+          <form id="nbu-profile-form">
+            <!-- 基础信息 -->
+            <div class="nbu-form-section">
+              <h4>基础信息</h4>
+              
+              <div class="nbu-form-group">
+                <label for="edit-display-name">显示名称 *</label>
+                <input type="text" id="edit-display-name" required>
+              </div>
+              
+              <!-- 替换原来的头像URL输入框 -->
+              <div class="nbu-form-group">
+                  <label for="edit-avatar-url">头像</label>
+                  
+                  <!-- 当前头像预览 -->
+                  <div class="nbu-avatar-preview" style="margin-bottom: 1rem;">
+                      <img id="avatar-preview" src="" srcset="/img/loading.gif" lazyload alt="头像预览" 
+                          style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #ddd;">
+                  </div>
+                  
+                  <!-- 上传选项 -->
+                  <div class="nbu-upload-options">
+                      <!-- 方式1：文件上传 -->
+                      <div style="margin-bottom: 0.5rem;">
+                          <label class="btn btn-outline-primary btn-sm">
+                              📁 选择图片
+                              <input type="file" id="avatar-upload" accept="image/*" style="display: none;" 
+                                    onchange="handleAvatarUpload(event)">
+                          </label>
+                          <small class="text-muted" style="margin-left: 0.5rem;">支持 JPG, PNG, GIF</small>
+                      </div>
+                      
+                      <!-- 方式2：URL输入（备用） -->
+                      <div>
+                          <label>或者输入图片URL：</label>
+                          <input type="url" id="edit-avatar-url" placeholder="https://example.com/avatar.jpg"
+                                onchange="updateAvatarPreview(this.value)">
+                      </div>
+                  </div>
+                  
+                  <!-- 上传进度 -->
+                  <div id="upload-progress" style="display: none; margin-top: 0.5rem;">
+                      <div class="progress" style="height: 6px;">
+                          <div id="upload-progress-bar" class="progress-bar" style="width: 0%"></div>
+                      </div>
+                      <small id="upload-status">上传中...</small>
+                  </div>
+              </div>
+              
+              <div class="nbu-form-group">
+                <label for="edit-bio">个人简介</label>
+                <textarea id="edit-bio" rows="3" placeholder="介绍一下你自己..."></textarea>
+              </div>
+            </div>
+            
+            <!-- OC信息（学生/教职显示） -->
+            <div id="nbu-oc-section" class="nbu-form-section" style="display: none;">
+              <h4>🎭 OC角色信息</h4>
+              
+              <div class="nbu-form-row">
+                <div class="nbu-form-group">
+                  <label for="edit-oc-name">角色名</label>
+                  <input type="text" id="edit-oc-name">
+                </div>
+                
+                <div class="nbu-form-group">
+                  <label for="edit-oc-age">年龄</label>
+                  <input type="number" id="edit-oc-age" min="1" max="150">
+                </div>
+              </div>
+              
+              <div class="nbu-form-row">
+                <div class="nbu-form-group">
+                  <label for="edit-oc-nationality">国籍</label>
+                  <input type="text" id="edit-oc-nationality">
+                </div>
+                
+                <div class="nbu-form-group">
+                  <label for="edit-oc-gender">性别</label>
+                  <select id="edit-oc-gender">
+                    <option value="">选择性别</option>
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                    <option value="其他">其他</option>
+                    <option value="不愿透露">不愿透露</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="nbu-form-group">
+                <label for="edit-oc-title">称谓</label>
+                <select id="edit-oc-title">
+                  <option value="">选择称谓</option>
+                  <option value="Mr.">Mr.</option>
+                  <option value="Ms.">Ms.</option>
+                  <option value="Mrs.">Mrs.</option>
+                  <option value="Dr.">Dr.</option>
+                  <option value="Prof.">Prof.</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- 学生专属字段 -->
+            <div id="nbu-student-section" class="nbu-form-section" style="display: none;">
+              <h4>🎓 学生信息</h4>
+              
+              <div class="nbu-form-row">
+                <div class="nbu-form-group">
+                  <label for="major-search">专业 *</label>
+                  <!-- 搜索输入框 -->
+                  <div class="nbu-search-select">
+                      <input type="text" 
+                            id="major-search" 
+                            placeholder="搜索或选择专业..."
+                            autocomplete="off"
+                            onfocus="showMajorDropdown()"
+                            oninput="filterMajors(this.value)">
+                      
+                      <!-- 下拉选项 -->
+                      <div id="major-dropdown" class="nbu-dropdown">
+                          <div class="nbu-dropdown-list" id="major-options">
+                              <!-- 选项将通过JS动态生成 -->
+                          </div>
+                      </div>
+                  </div>
+                  <!-- 隐藏的实际值存储 -->
+                  <input type="hidden" id="edit-major" name="major" required>
+                </div>
+                
+                <div class="nbu-form-group">
+                  <label for="edit-student-id">学号</label>
+                  <input type="text" id="edit-student-id" placeholder="2024123456">
+                </div>
+                <!-- 添加学号预览 -->
+                <div id="student-id-preview" class="nbu-student-id-preview" style="display: none;">
+                    <label>学号预览</label>
+                    <div class="nbu-student-id-display">
+                        <span id="student-id-preview-text" class="nbu-student-id"></span>
+                        <small class="text-muted">系统自动生成</small>
+                    </div>
+                </div>
+              </div>
+              
+              <div class="nbu-form-row">
+                <div class="nbu-form-group">
+                  <label for="edit-dormitory">宿舍</label>
+                  <input type="text" id="edit-dormitory" placeholder="1号楼101">
+                </div>
+                
+                <div class="nbu-form-group">
+                  <label for="edit-enrollment-year">入学年份</label>
+                  <input type="number" id="edit-enrollment-year" min="2000" max="2030" placeholder="2010" oninput="updateStudentIdPreview()">
+                </div>
+              </div>
+              
+              <div class="nbu-form-group">
+                <label for="edit-clubs">社团（每行一个）</label>
+                <textarea id="edit-clubs" rows="3" placeholder="篮球社&#10;天体物理社"></textarea>
+                <small class="form-hint">每行输入一个社团名称</small>
+              </div>
+            </div>
+
+            <!-- 教职专属字段 -->
+            <div id="nbu-faculty-section" class="nbu-form-section" style="display: none;">
+              <h4>👨‍🏫 教职信息</h4>
+              
+              <div class="nbu-form-row">
+                <div class="nbu-form-group">
+                  <label for="edit-department">院系</label>
+                  <input type="text" id="edit-department" placeholder="计算机学院">
+                </div>
+                
+                <div class="nbu-form-group">
+                  <label for="edit-faculty-rank">职称</label>
+                  <select id="edit-faculty-rank">
+                    <option value="">选择职称</option>
+                    <option value="教授">教授</option>
+                    <option value="副教授">副教授</option>
+                    <option value="助理教授">助理教授</option>
+                    <option value="讲师">讲师</option>
+                    <option value="助教">助教</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="nbu-form-group">
+                <label for="edit-office-location">办公室</label>
+                <input type="text" id="edit-office-location" placeholder="主教学楼A座301">
+              </div>
+              
+              <div class="nbu-form-group">
+                <label for="edit-office-hours">办公时间</label>
+                <input type="text" id="edit-office-hours" placeholder="周一、三 14:00-16:00">
+              </div>
+              
+              <div class="nbu-form-group">
+                <label for="edit-courses">负责科目（每行一个）</label>
+                <textarea id="edit-courses" rows="3" placeholder="计算机导论&#10;数据结构"></textarea>
+              </div>
+              
+              <div class="nbu-form-group">
+                <label for="edit-degrees">学位信息（每行一个）</label>
+                <textarea id="edit-degrees" rows="3" placeholder="清华大学 计算机科学 博士&#10;北京大学 数学 学士"></textarea>
+              </div>
+            </div>
+            
+            <div class="nbu-modal-footer">
+              <button type="button" onclick="hideEditProfileModal()" class="nbu-cancel-btn">取消</button>
+              <button type="submit" class="nbu-verify-btn">保存资料</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- 注销账户确认模态框 -->
+    <div id="nbu-delete-account-modal" class="nbu-role-modal" style="display: none;">
+      <div class="nbu-modal-overlay">
+        <div class="nbu-modal-content" style="max-width: 500px;">
+          <div class="nbu-modal-header">
+            <h3 style="color: #e74c3c;">⚠️ 确认注销账户</h3>
+            <p>此操作不可撤销，请谨慎操作</p>
+          </div>
+          
+          <div class="nbu-delete-warning">
+            <div class="nbu-warning-item">
+              <strong>🗑️ 将被删除的数据：</strong>
+              <ul>
+                <li>所有资料信息</li>
+                <li>所有关联的账户数据</li>
+              </ul>
+            </div>
+            
+            <div class="nbu-warning-item">
+              <strong>🔐 认证信息：</strong>
+              <ul>
+                <li>Auth0认证记录</li>
+                <li>浏览器本地登录状态</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="nbu-confirm-section">
+            <label>
+              <input type="checkbox" id="confirm-delete">
+              我理解此操作不可撤销，确认删除我的账户
+            </label>
+          </div>
+          
+          <div class="nbu-modal-footer">
+            <button onclick="hideDeleteAccountModal()" class="nbu-cancel-btn">取消</button>
+            <button id="confirm-delete-btn" onclick="deleteUserAccount()" class="btn btn-danger" disabled>
+              确认注销
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+    
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        <!-- 通知图标 -->
+        <div class="nbu-notification-container">
+          <button class="nbu-notification-btn" onclick="toggleNotificationCenter()">
+            <span class="nbu-notification-icon">🔔</span>
+            <span id="notification-badge" class="nbu-notification-badge">0</span>
+          </button>
+          <div id="notification-center" class="nbu-notification-center">
+            <!-- 通知中心内容将通过JS动态加载 -->
+          </div>
+        </div>
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="我的关注"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="我的关注">
+<meta property="og:url" content="http://example.com/follow/following/index.html">
+<meta property="og:site_name" content="美国牛逼大学 NiuBi University of America">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-10-19T02:47:42.672Z">
+<meta property="article:modified_time" content="2025-10-19T02:47:42.672Z">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>我的关注 - 美国牛逼大学 NiuBi University of America</title>
+
+<style>
+  .nbu-role-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nbu-modal-content {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .nbu-modal-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .nbu-modal-header h3 {
+    margin: 0 0 0.5rem 0;
+    color: #2c3e50;
+  }
+
+  .nbu-role-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .nbu-role-card {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+
+  .nbu-role-card:hover {
+    border-color: #3498db;
+    background: #f8f9fa;
+  }
+
+  .nbu-role-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+
+  .nbu-role-info h4 {
+    margin: 0 0 0.25rem 0;
+    color: #2c3e50;
+  }
+
+  .nbu-role-info p {
+    margin: 0 0 0.25rem 0;
+    color: #6c757d;
+    font-size: 0.9rem;
+  }
+
+  .nbu-role-info small {
+    color: #e74c3c;
+    font-weight: 500;
+  }
+
+  .nbu-secret-section {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+
+  .nbu-secret-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .nbu-secret-input input {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .nbu-verify-btn {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .nbu-verify-btn:hover {
+    background: #219a52;
+  }
+
+  .nbu-secret-hint {
+    margin: 0.5rem 0 0 0;
+    font-size: 0.85rem;
+    color: #7f8c8d;
+  }
+
+  .nbu-modal-footer {
+    text-align: center;
+  }
+
+  .nbu-cancel-btn {
+    background: #95a5a6;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .nbu-cancel-btn:hover {
+    background: #7f8c8d;
+  }
+
+  /* 资料编辑表单样式 */
+  .nbu-form-section {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .nbu-form-section h4 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    font-size: 1.1rem;
+  }
+
+  .nbu-form-group {
+    margin-bottom: 1rem;
+  }
+
+  .nbu-form-row {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nbu-form-row .nbu-form-group {
+    flex: 1;
+  }
+
+  .nbu-form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #2c3e50;
+  }
+
+  .nbu-form-group input,
+  .nbu-form-group select,
+  .nbu-form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .nbu-form-group input:focus,
+  .nbu-form-group select:focus,
+  .nbu-form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+  }
+
+  .nbu-form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  /* 头像上传样式 */
+  .nbu-avatar-preview {
+      text-align: center;
+  }
+
+  .nbu-upload-options {
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 1rem;
+      background: #f8f9fa;
+  }
+
+  .btn-outline-primary {
+      border-color: #3498db;
+      color: #3498db;
+  }
+
+  .btn-outline-primary:hover {
+      background-color: #3498db;
+      color: white;
+  }
+
+  .progress {
+      background-color: #e9ecef;
+      border-radius: 4px;
+      overflow: hidden;
+  }
+
+  .progress-bar {
+      background-color: #3498db;
+      transition: width 0.3s ease;
+  }
+
+  /* 头像容器 - 强制尺寸和样式 */
+  .nbu-avatar-container {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      flex-shrink: 0;
+  }
+
+  .nbu-profile-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      background: #f8f9fa;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .nbu-avatar-frame {
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+  }
+
+  /* 导航栏头像强制样式 */
+  #nbu-user-avatar {
+      width: 28px !important;
+      height: 28px !important;
+      object-fit: cover !important;
+      border-radius: 50% !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  }
+
+  /* 编辑模态框中的头像预览 */
+  #avatar-preview {
+      width: 80px !important;
+      height: 80px !important;
+      object-fit: cover !important;
+      border-radius: 50% !important;
+      border: 2px solid #ddd !important;
+      background: #f8f9fa;
+  }
+
+  /* 响应式调整 */
+  @media (max-width: 768px) {
+      .nbu-avatar-container {
+          width: 100px;
+          height: 100px;
+      }
+      
+      .nbu-profile-avatar {
+          border-width: 3px;
+      }
+  }
+
+  /* 移动端适配 */
+  @media (max-width: 768px) {
+    .nbu-modal-content {
+      padding: 1.5rem;
+      margin: 1rem;
+    }  
+    .nbu-role-card {
+      flex-direction: column;
+      text-align: center;
+    } 
+    .nbu-role-icon {
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+    }
+    .nbu-form-row {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
+  /* 注销账户样式 */
+  .nbu-profile-actions {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e9ecef;
+  }
+
+  .nbu-danger-zone {
+      padding: 1.5rem;
+      background: #fff5f5;
+      border: 1px solid #fed7d7;
+      opacity: 0.95;
+      border-radius: 8px;
+  }
+
+  .nbu-danger-zone h4 {
+      color: #c53030;
+      margin-bottom: 0.5rem;
+  }
+
+  .nbu-delete-warning {
+      background: #fff5f5;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+      border-left: 4px solid #e53e3e;
+  }
+
+  .nbu-warning-item {
+      margin-bottom: 1rem;
+  }
+
+  .nbu-warning-item:last-child {
+      margin-bottom: 0;
+  }
+
+  .nbu-warning-item ul {
+      margin: 0.5rem 0 0 1rem;
+      color: #744210;
+  }
+
+  .nbu-warning-item li {
+      margin-bottom: 0.25rem;
+  }
+
+  .nbu-confirm-section {
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: #f7fafc;
+      border-radius: 8px;
+  }
+
+  .nbu-confirm-section label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      cursor: pointer;
+  }
+
+  .nbu-confirm-section input[type="checkbox"] {
+      margin-top: 0.2rem;
+  }
+
+  .btn-danger {
+      background: #e53e3e;
+      border-color: #e53e3e;
+  }
+
+  .btn-danger:hover:not(:disabled) {
+      background: #c53030;
+      border-color: #c53030;
+  }
+
+  .btn-danger:disabled {
+      background: #a0aec0;
+      border-color: #a0aec0;
+      cursor: not-allowed;
+  }
+
+  /* 学号样式 */
+  .nbu-student-id-preview {
+      padding: 1rem;
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+  }
+
+  .nbu-student-id-display {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  .nbu-student-id {
+      font-family: 'Courier New', monospace;
+      font-weight: bold;
+      font-size: 1.1rem;
+  }
+
+  .nbu-student-id.generating {
+      color: #f59e0b;
+  }
+
+  .nbu-student-id.generated {
+      color: #059669;
+  }
+
+  .nbu-student-id.error {
+      color: #dc2626;
+  }
+
+  /* 专业搜索下拉框样式 */
+  .nbu-search-select {
+      position: relative;
+  }
+
+  .nbu-search-select input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+  }
+
+  .nbu-search-select input:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+  }
+
+  .nbu-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      max-height: 300px;
+      overflow-y: auto;
+  }
+
+  .nbu-dropdown-list {
+      padding: 0.5rem 0;
+  }
+
+  .nbu-category-header {
+      padding: 0.5rem 1rem;
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #6c757d;
+      font-size: 0.85rem;
+      border-bottom: 1px solid #e9ecef;
+  }
+
+  .nbu-dropdown-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      border-bottom: 1px solid #f8f9fa;
+  }
+
+  .nbu-dropdown-item:hover {
+      background: #f8f9fa;
+  }
+
+  .nbu-dropdown-item:last-child {
+      border-bottom: none;
+  }
+
+  .nbu-major-name {
+      flex: 1;
+  }
+
+  .nbu-major-code {
+      background: #e9ecef;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-family: 'Courier New', monospace;
+  }
+
+  .nbu-dropdown-empty {
+      padding: 2rem 1rem;
+      text-align: center;
+      color: #6c757d;
+  }
+
+  /* 高亮文本 */
+  mark {
+      background: #fff3cd;
+      padding: 0.1rem 0.2rem;
+      border-radius: 2px;
+  }
+
+  /* 滚动条样式 */
+  .nbu-dropdown::-webkit-scrollbar {
+      width: 6px;
+  }
+
+  .nbu-dropdown::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 3px;
+  }
+
+  .nbu-dropdown::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 3px;
+  }
+
+  .nbu-dropdown::-webkit-scrollbar-thumb:hover {
+      background: #a8a8a8;
+  }
+
+  /* 查看他人资料样式 */
+  .nbu-viewing-other {
+      background: #e3f2fd;
+      color: #1976d2;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin-top: 0.5rem;
+  }
+
+  .nbu-profile-actions .btn {
+      margin-right: 0.5rem;
+  }
+
+  .nbu-profile-actions .btn:last-child {
+      margin-right: 0;
+  }
+  /* NBU简介区块样式 */
+  .nbu-intro-section {
+      background: linear-gradient(135deg, #0F6D6C 0%, #111E74 100%);
+      color: white;
+      padding: 4rem 0;
+      margin-bottom: 3rem;
+  }
+
+  .nbu-intro-header {
+      text-align: center;
+      margin-bottom: 3rem;
+  }
+
+  .nbu-intro-header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+  }
+
+  .nbu-intro-header .lead {
+      font-size: 1.5rem;
+      opacity: 0.9;
+      font-style: italic;
+  }
+
+  .nbu-intro-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+      align-items: start;
+  }
+
+  .nbu-intro-text h2 {
+      color: #ffd700;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+  }
+
+  .nbu-intro-text h3 {
+      color: #a8e6cf;
+      margin: 2rem 0 1rem 0;
+      font-size: 1.4rem;
+  }
+
+  .nbu-intro-text p {
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+  }
+
+  .nbu-intro-text ul {
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+  }
+
+  .nbu-intro-text li {
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+  }
+
+  .nbu-intro-text strong {
+      color: #ffd700;
+  }
+
+  .nbu-intro-stats {
+      display: flex;
+      gap: 2rem;
+      margin: 2rem 0;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+  }
+
+  .stat-item {
+      text-align: center;
+      flex: 1;
+  }
+
+  .stat-number {
+      display: block;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #ffd700;
+  }
+
+  .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 768px) {
+      .nbu-intro-header h1 {
+          font-size: 2rem;
+      }
+      
+      .nbu-intro-header .lead {
+          font-size: 1.2rem;
+      }
+      
+      .nbu-intro-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+      }
+      
+      .nbu-intro-stats {
+          flex-direction: column;
+          gap: 1rem;
+      }
+  }
+
+    .navbar-logo {
+      height: 50px;
+      width: auto;
+      margin-right: 5px;
+  }
+
+  .intro-logo {
+      height: 80px;
+      margin-bottom: 1rem;
+  }
+  /* 导出功能样式 */
+  .nbu-export-options {
+      margin: 1.5rem 0;
+      padding: 1.5rem;
+      background: #f8f9fa;
+      opacity: 0.98;
+      border-radius: 8px;
+      border-left: 4px solid #3498db;
+  }
+
+  .nbu-export-options h4 {
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+  }
+
+  .export-buttons {
+      display: flex;
+      gap: 0.75rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+  }
+
+  .export-buttons .btn {
+      flex: 1;
+      min-width: 120px;
+  }
+
+  /* 响应式调整 */
+  @media (max-width: 768px) {
+      .export-buttons {
+          flex-direction: column;
+      }
+      
+      .export-buttons .btn {
+          min-width: auto;
+      }
+  }
+
+  .nbu-profile-role{
+      margin-bottom: 1px;
+  }
+
+  .nbu-detail-section h4{
+      margin-top: 11px;
+      margin-bottom: 5px;
+  }
+
+  /* 社交功能样式 */
+  .nbu-social-stats {
+      display: flex;
+      justify-content: left;
+      gap: 0.6rem;
+      padding: 0.2rem;
+  }
+
+  .nbu-stat-item {
+      text-align: left;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+  }
+
+  .nbu-stat-item:hover {
+      transform: translateY(-2px);
+  }
+
+  .nbu-stat-number {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #719cc6;
+  }
+
+  .nbu-stat-label {
+      font-size: 0.65rem;
+      color: #d3e3f0;
+  }
+
+  .nbu-social-actions {
+      margin-top: 5px;
+      margin-bottom: 12px;
+      margin-left: 18px;
+      text-align: left;
+  }
+
+  .nbu-follow-btn {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 0.46rem 1.4rem;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-width: 100px;
+  }
+
+  .nbu-follow-btn:hover {
+      background: #2980b9;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+  }
+
+  .nbu-follow-btn.following {
+      background: #27ae60;
+  }
+
+  .nbu-follow-btn.following:hover {
+      background: #219a52;
+  }
+
+  .nbu-follow-btn:disabled {
+      background: #bdc3c7;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+  }
+
+  /* 加载动画 */
+  .nbu-loading {
+      opacity: 0.7;
+      pointer-events: none;
+  }
+
+  .nbu-loading::after {
+      content: '...';
+      animation: loading-dots 1.5s infinite;
+  }
+
+  @keyframes loading-dots {
+      0%, 20% { content: '.'; }
+      40% { content: '..'; }
+      60%, 100% { content: '...'; }
+  }
+
+    /* 点赞点踩按钮样式 */
+  .nbu-reaction-actions {
+      padding: 1rem 0.8rem;
+      text-align: center;
+  }
+
+  .nbu-reaction-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 0.5rem;
+  }
+
+  .nbu-reaction-btn {
+      width: 80px;
+      height: 80px;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .nbu-reaction-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .nbu-reaction-btn:active {
+      transform: translateY(-1px) scale(1.02);
+  }
+
+  .nbu-reaction-btn.active {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  /* 点赞按钮样式 */
+  .nbu-like-btn {
+      background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+      color: white;
+  }
+
+  .nbu-like-btn:hover {
+      background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+  }
+
+  .nbu-like-btn.active {
+      background: linear-gradient(135deg, #3d8b40 0%, #357a38 100%);
+      box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+  }
+
+  /* 点踩按钮样式 */
+  .nbu-dislike-btn {
+      background: linear-gradient(135deg, #f44336 0%, #da190b 100%);
+      color: white;
+  }
+
+  .nbu-dislike-btn:hover {
+      background: linear-gradient(135deg, #da190b 0%, #c41408 100%);
+  }
+
+  .nbu-dislike-btn.active {
+      background: linear-gradient(135deg, #c41408 0%, #ad1207 100%);
+      box-shadow: 0 6px 20px rgba(244, 67, 54, 0.4);
+  }
+
+  .nbu-reaction-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.25rem;
+      display: block;
+  }
+
+  .nbu-reaction-count {
+      font-size: 0.85rem;
+      font-weight: 600;
+      opacity: 0.9;
+  }
+
+  .nbu-reaction-hint {
+      color: #6c757d;
+      font-size: 0.9rem;
+  }
+
+  /* 按钮禁用状态 */
+  .nbu-reaction-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .nbu-reaction-btn:disabled:hover {
+      transform: none !important;
+  }
+
+  /* 脉冲动画效果 */
+  @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+  }
+
+  .nbu-reaction-btn.pulse {
+      animation: pulse 0.3s ease;
+  }
+
+  /* 移动端适配 */
+  @media (max-width: 768px) {
+      .nbu-reaction-buttons {
+          gap: 1.5rem;
+      }
+      
+      .nbu-reaction-btn {
+          width: 70px;
+          height: 70px;
+          font-size: 1.3rem;
+      }
+      
+      .nbu-reaction-icon {
+          font-size: 1.5rem;
+      }
+  }
+  .navbar-logo {
+      transition: transform 0.3s ease;
+  }
+
+  .navbar-logo:hover {
+      transform: scale(1.1);
+  }
+  .intro-logo {
+      animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+  }
+  /* 深色模式适配 */
+  [data-color-scheme="dark"] .navbar-logo {
+      filter: brightness(1.2);
+  }
+
+    /* 评论功能样式 */
+  .nbu-comments-section {
+      padding: 2rem 1.5rem;
+      border-top: 1px solid #e9ecef;
+      background: #fafbfc;
+      opacity: 0.98;
+  }
+
+  .nbu-comments-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid #e9ecef;
+  }
+
+  .nbu-comments-header h4 {
+      margin: 0;
+      color: #2c3e50;
+      font-size: 1.25rem;
+  }
+
+  .nbu-comments-count {
+      color: #6c757d;
+      font-size: 0.9rem;
+  }
+
+  /* 评论表单 */
+  .nbu-comment-form {
+      margin-bottom: 2rem;
+  }
+
+  .nbu-comment-input-container {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .nbu-comment-input-container textarea {
+      width: 100%;
+      border: none;
+      resize: vertical;
+      font-size: 1rem;
+      line-height: 1.5;
+      min-height: 80px;
+      outline: none;
+      font-family: inherit;
+  }
+
+  .nbu-comment-input-container textarea::placeholder {
+      color: #9ca3af;
+  }
+
+  .nbu-comment-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid #f1f3f4;
+  }
+
+  .nbu-comment-counter {
+      color: #6c757d;
+      font-size: 0.85rem;
+  }
+
+  .nbu-comment-counter.warning {
+      color: #e74c3c;
+  }
+
+  .nbu-comment-submit {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 0.5rem 1.5rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+  }
+
+  .nbu-comment-submit:hover:not(:disabled) {
+      background: #2980b9;
+      transform: translateY(-1px);
+  }
+
+  .nbu-comment-submit:disabled {
+      background: #bdc3c7;
+      cursor: not-allowed;
+      transform: none;
+  }
+
+  /* 评论列表 */
+  .nbu-comments-list {
+      space-y: 1rem;
+  }
+
+  .nbu-comments-loading {
+      text-align: center;
+      padding: 2rem;
+      color: #6c757d;
+  }
+
+  .nbu-loading-spinner {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #f3f3f3;
+      border-top: 2px solid #3498db;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 0.5rem;
+  }
+
+  @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+  }
+
+  .nbu-comment-item {
+      background: white;
+      border: 1px solid #e9ecef;
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .nbu-comment-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+  }
+
+.nbu-comment-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 0.05rem;
+    object-fit: cover;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.nbu-comment-user-link:hover .nbu-comment-avatar {
+    border-color: #3498db;
+    transform: scale(1.1);
+}
+
+/* 点击动画 */
+@keyframes avatar-click {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+.nbu-comment-avatar:active {
+    animation: avatar-click 0.2s ease;
+}
+
+.nbu-comment-author:active {
+    color: #2980b9;
+}
+
+  .nbu-comment-author {
+      font-weight: 600;
+      color: #2c3e50;
+      font-size: 0.95rem;
+  }
+
+  .nbu-comment-time {
+      color: #6c757d;
+      font-size: 0.8rem;
+      margin-left: auto;
+  }
+
+  .nbu-comment-content {
+      color: #374151;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+      white-space: pre-wrap;
+      word-break: break-word;
+  }
+
+  .nbu-comment-actions {
+      display: flex;
+      justify-content: flex-end;
+  }
+
+  .nbu-comment-delete {
+      background: none;
+      border: none;
+      color: #e74c3c;
+      font-size: 0.8rem;
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      transition: background 0.2s ease;
+  }
+
+  .nbu-comment-delete:hover {
+      background: #fee;
+  }
+
+  .nbu-comment-own {
+      border-left: 4px solid #3498db;
+  }
+
+  .nbu-empty-comments {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: #6c757d;
+  }
+
+  .nbu-empty-comments .nbu-empty-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+  }
+
+  /* 移动端适配 */
+  @media (max-width: 768px) {
+      .nbu-comments-section {
+          padding: 1.5rem 1rem;
+      }
+      
+      .nbu-comments-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+      }
+      
+      .nbu-comment-item {
+          padding: 1rem;
+      }
+      
+      .nbu-comment-actions {
+          flex-direction: column;
+          gap: 0.5rem;
+          align-items: flex-end;
+      }
+  }
+
+    /* 评论用户链接样式 */
+  .nbu-comment-user-link {
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+  }
+
+  .nbu-comment-user-link:hover {
+      text-decoration: none;
+  }
+
+  .nbu-comment-user-link:hover .nbu-comment-avatar {
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .nbu-comment-user-link:hover .nbu-comment-author {
+      color: #3498db;
+      transform: translateX(2px);
+  }
+
+  .nbu-comment-header .nbu-comment-user-link:first-child {
+      margin-right: 0.75rem;
+  }
+
+  .nbu-comment-header .nbu-comment-user-link:last-child {
+      margin-right: auto;
+  }
+
+  .nbu-comment-author {
+      transition: all 0.2s ease;
+      font-weight: 600;
+      color: #2c3e50;
+      cursor: pointer;
+  }
+
+  /* 防止链接样式影响布局 */
+  .nbu-comment-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+  }
+
+  .nbu-comment-header .nbu-comment-user-link {
+      display: flex;
+      align-items: center;
+  }
+
+  /* 自己评论的链接样式 */
+  .nbu-comment-self {
+      pointer-events: auto; /* 保持可点击，但可以有不同的样式 */
+  }
+
+  .nbu-comment-self:hover .nbu-comment-author {
+      color: #27ae60; /* 绿色表示自己 */
+  }
+
+  .nbu-comment-self:hover .nbu-comment-avatar {
+      border-color: #27ae60;
+  }
+
+  /* 工具提示 */
+  .nbu-comment-user-link {
+      position: relative;
+  }
+
+  .nbu-comment-user-link::after {
+      content: '查看资料';
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 1000;
+  }
+
+  .nbu-comment-user-link:hover::after {
+      opacity: 1;
+  }
+
+  /* 通知系统样式 */
+  .nbu-notification-container {
+    position: relative;
+    margin-right: 1rem;
+  }
+
+  .nbu-notification-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.2rem;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+    position: relative;
+  }
+
+  .nbu-notification-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .nbu-notification-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+
+  .nbu-notification-center {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 350px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: none;
+    max-height: 500px;
+    overflow-y: auto;
+  }
+
+  .nbu-notification-center.show {
+    display: block;
+  }
+
+  .nbu-notification-header {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nbu-notification-header h5 {
+    margin: 0;
+    color: #2c3e50;
+  }
+
+  .nbu-mark-all-read {
+    background: none;
+    border: none;
+    color: #3498db;
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .nbu-mark-all-read:hover {
+    background: #f8f9fa;
+  }
+
+  .nbu-notification-list {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .nbu-notification-item {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #f8f9fa;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .nbu-notification-item:hover {
+    background: #f8f9fa;
+  }
+
+  .nbu-notification-item.unread {
+    background: #f0f7ff;
+    border-left: 3px solid #3498db;
+  }
+
+  .nbu-notification-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .nbu-notification-content {
+    flex: 1;
+  }
+
+  .nbu-notification-message {
+    color: #2c3e50;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 0.25rem;
+  }
+
+  .nbu-notification-time {
+    color: #6c757d;
+    font-size: 0.75rem;
+  }
+
+  .nbu-notification-type {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+  }
+
+  .nbu-notification-type.follow { background: #3498db; }
+  .nbu-notification-type.like { background: #27ae60; }
+  .nbu-notification-type.dislike { background: #e74c3c; }
+  .nbu-notification-type.comment { background: #f39c12; }
+
+  .nbu-notification-empty {
+    padding: 2rem 1.25rem;
+    text-align: center;
+    color: #6c757d;
+  }
+
+  .nbu-notification-empty .nbu-empty-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.5;
+  }
+
+  /* 移动端适配 */
+  @media (max-width: 768px) {
+    .nbu-notification-center {
+      width: 300px;
+      right: -50px;
+    }
+  }
+
+</style>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+    
+    <!-- 引入关注列表CSS -->
+    <link rel="stylesheet" href="/css/follow-list.css">
+</head>
+<body>
+    <main class="container follow-container">
+        <!-- 返回按钮 -->
+        <a href="/profile/" class="back-btn">
+            ← 返回个人主页
+        </a>
+        
+        <div class="follow-header">
+            <h1 id="page-title">加载中...</h1>
+            <p id="page-subtitle" class="lead"></p>
+        </div>
+        <!-- 导航 -->
+        <div class="follow-nav">
+            <a href="/follow/following/" class="follow-nav-btn" id="following-btn">我的关注</a>
+            <a href="/follow/followers/" class="follow-nav-btn" id="followers-btn">我的粉丝</a>
+        </div>
+        
+        <!-- 列表容器 -->
+        <div id="follow-list" class="follow-list">
+            <div class="loading-state">
+                <h3>加载中...</h3>
+                <p>正在获取数据</p>
+            </div>
+        </div>
+    </main>
+    
+    <div class="footer-inner">
+  
+    <div class="footer-links">
+    <a href="/members/" class="footer-link">
+        👥 社区成员
+    </a>
+</div>
+  
+  
+  
+</div>
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+<!-- NBU用户认证逻辑 -->
+<script>
+    // 确保Auth0库已加载后再执行
+    if (typeof auth0 !== 'undefined') {
+        // 动态创建脚本元素加载认证逻辑
+        var script = document.createElement('script');
+        script.src = '/js/nbu-auth.js';
+        document.head.appendChild(script);
+    } else {
+        console.warn('Auth0库未加载，跳过认证逻辑初始化');
+    }
+</script>
+<script src="/js/nbu-profile-display.js"></script>
+<script src="/js/nbu-social.js"></script>
+<script src="/js/nbu-upload.js"></script>
+
+    
+    <!-- 引入关注列表JS -->
+    <script src="/js/follow-list.js"></script>
+    <script>
+        // 页面加载后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            const followType = 'following';
+            window.followListManager = new FollowListManager(followType);
+        });
+    </script>
+</body>
+</html>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-links">
+    <a href="/members/" class="footer-link">
+        👥 社区成员
+    </a>
+</div>
+  
+  
+  
+</div>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+<!-- NBU用户认证逻辑 -->
+<script>
+    // 确保Auth0库已加载后再执行
+    if (typeof auth0 !== 'undefined') {
+        // 动态创建脚本元素加载认证逻辑
+        var script = document.createElement('script');
+        script.src = '/js/nbu-auth.js';
+        document.head.appendChild(script);
+    } else {
+        console.warn('Auth0库未加载，跳过认证逻辑初始化');
+    }
+</script>
+<script src="/js/nbu-profile-display.js"></script>
+<script src="/js/nbu-social.js"></script>
+<script src="/js/nbu-upload.js"></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

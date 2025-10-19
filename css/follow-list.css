@@ -1,0 +1,243 @@
+/* 关注列表样式 */
+.follow-container {
+    min-height: 80vh;
+    padding: 2rem 0;
+}
+
+.follow-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.follow-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.follow-nav-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #3498db;
+    background: white;
+    color: #3498db;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.follow-nav-btn.active {
+    background: #3498db;
+    color: white;
+}
+
+.follow-nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+    text-decoration: none;
+    color: #3498db;
+}
+
+.follow-nav-btn.active:hover {
+    color: white;
+}
+
+.follow-list {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.follow-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    transition: transform 0.2s ease;
+}
+
+.follow-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.follow-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #f8f9fa;
+    flex-shrink: 0;
+}
+
+.follow-info {
+    flex: 1;
+    min-width: 0; /* 防止文本溢出 */
+}
+
+.follow-name {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.1rem;
+    color: #2c3e50;
+}
+
+.follow-role {
+    margin: 0;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.follow-meta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.85rem;
+    color: #6c757d;
+    background: #f8f9fa;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.follow-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.action-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    white-space: nowrap;
+}
+
+.action-btn.primary {
+    background: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+.action-btn.danger {
+    background: #e74c3c;
+    color: white;
+    border-color: #e74c3c;
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+    text-decoration: none;
+    color: inherit;
+}
+
+.action-btn.primary:hover {
+    background: #2980b9;
+    color: white;
+}
+
+.action-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #6c757d;
+}
+
+.empty-state a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.empty-state a:hover {
+    text-decoration: underline;
+}
+
+.loading-state {
+    text-align: center;
+    padding: 3rem;
+    color: #6c757d;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.back-btn:hover {
+    text-decoration: underline;
+    color: #2980b9;
+}
+
+/* 加载动画 */
+.nbu-loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.nbu-loading::after {
+    content: '...';
+    animation: loading-dots 1.5s infinite;
+}
+
+@keyframes loading-dots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60%, 100% { content: '...'; }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .follow-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .follow-info {
+        text-align: center;
+    }
+    
+    .follow-actions {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .follow-meta {
+        justify-content: center;
+    }
+    
+    .follow-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .follow-nav-btn {
+        width: 200px;
+        text-align: center;
+    }
+}

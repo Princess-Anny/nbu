@@ -242,8 +242,77 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// 账户注销功能
-function showDeleteAccountModal() {
+// 加载用户数据统计
+async function loadUserDataStats() {
+    const statsContainer = document.getElementById('user-data-stats');
+    if (!statsContainer || !currentUserProfile) return;
+    
+    try {
+        statsContainer.innerHTML = `
+            <div class="nbu-stats-loading">
+                <div class="nbu-loading-spinner"></div>
+                <span>正在统计用户数据...</span>
+            </div>
+        `;
+        
+        const stats = await socialManager.getUserDataStats(currentUserProfile.auth0_user_id);
+        
+        if (!stats) {
+            statsContainer.innerHTML = `<div style="text-align: center; color: #6c757d;">数据统计加载失败</div>`;
+            return;
+        }
+        
+        statsContainer.innerHTML = `
+            <div class="nbu-stat-section">
+                <div class="nbu-stat-section-title">社交关系</div>
+                <div class="nbu-stats-grid">
+                    <div class="nbu-stat-row">
+                        <span class="nbu-stat-label">关注关系</span>
+                        <span class="nbu-stat-value">${stats.follows} 条</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="nbu-stat-section">
+                <div class="nbu-stat-section-title">互动记录</div>
+                <div class="nbu-stats-grid">
+                    <div class="nbu-stat-row">
+                        <span class="nbu-stat-label">给出的反应</span>
+                        <span class="nbu-stat-value">${stats.reactionsGiven} 个</span>
+                    </div>
+                    <div class="nbu-stat-row">
+                        <span class="nbu-stat-label">收到的反应</span>
+                        <span class="nbu-stat-value">${stats.reactionsReceived} 个</span>
+                    </div>
+                    <div class="nbu-stat-row">
+                        <span class="nbu-stat-label">写过的评论</span>
+                        <span class="nbu-stat-value">${stats.commentsWritten} 条</span>
+                    </div>
+                    <div class="nbu-stat-row">
+                        <span class="nbu-stat-label">收到的评论</span>
+                        <span class="nbu-stat-value">${stats.commentsReceived} 条</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="nbu-stat-section">
+                <div class="nbu-stat-section-title">总计</div>
+                <div class="nbu-stat-row">
+                    <span class="nbu-stat-label">所有待删除数据</span>
+                    <span class="nbu-stat-value" style="color: #e74c3c;">
+                        ${stats.follows + stats.reactionsGiven + stats.reactionsReceived + stats.commentsWritten + stats.commentsReceived} 条记录
+                    </span>
+                </div>
+            </div>
+        `;
+        
+    } catch (error) {
+        console.error('❌ 加载用户数据统计失败:', error);
+        statsContainer.innerHTML = `<div style="text-align: center; color: #e74c3c;">数据统计加载失败</div>`;
+    }
+}
+
+async function showDeleteAccountModal() {
     const modal = document.getElementById('nbu-delete-account-modal');
     if (modal) {
         modal.style.display = 'flex';
@@ -252,13 +321,15 @@ function showDeleteAccountModal() {
         document.getElementById('confirm-delete').checked = false;
         document.getElementById('confirm-delete-btn').disabled = true;
         
+        // 加载用户数据统计
+        await loadUserDataStats();
+        
         // 添加确认检查
         document.getElementById('confirm-delete').addEventListener('change', function() {
             document.getElementById('confirm-delete-btn').disabled = !this.checked;
         });
     }
 }
-
 function hideDeleteAccountModal() {
     const modal = document.getElementById('nbu-delete-account-modal');
     if (modal) {
@@ -275,31 +346,50 @@ async function deleteUserAccount() {
     const userId = currentUserProfile.auth0_user_id;
     const cleanUserId = sanitizeUserId(userId);
     
-    if (!confirm('⚠️ 最后确认：确定要永久删除账户吗？此操作不可撤销！')) {
+    if (!confirm('⚠️ 最后确认：确定要永久删除账户和所有数据吗？此操作不可撤销！')) {
         return;
     }
     
+    const confirmBtn = document.getElementById('confirm-delete-btn');
+    
     try {
+        confirmBtn.disabled = true;
+        confirmBtn.textContent = '删除中...';
+        
         console.log("🗑️ 开始删除用户账户:", userId);
         
         // 1. 删除Supabase存储的头像文件
         await deleteUserAvatars(cleanUserId);
         
-        // 2. 删除用户资料记录
+        // 2. 删除所有社交数据
+        await socialManager.deleteAllUserData(userId);
+        
+        // 3. 删除用户资料记录
         await deleteUserProfile(userId);
         
-        // 3. 退出登录
+        // 4. 退出登录
         await nbuHandleLogout();
         
-        // 4. 显示成功消息
-        alert('✅ 账户已成功注销！');
+        // 5. 显示成功消息
+        alert('✅ 账户及所有数据已成功注销！');
         
-        // 5. 跳转到首页
+        // 6. 跳转到首页
         window.location.href = '/';
         
     } catch (error) {
         console.error('❌ 注销账户失败:', error);
-        alert('❌ 注销失败: ' + error.message);
+        
+        // 恢复按钮状态
+        confirmBtn.disabled = false;
+        confirmBtn.textContent = '确认注销';
+        
+        // 显示详细错误信息
+        let errorMessage = '注销失败: ' + error.message;
+        if (error.message.includes('部分数据删除失败')) {
+            errorMessage += '\n\n部分数据可能未被完全删除，请联系管理员。';
+        }
+        
+        alert(errorMessage);
     }
 }
 
