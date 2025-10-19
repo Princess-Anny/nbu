@@ -689,7 +689,7 @@
     .navbar-logo {
       height: 50px;
       width: auto;
-      margin-right: 8px;
+      margin-right: 5px;
   }
 
   .intro-logo {
@@ -733,7 +733,33 @@
           min-width: auto;
       }
   }
+  .nbu-profile-role{
+      margin-bottom: 1px;
+  }
 
+  .nbu-detail-section h4{
+      margin-top: 11px;
+      margin-bottom: 5px;
+  }
+  .navbar-logo {
+      transition: transform 0.3s ease;
+  }
+
+  .navbar-logo:hover {
+      transform: scale(1.1);
+  }
+  .intro-logo {
+      animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+  }
+  /* 深色模式适配 */
+  [data-color-scheme="dark"] .navbar-logo {
+      filter: brightness(1.2);
+  }
 </style>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
@@ -1958,7 +1984,7 @@
     .navbar-logo {
       height: 50px;
       width: auto;
-      margin-right: 8px;
+      margin-right: 5px;
   }
 
   .intro-logo {
@@ -2002,7 +2028,33 @@
           min-width: auto;
       }
   }
+  .nbu-profile-role{
+      margin-bottom: 1px;
+  }
 
+  .nbu-detail-section h4{
+      margin-top: 11px;
+      margin-bottom: 5px;
+  }
+  .navbar-logo {
+      transition: transform 0.3s ease;
+  }
+
+  .navbar-logo:hover {
+      transform: scale(1.1);
+  }
+  .intro-logo {
+      animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+  }
+  /* 深色模式适配 */
+  [data-color-scheme="dark"] .navbar-logo {
+      filter: brightness(1.2);
+  }
 </style>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
@@ -2770,6 +2822,8 @@
         });
     </script>
     <script src="/js/nbu-profile-display.js"></script>
+    <script src="/js/nbu-export.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 </body>
 </html>
               </div>
