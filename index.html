@@ -4037,7 +4037,7 @@
                 <p>参与讲座、节日庆典、社交活动，丰富你的校园生活</p>
                 <div class="explore-stats">
                     <span class="stat">
-                        <strong id="upcoming-events-count">0</strong> 个即将开始
+                        <strong id="upcoming-events-count">--</strong> 个即将开始
                     </span>
                 </div>
                 <a href="/events/" class="btn btn-primary">查看活动</a>
@@ -4050,7 +4050,7 @@
                 <p>获取课件、笔记、学习资料，助力你的学术成长</p>
                 <div class="explore-stats">
                     <span class="stat">
-                        <strong id="recent-resources-count">0</strong> 份新资料
+                        <strong id="recent-resources-count">--</strong> 份新资料
                     </span>
                 </div>
                 <a href="/resources/" class="btn btn-primary">学习资料</a>
@@ -4063,7 +4063,7 @@
                 <p>认识NBU的学生、教职人员和访客，扩展你的社交网络</p>
                 <div class="explore-stats">
                     <span class="stat">
-                        <strong id="total-members-count">0</strong> 位成员
+                        <strong id="total-members-count">--</strong> 位成员
                     </span>
                 </div>
                 <a href="/members/" class="btn btn-primary">认识大家</a>
@@ -4126,13 +4126,27 @@
           document.getElementById('intro-total-members').textContent = total;
           document.getElementById('intro-active-students').textContent = students;
           document.getElementById('intro-faculty-count').textContent = faculty;
-          
+          document.getElementById('total-members-count').textContent = total;      
       } catch (error) {
           console.error('❌ 更新首页统计失败:', error);
           // 设置默认值
           document.getElementById('intro-total-members').textContent = '50+';
           document.getElementById('intro-active-students').textContent = '40+';
           document.getElementById('intro-faculty-count').textContent = '10+';
+      }
+
+      try{
+          const { data: events, error } = await supabaseAdmin_i
+              .from('campus_events')
+              .select('*')
+          
+          if (error) throw error;
+          const len = events.length;
+          document.getElementById('upcoming-events-count').textContent = len; 
+      } catch (error) {
+          console.error('❌ 更新探索NBU统计失败:', error);
+          // 设置默认值
+          document.getElementById('upcoming-events-count').textContent = '0';
       }
   }
 
