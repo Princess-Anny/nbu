@@ -20,15 +20,17 @@
   <meta name="keywords" content="">
   
     <meta property="og:type" content="website">
-<meta property="og:title" content="美国牛逼大学 NiuBi University of America">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:title" content="NBU Open Courses">
+<meta property="og:url" content="http://example.com/resources/index.html">
 <meta property="og:site_name" content="美国牛逼大学 NiuBi University of America">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-10-23T20:52:33.385Z">
+<meta property="article:modified_time" content="2025-10-23T20:52:33.385Z">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>美国牛逼大学 NiuBi University of America</title>
+  <title>NBU Open Courses - 美国牛逼大学 NiuBi University of America</title>
 
 <style>
   .nbu-role-modal {
@@ -2208,7 +2210,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="美国牛逼大学 NiuBi University of America"></span>
+            <span id="subtitle" data-typed-text="NBU Open Courses"></span>
           
         </div>
 
@@ -2237,10 +2239,7 @@
           <div class="container">
             <div class="row">
               <div class="col-12 col-md-10 m-auto">
-                
-
-<!-- NBU简介区块 -->
-<!DOCTYPE html>
+                <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     
@@ -2260,15 +2259,17 @@
   <meta name="keywords" content="">
   
     <meta property="og:type" content="website">
-<meta property="og:title" content="美国牛逼大学 NiuBi University of America">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:title" content="NBU Open Courses">
+<meta property="og:url" content="http://example.com/resources/index.html">
 <meta property="og:site_name" content="美国牛逼大学 NiuBi University of America">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-10-23T20:52:33.385Z">
+<meta property="article:modified_time" content="2025-10-23T20:52:33.385Z">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>美国牛逼大学 NiuBi University of America</title>
+  <title>NBU Open Courses - 美国牛逼大学 NiuBi University of America</title>
 
 <style>
   .nbu-role-modal {
@@ -3981,196 +3982,830 @@
   <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
-  
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script>
-        // Supabase配置
-        const supabaseUrl_i = "https://grgpsujmjbeuphwvxhpg.supabase.co";
-        const supabaseServiceKey_i = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdyZ3BzdWptamJldXBod3Z4aHBnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1OTIzNzExNCwiZXhwIjoyMDc0ODEzMTE0fQ.hy4_n74vuailNkPHWkt9YWINfQFsNuwLHNcg7knUlL4";
-        const supabaseAdmin_i = supabase.createClient(supabaseUrl_i, supabaseServiceKey_i);
-    </script>
+    
+    <style>
+        .resources-container {
+            min-height: 80vh;
+            padding: 2rem 0;
+        }
+        
+        .resources-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .upload-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background 0.3s ease;
+        }
+        
+        .upload-btn:hover {
+            background: #219a52;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .filters-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .filter-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .filter-group label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        
+        .filter-group select,
+        .filter-group input {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .search-box {
+            position: relative;
+        }
+        
+        .search-box input {
+            padding-left: 2.5rem;
+            width: 100%;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .resource-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+        
+        .resource-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .resource-type {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .resource-title {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+            line-height: 1.4;
+        }
+        
+        .resource-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #6c757d;
+            font-size: 0.85rem;
+        }
+        
+        .resource-details {
+            padding: 1rem 1.5rem;
+        }
+        
+        .resource-description {
+            color: #5a6c7d;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .resource-stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        
+        .rating-stars {
+            color: #ffc107;
+        }
+        
+        .resource-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .action-btn {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .download-btn {
+            background: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+        
+        .download-btn:hover {
+            background: #2980b9;
+            color: white;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #6c757d;
+            grid-column: 1 / -1;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+        
+        .page-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .page-btn.active {
+            background: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+        
+        .official-badge {
+            background: #ffc107;
+            color: #744210;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+    </style>
 </head>
-<body>
-<section class="nbu-intro-section">
-    <div class="container">
-        <div class="nbu-intro-header">
-            <img src="/img/nbu-logo.png" srcset="/img/loading.gif" lazyload alt="NBU校徽" class="intro-logo">
-            <h1>欢迎来到美国牛逼大学</h1>
-            <p class="lead">Veritas et Awesome</p>
-        </div>
-            
-        <div class="nbu-intro-content">
-            <div class="nbu-intro-text">
-                <h2>🏛️ 关于NBU</h2>
-                <p>美国佛罗里达牛逼国际大学大学成立于1997年，是一所充满活力的新兴公立大学。2010年，我们迎来了来自三十个国家左右的约800名国际学生，在阳光明媚的佛罗里达西南部打造了一个亲切友善的国际化学习社区。我们提供50多个本科专业和10个硕士项目，以小班教学著称，平均班级规模25人。校园内设有6栋四人间公寓式套房学生宿舍。我们在2010年完成了宿舍无线网络覆盖升级，并新建了一个配备计算机实验室的学生活动中心。餐饮服务提供美式餐点和国际风味窗口。
-美国佛罗里达牛逼国际大学欢迎您的加入！</p>
-                <div class="nbu-intro-stats">
-                        <div class="stat-item">
-                        <span class="stat-number" id="intro-total-members">--</span>
-                        <span class="stat-label">社区成员</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" id="intro-active-students">--</span>
-                        <span class="stat-label">在校学生</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" id="intro-faculty-count">--</span>
-                        <span class="stat-label">教职人员</span>
-                    </div>
-                </div>
+<body> 
+    <main class="container resources-container">
+        <div class="resources-header">
+            <div>
+                <h1>📚 学术资源库</h1>
+                <p class="lead">Pro veritas, somniis, et futuro</p>
             </div>
-        </div>
-    </div>
-</section>
-
-<section class="explore-nbu-section">
-    <div class="container">
-        <div class="explore-header text-center">
-            <h2>🌟 探索NBU</h2>
+            <button class="upload-btn" onclick="showUploadModal()">
+                📤 上传资源
+            </button>
         </div>
         
-        <div class="explore-grid">
-            <!-- 校园活动卡片 -->
-            <div class="explore-card">
-                <div class="card-icon">🎉</div>
-                <h3>校园活动</h3>
-                <p>参与讲座、节日庆典、社交活动，丰富你的校园生活</p>
-                <div class="explore-stats">
-                    <span class="stat">
-                        <strong id="upcoming-events-count">--</strong> 个即将开始
-                    </span>
+        <!-- 筛选器 -->
+        <div class="filters-section">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label>搜索资源</label>
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="resource-search" placeholder="搜索资源标题、描述..." autocomplete="off">
+                    </div>
                 </div>
-                <a href="/events/" class="btn btn-primary">查看活动</a>
+                <div class="filter-group">
+                    <label>资源类型</label>
+                    <select id="type-filter">
+                        <option value="">所有类型</option>
+                        <option value="slide">课件讲义</option>
+                        <option value="note">学习笔记</option>
+                        <option value="textbook">教材资料</option>
+                        <option value="assignment">作业答案</option>
+                        <option value="exam">考试资料</option>
+                        <option value="other">其他资源</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>专业</label>
+                    <select id="major-filter">
+                        <option value="">所有专业</option>
+                        <!-- 动态填充 -->
+                    </select>
+                </div>
             </div>
-            
-            <!-- 学术资源卡片 -->
-            <div class="explore-card">
-                <div class="card-icon">📚</div>
-                <h3>学术资源</h3>
-                <p>获取课件、笔记、学习资料，助力你的学术成长</p>
-                <div class="explore-stats">
-                    <span class="stat">
-                        <strong id="recent-resources-count">--</strong> 份资料
-                    </span>
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label>排序方式</label>
+                    <select id="sort-filter">
+                        <option value="newest">最新上传</option>
+                        <option value="popular">最受欢迎</option>
+                        <option value="downloads">下载最多</option>
+                        <option value="rating">评分最高</option>
+                    </select>
                 </div>
-                <a href="/resources/" class="btn btn-primary">学习资料</a>
-            </div>
-            
-            <!-- 社区成员卡片 -->
-            <div class="explore-card">
-                <div class="card-icon">👥</div>
-                <h3>社区成员</h3>
-                <p>认识NBU的学生、教职人员和访客，扩展你的社交网络</p>
-                <div class="explore-stats">
-                    <span class="stat">
-                        <strong id="total-members-count">--</strong> 位成员
-                    </span>
+                <div class="filter-group">
+                    <label>仅显示官方资料</label>
+                    <input type="checkbox" id="official-filter">
                 </div>
-                <a href="/members/" class="btn btn-primary">认识大家</a>
             </div>
         </div>
-    </div>
-</section>
-
-<h1 style="display: none">美国牛逼大学 NiuBi University of America</h1>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
         
-        <a href="/2025/10/19/introduction/" target="_self">
-          
-        </a>
-      </h2>
+        <!-- 资源网格 -->
+        <div id="resources-grid" class="resources-grid">
+            <div class="empty-state">
+                <h3>加载中...</h3>
+            </div>
+        </div>
+        
+        <!-- 分页 -->
+        <div class="pagination" id="pagination" style="display: none;">
+            <!-- 动态生成分页按钮 -->
+        </div>
+    </main>
+    
+    <div class="footer-inner">
+  
+    <div class="footer-links">
+    <a href="/members/" class="footer-link">
+        👥 社区成员
+    </a>
+</div>
+  
+  
+  
+</div>
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
 
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/10/19/introduction/" target="_self">
-        <div>
-          
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-10-19 20:41" pubdate>
-              2025-10-19
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
+        typing(text);
+      
+    })(window, document);
+  </script>
 
 
 
 
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+<!-- NBU用户认证逻辑 -->
 <script>
-  async function updateHomepageStats() {
-      try {
-          const { data: members, error } = await supabaseAdmin_i
-              .from('user_profiles')
-              .select('role');
-          
-          if (error) throw error;
-          
-          const total = members.length;
-          const students = members.filter(m => m.role === 'student').length;
-          const faculty = members.filter(m => m.role === 'faculty').length;
-          
-          document.getElementById('intro-total-members').textContent = total;
-          document.getElementById('intro-active-students').textContent = students;
-          document.getElementById('intro-faculty-count').textContent = faculty;
-          document.getElementById('total-members-count').textContent = total;      
-      } catch (error) {
-          console.error('❌ 更新首页统计失败:', error);
-          // 设置默认值
-          document.getElementById('intro-total-members').textContent = '50+';
-          document.getElementById('intro-active-students').textContent = '40+';
-          document.getElementById('intro-faculty-count').textContent = '10+';
-      }
-
-      try{
-          const { data: events, error } = await supabaseAdmin_i
-              .from('campus_events')
-              .select('*')
-              .eq('status','upcoming')
-          if (error) throw error;
-          const len = events.length;
-          document.getElementById('upcoming-events-count').textContent = len; 
-      } catch (error) {
-          console.error('❌ 更新活动统计失败:', error);
-          // 设置默认值
-          document.getElementById('upcoming-events-count').textContent = '0';
-      }
-
-      try{
-          const { data: resources, error } = await supabaseAdmin_i
-              .from('academic_resources')
-              .select('*')
-          if (error) throw error;
-          const lent = resources.length;
-          document.getElementById('recent-resources-count').textContent = lent; 
-      } catch (error) {
-          console.error('❌ 更新资源统计失败:', error);
-          // 设置默认值
-          document.getElementById('recent-resources-count').textContent = '0';
-      }
-  }
-
-  // 页面加载后执行
-  document.addEventListener('DOMContentLoaded', function() {
-      if (document.getElementById('intro-total-members')) {
-          updateHomepageStats();
-      }
-  });
-document.addEventListener('DOMContentLoaded', updateHomepageStats);
+    // 确保Auth0库已加载后再执行
+    if (typeof auth0 !== 'undefined') {
+        // 动态创建脚本元素加载认证逻辑
+        var script = document.createElement('script');
+        script.src = '/js/nbu-auth.js';
+        document.head.appendChild(script);
+    } else {
+        console.warn('Auth0库未加载，跳过认证逻辑初始化');
+    }
 </script>
+<script src="/js/nbu-profile-display.js"></script>
+<script src="/js/nbu-social.js"></script>
+<script src="/js/nbu-upload.js"></script>
+<script src="/js/nbu-events.js"></script>
+<script src="/js/nbu-event-detail.js"></script>
+    
+    <!-- 资源上传模态框 -->
+    <!-- 资源上传模态框 -->
+<div id="resource-upload-modal" class="nbu-role-modal" style="display: none;">
+  <div class="nbu-modal-overlay">
+    <div class="nbu-modal-content" style="max-width: 600px;">
+      <div class="nbu-modal-header">
+        <h3>📤 上传学术资源</h3>
+        <p>与NBU社区分享你的学习资料</p>
+      </div>
+      
+      <form id="resource-upload-form">
+        <div class="nbu-form-group">
+          <label for="resource-title">资源标题 *</label>
+          <input type="text" id="resource-title" required placeholder="例如：计算机导论第一章课件">
+        </div>
+        
+        <div class="nbu-form-group">
+          <label for="resource-description">资源描述</label>
+          <textarea id="resource-description" rows="3" placeholder="简要描述资源内容..."></textarea>
+        </div>
+        
+        <div class="nbu-form-row">
+          <div class="nbu-form-group">
+            <label for="resource-type">资源类型 *</label>
+            <select id="resource-type" required>
+              <option value="">选择类型</option>
+              <option value="slide">课件讲义</option>
+              <option value="note">学习笔记</option>
+              <option value="textbook">教材资料</option>
+              <option value="assignment">作业答案</option>
+              <option value="exam">考试资料</option>
+              <option value="other">其他资源</option>
+            </select>
+          </div>
+          
+          <div class="nbu-form-group">
+            <label for="resource-major">关联专业</label>
+            <select id="resource-major">
+              <option value="">选择专业</option>
+              <!-- 动态填充 -->
+            </select>
+          </div>
+        </div>
+        
+        <div class="nbu-form-row">
+          <div class="nbu-form-group">
+            <label for="course-code">课程代码</label>
+            <input type="text" id="course-code" placeholder="例如：CS101">
+          </div>
+          
+          <div class="nbu-form-group">
+            <label for="course-name">课程名称</label>
+            <input type="text" id="course-name" placeholder="例如：计算机导论">
+          </div>
+        </div>
+        
+        <div class="nbu-form-group">
+          <label for="resource-file">选择文件 *</label>
+          <div class="file-upload-area" id="file-upload-area">
+            <input type="file" id="resource-file" style="display: none;" accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.zip,.rar">
+            <div class="upload-placeholder" onclick="document.getElementById('resource-file').click()">
+              <div style="font-size: 3rem; margin-bottom: 1rem;">📁</div>
+              <p>点击选择文件或拖拽文件到这里</p>
+              <small class="text-muted">支持 PDF, Word, PowerPoint, TXT, ZIP 等格式</small>
+            </div>
+            <div class="file-info" id="file-info" style="display: none;">
+              <div class="file-preview">
+                <span id="file-icon" style="font-size: 2rem;"></span>
+                <div class="file-details">
+                  <div id="file-name" class="file-name"></div>
+                  <div id="file-size" class="file-size"></div>
+                </div>
+              </div>
+              <button type="button" onclick="clearFileSelection()" class="btn btn-sm btn-outline-danger">移除</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="nbu-form-group">
+          <label>
+            <input type="checkbox" id="is-official">
+            这是官方教学资料（仅教师可选）
+          </label>
+        </div>
+        
+        <div class="nbu-modal-footer">
+          <button type="button" onclick="hideUploadModal()" class="nbu-cancel-btn">取消</button>
+          <button type="submit" class="nbu-verify-btn">上传资源</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+.file-upload-area {
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.file-upload-area:hover {
+  border-color: #3498db;
+}
+
+.file-upload-area.dragover {
+  border-color: #3498db;
+  background: #f8f9fa;
+}
+
+.upload-placeholder {
+  color: #6c757d;
+}
+
+.file-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+}
+
+.file-preview {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.file-name {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.file-size {
+  color: #6c757d;
+  font-size: 0.85rem;
+}
+</style>
+
+<!-- 资源详情模态框 -->
+<div id="resource-detail-modal" class="nbu-role-modal" style="display: none;">
+  <div class="nbu-modal-overlay">
+    <div class="nbu-modal-content" style="max-width: 800px; max-height: 90vh; overflow-y: auto;">
+      <div class="nbu-modal-header">
+        <h3 id="detail-title">资源详情</h3>
+        <p id="detail-subtitle"></p>
+      </div>
+      
+      <div class="resource-detail-content">
+        <!-- 资源基本信息 -->
+        <div class="detail-section">
+          <h4>📋 资源信息</h4>
+          <div class="detail-grid">
+            <div class="detail-item">
+              <label>资源类型</label>
+              <span id="detail-type"></span>
+            </div>
+            <div class="detail-item">
+              <label>文件大小</label>
+              <span id="detail-size"></span>
+            </div>
+            <div class="detail-item">
+              <label>上传时间</label>
+              <span id="detail-date"></span>
+            </div>
+            <div class="detail-item">
+              <label>上传者</label>
+              <span id="detail-author"></span>
+            </div>
+            <div class="detail-item">
+              <label>课程</label>
+              <span id="detail-course"></span>
+            </div>
+            <div class="detail-item">
+              <label>专业</label>
+              <span id="detail-major"></span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 资源描述 -->
+        <div class="detail-section">
+          <h4>📝 资源描述</h4>
+          <p id="detail-description" class="detail-description"></p>
+        </div>
+        
+        <!-- 统计信息 -->
+        <div class="detail-section">
+          <h4>📊 统计信息</h4>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-number" id="detail-views">0</span>
+              <span class="stat-label">浏览次数</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" id="detail-downloads">0</span>
+              <span class="stat-label">下载次数</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" id="detail-rating">0</span>
+              <span class="stat-label">平均评分</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" id="detail-ratings-count">0</span>
+              <span class="stat-label">评分人数</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 评分区域 -->
+        <div class="detail-section">
+        <h4>⭐ 评分</h4>
+        <div class="rating-section">
+            <div class="rating-input">
+            <label>你的评分:</label>
+            <div class="star-rating" id="star-rating">
+                
+                <span class="star" data-rating="1">☆</span>
+                
+                <span class="star" data-rating="2">☆</span>
+                
+                <span class="star" data-rating="3">☆</span>
+                
+                <span class="star" data-rating="4">☆</span>
+                
+                <span class="star" data-rating="5">☆</span>
+                
+            </div>
+            <span id="user-rating-text" class="rating-text"></span>
+            </div>
+            <button id="submit-rating" class="btn btn-primary btn-sm" style="display: none;">
+            提交评分
+            </button>
+        </div>
+        </div>
+        
+        <!-- 评论列表 -->
+        <div class="detail-section">
+          <h4>💬 评论</h4>
+          <div id="ratings-list" class="ratings-list">
+            <!-- 动态加载评论 -->
+          </div>
+        </div>
+        
+        <!-- 文件预览区域 -->
+        <div class="detail-section">
+          <h4>🔍 文件预览</h4>
+          <div id="file-preview" class="file-preview-area">
+            <p class="text-muted">预览功能开发中...</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="nbu-modal-footer">
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+          <div>
+            <button id="delete-resource-btn" class="btn btn-danger btn-sm" style="display: none;">
+              🗑️ 删除
+            </button>
+          </div>
+          <div>
+            <button onclick="hideResourceDetail()" class="nbu-cancel-btn">关闭</button>
+            <a id="detail-download-link" href="#" class="nbu-verify-btn" target="_blank">
+              📥 下载文件
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.resource-detail-content {
+  padding: 0 1rem;
+}
+
+.detail-section {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.detail-section:last-child {
+  border-bottom: none;
+}
+
+.detail-section h4 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-item label {
+  font-weight: 600;
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.detail-description {
+  line-height: 1.6;
+  color: #5a6c7d;
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 6px;
+  margin: 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.stat-number {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #3498db;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+.rating-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.rating-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.star-rating {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.star {
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  user-select: none;
+}
+
+.star:hover,
+.star.active {
+  color: #ffc107;
+}
+
+.rating-text {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.ratings-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.rating-item {
+  padding: 1rem;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  background: white;
+}
+
+.rating-item:last-child {
+  margin-bottom: 0;
+}
+
+.rating-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.rating-author {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.rating-date {
+  color: #6c757d;
+  font-size: 0.85rem;
+}
+
+.rating-comment {
+  color: #5a6c7d;
+  line-height: 1.5;
+  margin: 0.5rem 0 0 0;
+}
+
+.file-preview-area {
+  min-height: 200px;
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+}
+</style>
+    
+    <!-- 学术资源系统脚本 -->
+    <script src="/js/nbu-resources.js"></script>
 </body>
 </html>
               </div>
