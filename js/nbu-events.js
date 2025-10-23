@@ -38,6 +38,7 @@ const supabaseAdmin_v = supabase.createClient(supabaseUrl_v, supabaseServiceKey_
                     this.applyViewFilter();
                     
                     console.log(`✅ 加载成功: ${this.events.length} 个活动`);
+                    this.renderEvents();
                     
                 } catch (error) {
                     console.error('❌ 加载活动失败:', error);
@@ -162,7 +163,36 @@ const supabaseAdmin_v = supabase.createClient(supabaseUrl_v, supabaseServiceKey_
                 }
                 
                 console.log('报名活动:', eventId);
-                // 实现报名逻辑
+                try {
+                    const user = await nbuAuthClient.getUser();
+                    const userProfile = await handleUserProfile(user);
+                    
+                    const { data, error } = await supabaseAdmin_v
+                        .from('event_registrations')
+                        .insert([{
+                            event_id: eventId,
+                            user_id: userProfile.auth0_user_id
+                        }])
+                        .select()
+                        .single();
+                    
+                    if (error) {
+                        if (error.code === '23505') { // 唯一约束违反
+                            alert('您已经报名过此活动');
+                        } else {
+                            throw new Error('报名失败: ' + error.message);
+                        }
+                        return;
+                    }
+                    
+                    alert('🎉 报名成功！');
+                    // 重新加载活动数据更新参与者列表
+                    await this.loadEvents();
+                    
+                } catch (error) {
+                    console.error('❌ 报名失败:', error);
+                    alert('报名失败: ' + error.message);
+                }
             }
             
             async checkAuth() {
