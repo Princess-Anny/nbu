@@ -1608,6 +1608,91 @@
         background: #bdc3c7;
         cursor: not-allowed;
     }
+
+    /* 首页探索区域样式 */
+    .explore-nbu-section {
+        background: linear-gradient(45deg, #106C6D 0%, #112074 100%);
+        color: white;
+        padding: 4rem 0;
+        margin: 3rem 0;
+    }
+
+    .explore-nbu-section .explore-header h2 {
+        color: white;
+        margin-bottom: 1rem;
+    }
+
+    .explore-nbu-section .lead {
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 3rem;
+    }
+
+    .explore-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .explore-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        padding: 2rem;
+        text-align: center;
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .explore-card:hover {
+        transform: translateY(-8px);
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .explore-card .card-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .explore-card h3 {
+        color: white;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .explore-card p {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .explore-stats {
+        margin-bottom: 1.5rem;
+    }
+
+    .explore-stats .stat {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        color: white;
+        font-size: 0.9rem;
+    }
+
+    .explore-card .btn {
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .explore-card .btn:hover {
+        background: white;
+        color: #667eea;
+        transform: translateY(-2px);
+    }
 </style>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
@@ -2336,7 +2421,8 @@
 <script src="/js/nbu-profile-display.js"></script>
 <script src="/js/nbu-social.js"></script>
 <script src="/js/nbu-upload.js"></script>
-
+<script src="/js/nbu-events.js"></script>
+<script src="/js/nbu-event-detail.js"></script>
 
   
 

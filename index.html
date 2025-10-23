@@ -1608,6 +1608,91 @@
         background: #bdc3c7;
         cursor: not-allowed;
     }
+
+    /* 首页探索区域样式 */
+    .explore-nbu-section {
+        background: linear-gradient(45deg, #106C6D 0%, #112074 100%);
+        color: white;
+        padding: 4rem 0;
+        margin: 3rem 0;
+    }
+
+    .explore-nbu-section .explore-header h2 {
+        color: white;
+        margin-bottom: 1rem;
+    }
+
+    .explore-nbu-section .lead {
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 3rem;
+    }
+
+    .explore-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .explore-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        padding: 2rem;
+        text-align: center;
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .explore-card:hover {
+        transform: translateY(-8px);
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .explore-card .card-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .explore-card h3 {
+        color: white;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .explore-card p {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .explore-stats {
+        margin-bottom: 1.5rem;
+    }
+
+    .explore-stats .stat {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        color: white;
+        font-size: 0.9rem;
+    }
+
+    .explore-card .btn {
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .explore-card .btn:hover {
+        background: white;
+        color: #667eea;
+        transform: translateY(-2px);
+    }
 </style>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
@@ -3763,6 +3848,91 @@
         background: #bdc3c7;
         cursor: not-allowed;
     }
+
+    /* 首页探索区域样式 */
+    .explore-nbu-section {
+        background: linear-gradient(45deg, #106C6D 0%, #112074 100%);
+        color: white;
+        padding: 4rem 0;
+        margin: 3rem 0;
+    }
+
+    .explore-nbu-section .explore-header h2 {
+        color: white;
+        margin-bottom: 1rem;
+    }
+
+    .explore-nbu-section .lead {
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 3rem;
+    }
+
+    .explore-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .explore-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        padding: 2rem;
+        text-align: center;
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .explore-card:hover {
+        transform: translateY(-8px);
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .explore-card .card-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .explore-card h3 {
+        color: white;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .explore-card p {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .explore-stats {
+        margin-bottom: 1.5rem;
+    }
+
+    .explore-stats .stat {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        color: white;
+        font-size: 0.9rem;
+    }
+
+    .explore-card .btn {
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .explore-card .btn:hover {
+        background: white;
+        color: #667eea;
+        transform: translateY(-2px);
+    }
 </style>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
@@ -3853,6 +4023,55 @@
     </div>
 </section>
 
+<section class="explore-nbu-section">
+    <div class="container">
+        <div class="explore-header text-center">
+            <h2>🌟 探索NBU</h2>
+        </div>
+        
+        <div class="explore-grid">
+            <!-- 校园活动卡片 -->
+            <div class="explore-card">
+                <div class="card-icon">🎉</div>
+                <h3>校园活动</h3>
+                <p>参与讲座、节日庆典、社交活动，丰富你的校园生活</p>
+                <div class="explore-stats">
+                    <span class="stat">
+                        <strong id="upcoming-events-count">0</strong> 个即将开始
+                    </span>
+                </div>
+                <a href="/events/" class="btn btn-primary">查看活动</a>
+            </div>
+            
+            <!-- 学术资源卡片 -->
+            <div class="explore-card">
+                <div class="card-icon">📚</div>
+                <h3>学术资源</h3>
+                <p>获取课件、笔记、学习资料，助力你的学术成长</p>
+                <div class="explore-stats">
+                    <span class="stat">
+                        <strong id="recent-resources-count">0</strong> 份新资料
+                    </span>
+                </div>
+                <a href="/resources/" class="btn btn-primary">学习资料</a>
+            </div>
+            
+            <!-- 社区成员卡片 -->
+            <div class="explore-card">
+                <div class="card-icon">👥</div>
+                <h3>社区成员</h3>
+                <p>认识NBU的学生、教职人员和访客，扩展你的社交网络</p>
+                <div class="explore-stats">
+                    <span class="stat">
+                        <strong id="total-members-count">0</strong> 位成员
+                    </span>
+                </div>
+                <a href="/members/" class="btn btn-primary">认识大家</a>
+            </div>
+        </div>
+    </div>
+</section>
+
 <h1 style="display: none">美国牛逼大学 NiuBi University of America</h1>
 
   <div class="row mx-auto index-card">
@@ -3927,7 +4146,6 @@ document.addEventListener('DOMContentLoaded', updateHomepageStats);
 </script>
 </body>
 </html>
-
               </div>
             </div>
           </div>
@@ -4052,7 +4270,8 @@ document.addEventListener('DOMContentLoaded', updateHomepageStats);
 <script src="/js/nbu-profile-display.js"></script>
 <script src="/js/nbu-social.js"></script>
 <script src="/js/nbu-upload.js"></script>
-
+<script src="/js/nbu-events.js"></script>
+<script src="/js/nbu-event-detail.js"></script>
 
   
 

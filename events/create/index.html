@@ -20,17 +20,17 @@
   <meta name="keywords" content="">
   
     <meta property="og:type" content="website">
-<meta property="og:title" content="我的粉丝">
-<meta property="og:url" content="http://example.com/follow/followers/index.html">
+<meta property="og:title" content="发布活动">
+<meta property="og:url" content="http://example.com/events/create/index.html">
 <meta property="og:site_name" content="美国牛逼大学 NiuBi University of America">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-10-23T17:32:35.183Z">
-<meta property="article:modified_time" content="2025-10-19T02:47:19.932Z">
+<meta property="article:published_time" content="2025-10-20T00:53:11.203Z">
+<meta property="article:modified_time" content="2025-10-20T00:53:11.203Z">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>我的粉丝 - 美国牛逼大学 NiuBi University of America</title>
+  <title>发布活动 - 美国牛逼大学 NiuBi University of America</title>
 
 <style>
   .nbu-role-modal {
@@ -2210,7 +2210,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="我的粉丝"></span>
+            <span id="subtitle" data-typed-text="发布活动"></span>
           
         </div>
 
@@ -2259,17 +2259,17 @@
   <meta name="keywords" content="">
   
     <meta property="og:type" content="website">
-<meta property="og:title" content="我的粉丝">
-<meta property="og:url" content="http://example.com/follow/followers/index.html">
+<meta property="og:title" content="发布活动">
+<meta property="og:url" content="http://example.com/events/create/index.html">
 <meta property="og:site_name" content="美国牛逼大学 NiuBi University of America">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-10-23T17:32:35.183Z">
-<meta property="article:modified_time" content="2025-10-19T02:47:19.932Z">
+<meta property="article:published_time" content="2025-10-20T00:53:11.203Z">
+<meta property="article:modified_time" content="2025-10-20T00:53:11.203Z">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>我的粉丝 - 美国牛逼大学 NiuBi University of America</title>
+  <title>发布活动 - 美国牛逼大学 NiuBi University of America</title>
 
 <style>
   .nbu-role-modal {
@@ -3982,34 +3982,352 @@
   <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
+    <!-- 临时修复CSP错误 -->
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src 'self';
+                   script-src 'self' 'unsafe-inline' https://cdn.auth0.com https://cdn.jsdelivr.net https://cdn.quilljs.com;
+                   style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.quilljs.com;
+                   img-src 'self' data: https: http:;
+                   font-src 'self' https://cdn.jsdelivr.net https://cdn.quilljs.com;
+                   connect-src 'self' https://grgpsujmjbeuphwvxhpg.supabase.co https://dev-qajzo556g32cbm5b.us.auth0.com;
+                   frame-src 'self'">
+
+    <!-- 引入富文本编辑器 -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Supabase配置
+        const supabaseUrl_c = "https://grgpsujmjbeuphwvxhpg.supabase.co";
+        const supabaseServiceKey_c = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdyZ3BzdWptamJldXBod3Z4aHBnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1OTIzNzExNCwiZXhwIjoyMDc0ODEzMTE0fQ.hy4_n74vuailNkPHWkt9YWINfQFsNuwLHNcg7knUlL4";
+        const supabaseAdmin_c = supabase.createClient(supabaseUrl_c, supabaseServiceKey_c);
+        console.log("✅ 成员目录Supabase客户端已初始化");
+    </script>
     
-    <!-- 引入关注列表CSS -->
-    <link rel="stylesheet" href="/css/follow-list.css">
+    <style>
+        .event-create-container {
+            min-height: 80vh;
+            padding: 2rem 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .event-create-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .event-form {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+        
+        .form-section {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .form-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .form-section h3 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        /* 封面图片上传 */
+        .cover-upload {
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+        
+        .cover-upload:hover {
+            border-color: #3498db;
+        }
+        
+        .cover-upload.dragover {
+            border-color: #3498db;
+            background: #f8f9fa;
+        }
+        
+        .cover-preview {
+            margin-top: 1rem;
+            display: none;
+        }
+        
+        .cover-preview img {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* 富文本编辑器 */
+        .editor-container {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        #editor {
+            height: 300px;
+        }
+        
+        /* 表单操作 */
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+        
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #7f8c8d;
+        }
+        
+        .btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+        
+        /* 上传进度 */
+        .upload-progress {
+            display: none;
+            margin-top: 1rem;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background: #e9ecef;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #27ae60;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .upload-status {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
-    <main class="container follow-container">
-        <!-- 返回按钮 -->
-        <a href="/profile/" class="back-btn">
-            ← 返回个人主页
-        </a>
-        
-        <div class="follow-header">
-            <h1 id="page-title">加载中...</h1>
-            <p id="page-subtitle" class="lead"></p>
-        </div>
-        <!-- 导航 -->
-        <div class="follow-nav">
-            <a href="/follow/following/" class="follow-nav-btn" id="following-btn">我的关注</a>
-            <a href="/follow/followers/" class="follow-nav-btn" id="followers-btn">我的粉丝</a>
+    <main class="container event-create-container">
+        <div class="event-create-header">
+            <h1>🎉 发布新活动</h1>
+            <p class="lead">为校园生活留下时光中的足迹</p>
         </div>
         
-        <!-- 列表容器 -->
-        <div id="follow-list" class="follow-list">
-            <div class="loading-state">
-                <h3>加载中...</h3>
-                <p>正在获取数据</p>
+        <form id="event-form" class="event-form">
+            <!-- 基础信息 -->
+            <div class="form-section">
+                <h3>📝 活动基本信息</h3>
+                
+                <div class="form-group">
+                    <label for="event-title">活动标题 *</label>
+                    <input type="text" id="event-title" required placeholder="例如：万圣节活动">
+                </div>
+                
+                <div class="form-group">
+                    <label for="event-type">活动类型 *</label>
+                    <select id="event-type" required>
+                        <option value="">选择活动类型</option>
+                        <option value="lecture">学术讲座</option>
+                        <option value="workshop">节日庆典</option>
+                        <option value="social">社交活动</option>
+                        <option value="club">社团活动</option>
+                        <option value="sports">体育赛事</option>
+                        <option value="other">其他</option>
+                    </select>
+                </div>
             </div>
-        </div>
+            
+            <!-- 时间地点 -->
+            <div class="form-section">
+                <h3>⏰ 时间与地点</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="event-start-time">开始时间 *</label>
+                        <input type="datetime-local" id="event-start-time" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="event-end-time">结束时间</label>
+                        <input type="datetime-local" id="event-end-time">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="event-location-type">活动形式</label>
+                    <select id="event-location-type">
+                        <option value="physical">线下活动</option>
+                        <option value="online">线上活动</option>
+                        <option value="hybrid">线上线下结合</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="location-group">
+                    <label for="event-location">活动地点</label>
+                    <input type="text" id="event-location" placeholder="例如：主教学楼A座301">
+                </div>
+                
+                <div class="form-group" id="online-link-group" style="display: none;">
+                    <label for="event-online-link">线上会议链接</label>
+                    <input type="url" id="event-online-link" placeholder="https://meet.nbu.com/xxx-yyyy-zzz">
+                </div>
+            </div>
+            
+            <!-- 封面图片 -->
+            <div class="form-section">
+                <h3>🖼️ 活动封面</h3>
+                
+                <div class="form-group">
+                    <div class="cover-upload" id="cover-upload">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📷</div>
+                        <p>点击或拖拽图片到此处上传</p>
+                        <small class="text-muted">建议尺寸：1200×600px，支持 JPG、PNG 格式</small>
+                        <input type="file" id="cover-file" accept="image/*" style="display: none;">
+                    </div>
+                    
+                    <div class="cover-preview" id="cover-preview">
+                        <img id="cover-preview-img" src="" srcset="/img/loading.gif" lazyload alt="封面预览">
+                    </div>
+                    
+                    <div class="upload-progress" id="upload-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                        <div class="upload-status" id="upload-status">上传中...</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 活动详情 -->
+            <div class="form-section">
+                <h3>📄 活动详情</h3>
+                
+                <div class="form-group">
+                    <label for="event-description">活动描述 *</label>
+                    <div class="editor-container">
+                        <div id="editor"></div>
+                    </div>
+                    <input type="hidden" id="event-description" required>
+                </div>
+            </div>
+            
+            <!-- 参与设置 -->
+            <div class="form-section">
+                <h3>👥 参与设置</h3>
+                
+                <div class="form-group">
+                    <label for="event-max-participants">最大参与人数</label>
+                    <input type="number" id="event-max-participants" min="1" placeholder="留空表示不限制人数">
+                </div>
+            </div>
+            
+            <!-- 表单操作 -->
+            <div class="form-actions">
+                <a href="/events/" class="btn btn-secondary">取消</a>
+                <button type="submit" id="submit-btn" class="btn btn-primary">
+                    <span id="submit-text">发布活动</span>
+                    <div id="submit-loading" style="display: none;">发布中...</div>
+                </button>
+            </div>
+        </form>
     </main>
     
     <div class="footer-inner">
@@ -4093,14 +4411,368 @@
 <script src="/js/nbu-events.js"></script>
 <script src="/js/nbu-event-detail.js"></script>
     
-    <!-- 引入关注列表JS -->
-    <script src="/js/follow-list.js"></script>
+    <!-- 富文本编辑器 -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    
+    <!-- 活动发布脚本 -->
     <script>
-        // 页面加载后初始化
-        document.addEventListener('DOMContentLoaded', function() {
-            const followType = 'followers';
-            window.followListManager = new FollowListManager(followType);
-        });
+        // 活动发布系统
+        class EventCreateSystem {
+            constructor() {
+                this.coverImageUrl = null;
+                this.isSubmitting = false;
+                this.quill = null;
+                this.init();
+            }
+            
+            init() {
+                this.initEditor();
+                this.initEventListeners();
+                this.initLocationToggle();
+            }
+            
+            // 初始化富文本编辑器
+            initEditor() {
+                this.quill = new Quill('#editor', {
+                    theme: 'snow',
+                    modules: {
+                        toolbar: [
+                            [{ 'header': [1, 2, 3, false] }],
+                            ['bold', 'italic', 'underline'],
+                            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                            ['link', 'image'],
+                            ['clean']
+                        ]
+                    },
+                    placeholder: '详细描述你的活动内容...'
+                });
+                
+                // 监听编辑器内容变化
+                this.quill.on('text-change', () => {
+                    document.getElementById('event-description').value = this.quill.root.innerHTML;
+                });
+            }
+            
+            // 初始化地点/线上活动切换
+            initLocationToggle() {
+                const locationType = document.getElementById('event-location-type');
+                const locationGroup = document.getElementById('location-group');
+                const onlineGroup = document.getElementById('online-link-group');
+                
+                locationType.addEventListener('change', (e) => {
+                    if (e.target.value === 'online') {
+                        locationGroup.style.display = 'none';
+                        onlineGroup.style.display = 'block';
+                    } else if (e.target.value === 'physical') {
+                        locationGroup.style.display = 'block';
+                        onlineGroup.style.display = 'none';
+                    } else {
+                        locationGroup.style.display = 'block';
+                        onlineGroup.style.display = 'block';
+                    }
+                });
+            }
+            
+            // 初始化事件监听
+            initEventListeners() {
+                // 封面图片上传
+                this.initCoverUpload();
+                
+                // 表单提交
+                document.getElementById('event-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.handleSubmit();
+                });
+                
+                // 设置默认开始时间为1小时后
+                const now = new Date();
+                now.setHours(now.getHours() + 1);
+                now.setMinutes(0);
+                document.getElementById('event-start-time').value = this.formatDateTimeLocal(now);
+            }
+            
+            // 初始化封面图片上传
+            initCoverUpload() {
+                const uploadArea = document.getElementById('cover-upload');
+                const fileInput = document.getElementById('cover-file');
+                const preview = document.getElementById('cover-preview');
+                const previewImg = document.getElementById('cover-preview-img');
+                
+                // 点击上传区域
+                uploadArea.addEventListener('click', () => {
+                    fileInput.click();
+                });
+                
+                // 文件选择
+                fileInput.addEventListener('change', (e) => {
+                    this.handleCoverUpload(e.target.files[0]);
+                });
+                
+                // 拖拽上传
+                uploadArea.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    uploadArea.classList.add('dragover');
+                });
+                
+                uploadArea.addEventListener('dragleave', () => {
+                    uploadArea.classList.remove('dragover');
+                });
+                
+                uploadArea.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    uploadArea.classList.remove('dragover');
+                    if (e.dataTransfer.files.length > 0) {
+                        this.handleCoverUpload(e.dataTransfer.files[0]);
+                    }
+                });
+            }
+            
+            // 处理封面图片上传
+            async handleCoverUpload(file) {
+                if (!file) return;
+                
+                // 验证文件类型
+                if (!file.type.startsWith('image/')) {
+                    alert('请选择图片文件');
+                    return;
+                }
+                
+                // 验证文件大小（5MB）
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('图片大小不能超过5MB');
+                    return;
+                }
+                
+                try {
+                    // 显示预览
+                    const previewUrl = URL.createObjectURL(file);
+                    document.getElementById('cover-preview-img').src = previewUrl;
+                    document.getElementById('cover-preview').style.display = 'block';
+                    
+                    // 显示上传进度
+                    this.showUploadProgress(0);
+                    
+                    // 上传到Supabase
+                    this.coverImageUrl = await this.uploadToSupabase(file);
+                    
+                    // 上传完成
+                    this.showUploadProgress(100);
+                    setTimeout(() => {
+                        this.hideUploadProgress();
+                    }, 2000);
+                    
+                } catch (error) {
+                    console.error('❌ 封面图片上传失败:', error);
+                    alert('封面图片上传失败: ' + error.message);
+                    this.hideUploadProgress();
+                }
+            }
+            
+            // 上传到Supabase存储
+            async uploadToSupabase(file) {
+                if (!await this.checkAuth()) {
+                    throw new Error('请先登录');
+                }
+                
+                const user = await nbuAuthClient.getUser();
+                const userId = user.sub;
+                const cleanUserId = this.sanitizeUserId(userId);
+                
+                const fileExt = file.name.split('.').pop();
+                const fileName = `event-cover-${Date.now()}.${fileExt}`;
+                const filePath = `events/${cleanUserId}/${fileName}`;
+                
+                console.log('📤 上传活动封面:', filePath);
+                
+                const { data, error } = await supabaseAdmin_c.storage
+                    .from('avatars') // 复用avatars存储桶，或者创建新的events桶
+                    .upload(filePath, file, {
+                        cacheControl: '3600',
+                        upsert: false
+                    });
+                
+                if (error) {
+                    throw new Error('上传失败: ' + error.message);
+                }
+                
+                // 获取公开URL
+                const { data: { publicUrl } } = supabaseAdmin_c.storage
+                    .from('avatars')
+                    .getPublicUrl(filePath);
+                
+                return publicUrl;
+            }
+            
+            // 清理用户ID
+            sanitizeUserId(userId) {
+                return userId
+                    .replace(/^auth0\|/, '')
+                    .replace(/[^a-zA-Z0-9_-]/g, '_')
+                    .substring(0, 50);
+            }
+            
+            // 显示上传进度
+            showUploadProgress(percent) {
+                const progress = document.getElementById('upload-progress');
+                const progressFill = document.getElementById('progress-fill');
+                const status = document.getElementById('upload-status');
+                
+                progress.style.display = 'block';
+                progressFill.style.width = percent + '%';
+                status.textContent = percent < 100 ? `上传中... ${percent}%` : '上传完成！';
+            }
+            
+            // 隐藏上传进度
+            hideUploadProgress() {
+                document.getElementById('upload-progress').style.display = 'none';
+            }
+            
+            // 处理表单提交
+            async handleSubmit() {
+                if (this.isSubmitting) return;
+                
+                try {
+                    this.isSubmitting = true;
+                    this.setSubmitState(true);
+                    
+                    // 验证表单
+                    if (!this.validateForm()) {
+                        return;
+                    }
+                    
+                    // 检查用户登录
+                    if (!await this.checkAuth()) {
+                        alert('请先登录后再发布活动');
+                        this.setSubmitState(false);
+                        return;
+                    }
+                    
+                    // 获取用户信息
+                    const user = await nbuAuthClient.getUser();
+                    const userProfile = await handleUserProfile(user);
+                    
+                    if (!userProfile) {
+                        throw new Error('无法获取用户资料');
+                    }
+                    
+                    // 准备活动数据
+                    const eventData = {
+                        title: document.getElementById('event-title').value,
+                        event_type: document.getElementById('event-type').value,
+                        start_time: document.getElementById('event-start-time').value + ':00',
+                        end_time: document.getElementById('event-end-time').value ? 
+                                 document.getElementById('event-end-time').value + ':00' : null,
+                        location: document.getElementById('event-location').value,
+                        online_link: document.getElementById('event-online-link').value,
+                        description: document.getElementById('event-description').value,
+                        cover_image: this.coverImageUrl,
+                        max_participants: document.getElementById('event-max-participants').value || null,
+                        organizer_id: userProfile.auth0_user_id,
+                        status: 'upcoming'
+                    };
+                    
+                    console.log('📝 发布活动数据:', eventData);
+                    
+                    // 提交到数据库
+                    const { data, error } = await supabaseAdmin_c
+                        .from('campus_events')
+                        .insert([eventData])
+                        .select()
+                        .single();
+                    
+                    if (error) {
+                        throw new Error('发布失败: ' + error.message);
+                    }
+                    
+                    console.log('✅ 活动发布成功:', data);
+                    
+                    // 显示成功消息
+                    alert('🎉 活动发布成功！');
+                    
+                    // 跳转到活动详情页
+                    window.location.href = `/events/`;
+                    
+                } catch (error) {
+                    console.error('❌ 活动发布失败:', error);
+                    alert('发布失败: ' + error.message);
+                    this.setSubmitState(false);
+                }
+            }
+            
+            // 验证表单
+            validateForm() {
+                const title = document.getElementById('event-title').value;
+                const type = document.getElementById('event-type').value;
+                const startTime = document.getElementById('event-start-time').value;
+                const description = document.getElementById('event-description').value;
+                
+                if (!title.trim()) {
+                    alert('请填写活动标题');
+                    this.setSubmitState(false);
+                    return false;
+                }
+                
+                if (!type) {
+                    alert('请选择活动类型');
+                    this.setSubmitState(false);
+                    return false;
+                }
+                
+                if (!startTime) {
+                    alert('请选择开始时间');
+                    this.setSubmitState(false);
+                    return false;
+                }
+                
+                if (!description.trim()) {
+                    alert('请填写活动描述');
+                    this.setSubmitState(false);
+                    return false;
+                }
+                
+                // 验证开始时间不能早于当前时间
+                const startDateTime = new Date(startTime);
+                if (startDateTime < new Date()) {
+                    alert('开始时间不能早于当前时间');
+                    this.setSubmitState(false);
+                    return false;
+                }
+                
+                return true;
+            }
+            
+            // 检查用户登录状态
+            async checkAuth() {
+                if (typeof nbuAuthClient === 'undefined') return false;
+                return await nbuAuthClient.isAuthenticated();
+            }
+            
+            // 设置提交状态
+            setSubmitState(submitting) {
+                this.isSubmitting = submitting;
+                const submitBtn = document.getElementById('submit-btn');
+                const submitText = document.getElementById('submit-text');
+                const submitLoading = document.getElementById('submit-loading');
+                
+                if (submitting) {
+                    submitBtn.disabled = true;
+                    submitText.style.display = 'none';
+                    submitLoading.style.display = 'block';
+                } else {
+                    submitBtn.disabled = false;
+                    submitText.style.display = 'block';
+                    submitLoading.style.display = 'none';
+                }
+            }
+            
+            // 格式化日期时间为本地格式
+            formatDateTimeLocal(date) {
+                return date.toISOString().slice(0, 16);
+            }
+        }
+        
+        // 创建全局实例
+        const eventCreateSystem = new EventCreateSystem();
     </script>
 </body>
 </html>
