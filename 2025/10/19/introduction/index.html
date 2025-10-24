@@ -2158,6 +2158,17 @@
       </div>
     </div>
 
+    <!-- 通知图标 -->
+    <div class="nbu-notification-container">
+      <button class="nbu-notification-btn" onclick="toggleNotificationCenter()">
+        <span class="nbu-notification-icon">🔔</span>
+        <span id="notification-badge" class="nbu-notification-badge">0</span>
+      </button>
+      <div id="notification-center" class="nbu-notification-center">
+        <!-- 通知中心内容将通过JS动态加载 -->
+      </div>
+    </div>
+
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
