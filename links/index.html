@@ -285,11 +285,11 @@
 
   /* 导航栏头像强制样式 */
   #nbu-user-avatar {
-      width: 28px !important;
-      height: 28px !important;
+      width: 30px !important;
+      height: 30px !important;
       object-fit: cover !important;
       border-radius: 50% !important;
-      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+      border: 2px solid #3498DB !important;
   }
 
   /* 编辑模态框中的头像预览 */
@@ -1746,28 +1746,6 @@
         from { transform: rotate(0deg); }
         to { transform: rotate(360deg); }
     }
-
-    .navbar-logo {
-        height: 40px;
-        width: auto;
-        margin-right: 0px;
-    }
-
-      .navbar-logo {
-        transition: transform 0.3s ease;
-    }
-
-    .navbar-logo:hover {
-        transform: scale(1.1);
-    }
-
-    /* 深色模式适配 */
-    [data-color-scheme="dark"] .navbar-logo {
-        filter: brightness(1.2);
-    }
-    .container{
-        padding: 0rem;
-    }
 </style>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
@@ -1826,7 +1804,6 @@
 <div class="header-inner" style="height: 60vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <img src="/img/nbu-logo.png" srcset="/img/loading.gif" lazyload alt="NBU校徽" class="navbar-logo" href="/">
     <!-- NBU用户认证组件 -->
     <div id="nbu-auth-widget" class="navbar-nav ml-auto align-items-center">
         <!-- 未登录状态 - 默认隐藏 -->
