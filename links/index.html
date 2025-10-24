@@ -1302,7 +1302,7 @@
   /* 通知系统样式 */
   .nbu-notification-container {
     position: relative;
-    margin-right: 0.8rem;
+    margin-right: 0rem;
   }
 
   .nbu-notification-btn {
@@ -1679,7 +1679,7 @@
 
     .nbu-brand-header {
         color: white;
-        padding: 3rem 0;
+        padding: 2rem 0;
         text-align: center;
         position: relative;
         overflow: hidden;
@@ -1746,6 +1746,25 @@
         from { transform: rotate(0deg); }
         to { transform: rotate(360deg); }
     }
+
+    .navbar-logo {
+        height: 50px;
+        width: auto;
+        margin-right: 5px;
+    }
+
+      .navbar-logo {
+        transition: transform 0.3s ease;
+    }
+
+    .navbar-logo:hover {
+        transform: scale(1.1);
+    }
+
+    /* 深色模式适配 */
+    [data-color-scheme="dark"] .navbar-logo {
+        filter: brightness(1.2);
+    }
 </style>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
@@ -1804,17 +1823,7 @@
 <div class="header-inner" style="height: 60vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <!-- 通知图标 -->
-    <div class="nbu-notification-container">
-      <button class="nbu-notification-btn" onclick="toggleNotificationCenter()">
-        <span class="nbu-notification-icon">🔔</span>
-        <span id="notification-badge" class="nbu-notification-badge">0</span>
-      </button>
-      <div id="notification-center" class="nbu-notification-center">
-        <!-- 通知中心内容将通过JS动态加载 -->
-      </div>
-    </div>
-
+    <img src="/img/nbu-logo.png" srcset="/img/loading.gif" lazyload alt="NBU校徽" class="navbar-logo" href="/">
     <!-- NBU用户认证组件 -->
     <div id="nbu-auth-widget" class="navbar-nav ml-auto align-items-center">
         <!-- 未登录状态 - 默认隐藏 -->
@@ -2247,6 +2256,16 @@
           </li>
         
       </ul>
+    </div>
+    <!-- 通知图标 -->
+    <div class="nbu-notification-container">
+      <button class="nbu-notification-btn" onclick="toggleNotificationCenter()">
+        <span class="nbu-notification-icon">🔔</span>
+        <span id="notification-badge" class="nbu-notification-badge">0</span>
+      </button>
+      <div id="notification-center" class="nbu-notification-center">
+        <!-- 通知中心内容将通过JS动态加载 -->
+      </div>
     </div>
   </div>
 </nav>
