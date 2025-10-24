@@ -686,12 +686,6 @@
       }
   }
 
-    .navbar-logo {
-      height: 50px;
-      width: auto;
-      margin-right: 5px;
-  }
-
   .intro-logo {
       height: 80px;
       margin-bottom: 1rem;
@@ -960,13 +954,6 @@
           font-size: 1.5rem;
       }
   }
-  .navbar-logo {
-      transition: transform 0.3s ease;
-  }
-
-  .navbar-logo:hover {
-      transform: scale(1.1);
-  }
   .intro-logo {
       animation: float 3s ease-in-out infinite;
   }
@@ -974,10 +961,6 @@
   @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
-  }
-  /* 深色模式适配 */
-  [data-color-scheme="dark"] .navbar-logo {
-      filter: brightness(1.2);
   }
 
     /* 评论功能样式 */
@@ -1321,7 +1304,7 @@
   /* 通知系统样式 */
   .nbu-notification-container {
     position: relative;
-    margin-right: 1rem;
+    margin-right: 0.8rem;
   }
 
   .nbu-notification-btn {
@@ -1695,6 +1678,76 @@
         color: #667eea;
         transform: translateY(-2px);
     }
+
+    .nbu-brand-header {
+        color: white;
+        padding: 3rem 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nbu-seal-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .nbu-seal {
+        position: relative;
+        width: 120px;
+        height: 120px;
+    }
+
+    .seal-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 4px solid #978269;
+        padding: 8px;
+        background: white;
+        opacity: 0.97;
+        position: relative;
+        z-index: 2;
+    }
+
+    .seal-ring {
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        right: -8px;
+        bottom: -8px;
+        border: 2px solid #978269;
+        border-radius: 50%;
+        animation: rotate 20s linear infinite;
+    }
+
+    .seal-glow {
+        position: absolute;
+        top: -16px;
+        left: -16px;
+        right: -16px;
+        bottom: -16px;
+        background: radial-gradient(circle, #82643F 0%, transparent 70%);
+        border-radius: 50%;
+    }
+
+    .header-ornament {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, transparent, #978269, transparent);
+    }
+
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
 </style>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
@@ -1753,7 +1806,16 @@
 <div class="header-inner" style="height: 100vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <img src="/img/nbu-logo.png" srcset="/img/loading.gif" lazyload alt="NBU校徽" class="navbar-logo" href="/">
+    <!-- 通知图标 -->
+    <div class="nbu-notification-container">
+      <button class="nbu-notification-btn" onclick="toggleNotificationCenter()">
+        <span class="nbu-notification-icon">🔔</span>
+        <span id="notification-badge" class="nbu-notification-badge">0</span>
+      </button>
+      <div id="notification-center" class="nbu-notification-center">
+        <!-- 通知中心内容将通过JS动态加载 -->
+      </div>
+    </div>
 
     <!-- NBU用户认证组件 -->
     <div id="nbu-auth-widget" class="navbar-nav ml-auto align-items-center">
@@ -2110,16 +2172,6 @@
     <!-- Collapsible content -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto text-center">
-        <!-- 通知图标 -->
-        <div class="nbu-notification-container">
-          <button class="nbu-notification-btn" onclick="toggleNotificationCenter()">
-            <span class="nbu-notification-icon">🔔</span>
-            <span id="notification-badge" class="nbu-notification-badge">0</span>
-          </button>
-          <div id="notification-center" class="nbu-notification-center">
-            <!-- 通知中心内容将通过JS动态加载 -->
-          </div>
-        </div>
         
           
           
@@ -2925,12 +2977,6 @@
       }
   }
 
-    .navbar-logo {
-      height: 50px;
-      width: auto;
-      margin-right: 5px;
-  }
-
   .intro-logo {
       height: 80px;
       margin-bottom: 1rem;
@@ -3199,13 +3245,6 @@
           font-size: 1.5rem;
       }
   }
-  .navbar-logo {
-      transition: transform 0.3s ease;
-  }
-
-  .navbar-logo:hover {
-      transform: scale(1.1);
-  }
   .intro-logo {
       animation: float 3s ease-in-out infinite;
   }
@@ -3213,10 +3252,6 @@
   @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
-  }
-  /* 深色模式适配 */
-  [data-color-scheme="dark"] .navbar-logo {
-      filter: brightness(1.2);
   }
 
     /* 评论功能样式 */
@@ -3560,7 +3595,7 @@
   /* 通知系统样式 */
   .nbu-notification-container {
     position: relative;
-    margin-right: 1rem;
+    margin-right: 0.8rem;
   }
 
   .nbu-notification-btn {
@@ -3934,6 +3969,76 @@
         color: #667eea;
         transform: translateY(-2px);
     }
+
+    .nbu-brand-header {
+        color: white;
+        padding: 3rem 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nbu-seal-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .nbu-seal {
+        position: relative;
+        width: 120px;
+        height: 120px;
+    }
+
+    .seal-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 4px solid #978269;
+        padding: 8px;
+        background: white;
+        opacity: 0.97;
+        position: relative;
+        z-index: 2;
+    }
+
+    .seal-ring {
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        right: -8px;
+        bottom: -8px;
+        border: 2px solid #978269;
+        border-radius: 50%;
+        animation: rotate 20s linear infinite;
+    }
+
+    .seal-glow {
+        position: absolute;
+        top: -16px;
+        left: -16px;
+        right: -16px;
+        bottom: -16px;
+        background: radial-gradient(circle, #82643F 0%, transparent 70%);
+        border-radius: 50%;
+    }
+
+    .header-ornament {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, transparent, #978269, transparent);
+    }
+
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
 </style>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
@@ -4187,487 +4292,16 @@
     </style>
 </head>
 <body>
-    
-
-<div class="header-inner" style="height: 100vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <img src="/img/nbu-logo.png" srcset="/img/loading.gif" lazyload alt="NBU校徽" class="navbar-logo" href="/">
-
-    <!-- NBU用户认证组件 -->
-    <div id="nbu-auth-widget" class="navbar-nav ml-auto align-items-center">
-        <!-- 未登录状态 - 默认隐藏 -->
-        <div id="nbu-login-section" style="display: none;">
-            <button class="btn btn-outline-light btn-sm" onclick="nbuHandleLogin()">
-                <i class="iconfont icon-user"></i> 登录NBU
-            </button>
+    <header class="nbu-brand-header">
+        <div class="nbu-seal-container">
+            <div class="nbu-seal">
+                <img src="/img/nbu-logo.png" srcset="/img/loading.gif" lazyload alt="NBU校徽" class="seal-image">
+                <div class="seal-ring"></div>
+                <div class="seal-glow"></div>
+            </div>
         </div>
-        
-        <div id="nbu-user-section" style="display: none;">
-          <div class="d-flex align-items-center">
-            <a href="/profile/" class="d-flex align-items-center text-decoration-none text-light">
-              <img id="nbu-user-avatar" src="" srcset="/img/loading.gif" lazyload alt="头像" class="rounded-circle mr-2" style="width: 28px; height: 28px;">
-              <span id="nbu-user-name" class="small mr-2"></span>
-            </a>
-            <button class="btn btn-outline-light btn-sm ml-1" onclick="nbuHandleLogout()">退出</button>
-            <button class="btn btn-outline-info btn-sm ml-2" onclick="showEditProfileModal()">编辑资料</button>
-              <i class="iconfont icon-edit"></i>
-            </button>
-          </div>
-        </div>
-    </div>
-
-    <!-- NBU身份选择模态框 -->
-    <div id="nbu-role-modal" class="nbu-role-modal" style="display: none;">
-      <div class="nbu-modal-overlay">
-        <div class="nbu-modal-content">
-          <div class="nbu-modal-header">
-            <h3>🎓 欢迎来到美国牛逼大学</h3>
-            <p>请选择你的身份加入我们的学术社区</p>
-          </div>
-          
-          <div class="nbu-role-options">
-            <div class="nbu-role-card" onclick="selectNBURole('student')">
-              <div class="nbu-role-icon">👨‍🎓</div>
-              <div class="nbu-role-info">
-                <h4>学生</h4>
-                <p>加入NBU学习社区，参与课程和活动</p>
-                <small>需要学生密钥</small>
-              </div>
-            </div>
-            
-            <div class="nbu-role-card" onclick="selectNBURole('faculty')">
-              <div class="nbu-role-icon">👨‍🏫</div>
-              <div class="nbu-role-info">
-                <h4>教职人员</h4>
-                <p>作为教师或工作人员加入NBU</p>
-                <small>需要教职密钥</small>
-              </div>
-            </div>
-            
-            <div class="nbu-role-card" onclick="selectNBURole('visitor')">
-              <div class="nbu-role-icon">👀</div>
-              <div class="nbu-role-info">
-                <h4>访客</h4>
-                <p>参观校园，了解NBU文化</p>
-                <small>自由访问</small>
-              </div>
-            </div>
-          </div>
-          
-          <!-- 密钥输入区域 -->
-          <div id="nbu-secret-section" class="nbu-secret-section" style="display: none;">
-            <div class="nbu-secret-input">
-              <label id="nbu-secret-label">请输入密钥：</label>
-              <input type="password" id="nbu-secret-key" placeholder="输入准入密钥...">
-              <button onclick="verifyNBUSecretKey()" class="nbu-verify-btn">验证</button>
-            </div>
-            <p class="nbu-secret-hint" id="nbu-secret-hint"></p>
-          </div>
-          
-          <div class="nbu-modal-footer">
-            <button onclick="hideNBURoleModal()" class="nbu-cancel-btn">取消</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- 资料编辑模态框 -->
-    <div id="nbu-edit-profile-modal" class="nbu-role-modal" style="display: none;">
-      <div class="nbu-modal-overlay">
-        <div class="nbu-modal-content" style="max-width: 600px;">
-          <div class="nbu-modal-header">
-            <h3>📝 编辑个人资料</h3>
-            <p>完善你的身份信息</p>
-          </div>
-          
-          <form id="nbu-profile-form">
-            <!-- 基础信息 -->
-            <div class="nbu-form-section">
-              <h4>基础信息</h4>
-              
-              <div class="nbu-form-group">
-                <label for="edit-display-name">显示名称 *</label>
-                <input type="text" id="edit-display-name" required>
-              </div>
-              
-              <!-- 替换原来的头像URL输入框 -->
-              <div class="nbu-form-group">
-                  <label for="edit-avatar-url">头像</label>
-                  
-                  <!-- 当前头像预览 -->
-                  <div class="nbu-avatar-preview" style="margin-bottom: 1rem;">
-                      <img id="avatar-preview" src="" srcset="/img/loading.gif" lazyload alt="头像预览" 
-                          style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #ddd;">
-                  </div>
-                  
-                  <!-- 上传选项 -->
-                  <div class="nbu-upload-options">
-                      <!-- 方式1：文件上传 -->
-                      <div style="margin-bottom: 0.5rem;">
-                          <label class="btn btn-outline-primary btn-sm">
-                              📁 选择图片
-                              <input type="file" id="avatar-upload" accept="image/*" style="display: none;" 
-                                    onchange="handleAvatarUpload(event)">
-                          </label>
-                          <small class="text-muted" style="margin-left: 0.5rem;">支持 JPG, PNG, GIF</small>
-                      </div>
-                      
-                      <!-- 方式2：URL输入（备用） -->
-                      <div>
-                          <label>或者输入图片URL：</label>
-                          <input type="url" id="edit-avatar-url" placeholder="https://example.com/avatar.jpg"
-                                onchange="updateAvatarPreview(this.value)">
-                      </div>
-                  </div>
-                  
-                  <!-- 上传进度 -->
-                  <div id="upload-progress" style="display: none; margin-top: 0.5rem;">
-                      <div class="progress" style="height: 6px;">
-                          <div id="upload-progress-bar" class="progress-bar" style="width: 0%"></div>
-                      </div>
-                      <small id="upload-status">上传中...</small>
-                  </div>
-              </div>
-              
-              <div class="nbu-form-group">
-                <label for="edit-bio">个人简介</label>
-                <textarea id="edit-bio" rows="3" placeholder="介绍一下你自己..."></textarea>
-              </div>
-            </div>
-            
-            <!-- OC信息（学生/教职显示） -->
-            <div id="nbu-oc-section" class="nbu-form-section" style="display: none;">
-              <h4>🎭 OC角色信息</h4>
-              
-              <div class="nbu-form-row">
-                <div class="nbu-form-group">
-                  <label for="edit-oc-name">角色名</label>
-                  <input type="text" id="edit-oc-name">
-                </div>
-                
-                <div class="nbu-form-group">
-                  <label for="edit-oc-age">年龄</label>
-                  <input type="number" id="edit-oc-age" min="1" max="150">
-                </div>
-              </div>
-              
-              <div class="nbu-form-row">
-                <div class="nbu-form-group">
-                  <label for="edit-oc-nationality">国籍</label>
-                  <input type="text" id="edit-oc-nationality">
-                </div>
-                
-                <div class="nbu-form-group">
-                  <label for="edit-oc-gender">性别</label>
-                  <select id="edit-oc-gender">
-                    <option value="">选择性别</option>
-                    <option value="男">男</option>
-                    <option value="女">女</option>
-                    <option value="其他">其他</option>
-                    <option value="不愿透露">不愿透露</option>
-                  </select>
-                </div>
-              </div>
-              
-              <div class="nbu-form-group">
-                <label for="edit-oc-title">称谓</label>
-                <select id="edit-oc-title">
-                  <option value="">选择称谓</option>
-                  <option value="Mr.">Mr.</option>
-                  <option value="Ms.">Ms.</option>
-                  <option value="Mrs.">Mrs.</option>
-                  <option value="Dr.">Dr.</option>
-                  <option value="Prof.">Prof.</option>
-                </select>
-              </div>
-            </div>
-
-            <!-- 学生专属字段 -->
-            <div id="nbu-student-section" class="nbu-form-section" style="display: none;">
-              <h4>🎓 学生信息</h4>
-              
-              <div class="nbu-form-row">
-                <div class="nbu-form-group">
-                  <label for="major-search">专业 *</label>
-                  <!-- 搜索输入框 -->
-                  <div class="nbu-search-select">
-                      <input type="text" 
-                            id="major-search" 
-                            placeholder="搜索或选择专业..."
-                            autocomplete="off"
-                            onfocus="showMajorDropdown()"
-                            oninput="filterMajors(this.value)">
-                      
-                      <!-- 下拉选项 -->
-                      <div id="major-dropdown" class="nbu-dropdown">
-                          <div class="nbu-dropdown-list" id="major-options">
-                              <!-- 选项将通过JS动态生成 -->
-                          </div>
-                      </div>
-                  </div>
-                  <!-- 隐藏的实际值存储 -->
-                  <input type="hidden" id="edit-major" name="major" required>
-                </div>
-                
-                <div class="nbu-form-group">
-                  <label for="edit-student-id">学号</label>
-                  <input type="text" id="edit-student-id" placeholder="2024123456">
-                </div>
-                <!-- 添加学号预览 -->
-                <div id="student-id-preview" class="nbu-student-id-preview" style="display: none;">
-                    <label>学号预览</label>
-                    <div class="nbu-student-id-display">
-                        <span id="student-id-preview-text" class="nbu-student-id"></span>
-                        <small class="text-muted">系统自动生成</small>
-                    </div>
-                </div>
-              </div>
-              
-              <div class="nbu-form-row">
-                <div class="nbu-form-group">
-                  <label for="edit-dormitory">宿舍</label>
-                  <input type="text" id="edit-dormitory" placeholder="1号楼101">
-                </div>
-                
-                <div class="nbu-form-group">
-                  <label for="edit-enrollment-year">入学年份</label>
-                  <input type="number" id="edit-enrollment-year" min="2000" max="2030" placeholder="2010" oninput="updateStudentIdPreview()">
-                </div>
-              </div>
-              
-              <div class="nbu-form-group">
-                <label for="edit-clubs">社团（每行一个）</label>
-                <textarea id="edit-clubs" rows="3" placeholder="篮球社&#10;天体物理社"></textarea>
-                <small class="form-hint">每行输入一个社团名称</small>
-              </div>
-            </div>
-
-            <!-- 教职专属字段 -->
-            <div id="nbu-faculty-section" class="nbu-form-section" style="display: none;">
-              <h4>👨‍🏫 教职信息</h4>
-              
-              <div class="nbu-form-row">
-                <div class="nbu-form-group">
-                  <label for="edit-department">院系</label>
-                  <input type="text" id="edit-department" placeholder="计算机学院">
-                </div>
-                
-                <div class="nbu-form-group">
-                  <label for="edit-faculty-rank">职称</label>
-                  <select id="edit-faculty-rank">
-                    <option value="">选择职称</option>
-                    <option value="教授">教授</option>
-                    <option value="副教授">副教授</option>
-                    <option value="助理教授">助理教授</option>
-                    <option value="讲师">讲师</option>
-                    <option value="助教">助教</option>
-                  </select>
-                </div>
-              </div>
-              
-              <div class="nbu-form-group">
-                <label for="edit-office-location">办公室</label>
-                <input type="text" id="edit-office-location" placeholder="主教学楼A座301">
-              </div>
-              
-              <div class="nbu-form-group">
-                <label for="edit-office-hours">办公时间</label>
-                <input type="text" id="edit-office-hours" placeholder="周一、三 14:00-16:00">
-              </div>
-              
-              <div class="nbu-form-group">
-                <label for="edit-courses">负责科目（每行一个）</label>
-                <textarea id="edit-courses" rows="3" placeholder="计算机导论&#10;数据结构"></textarea>
-              </div>
-              
-              <div class="nbu-form-group">
-                <label for="edit-degrees">学位信息（每行一个）</label>
-                <textarea id="edit-degrees" rows="3" placeholder="清华大学 计算机科学 博士&#10;北京大学 数学 学士"></textarea>
-              </div>
-            </div>
-            
-            <div class="nbu-modal-footer">
-              <button type="button" onclick="hideEditProfileModal()" class="nbu-cancel-btn">取消</button>
-              <button type="submit" class="nbu-verify-btn">保存资料</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <!-- 注销账户确认模态框 -->
-    <div id="nbu-delete-account-modal" class="nbu-role-modal" style="display: none;">
-      <div class="nbu-modal-overlay">
-        <div class="nbu-modal-content" style="max-width: 500px;">
-          <div class="nbu-modal-header">
-            <h3 style="color: #e74c3c;">⚠️ 确认注销账户</h3>
-            <p>此操作不可撤销，请谨慎操作</p>
-          </div>
-          
-          <div class="nbu-delete-warning">
-            <div class="nbu-warning-item">
-              <strong>🗑️ 将被删除的数据：</strong>
-              <ul>
-                <li>所有资料信息</li>
-                <li>所有关联的账户数据</li>
-              </ul>
-            </div>
-            
-            <div class="nbu-warning-item">
-              <strong>🔐 认证信息：</strong>
-              <ul>
-                <li>Auth0认证记录</li>
-                <li>浏览器本地登录状态</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div class="nbu-confirm-section">
-            <label>
-              <input type="checkbox" id="confirm-delete">
-              我理解此操作不可撤销，确认删除我的账户
-            </label>
-          </div>
-          
-          <div class="nbu-modal-footer">
-            <button onclick="hideDeleteAccountModal()" class="nbu-cancel-btn">取消</button>
-            <button id="confirm-delete-btn" onclick="deleteUserAccount()" class="btn btn-danger" disabled>
-              确认注销
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-    
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        <!-- 通知图标 -->
-        <div class="nbu-notification-container">
-          <button class="nbu-notification-btn" onclick="toggleNotificationCenter()">
-            <span class="nbu-notification-icon">🔔</span>
-            <span id="notification-badge" class="nbu-notification-badge">0</span>
-          </button>
-          <div id="notification-center" class="nbu-notification-center">
-            <!-- 通知中心内容将通过JS动态加载 -->
-          </div>
-        </div>
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>首页</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>标签</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>关于</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="NBU社区成员"></span>
-          
-        </div>
-
-        
-      </div>
-
-      
-        <div class="scroll-down-bar">
-          <i class="iconfont icon-arrowdown"></i>
-        </div>
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-    
+        <div class="header-ornament"></div>
+    </header>  
     <main class="container members-container">
         <div class="members-header">
             <h1>👥 NBU社区成员</h1>
@@ -4769,8 +4403,6 @@
 
 
 
-
-  <script  src="/js/local-search.js" ></script>
 
 
 

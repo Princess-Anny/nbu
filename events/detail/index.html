@@ -684,12 +684,6 @@
       }
   }
 
-    .navbar-logo {
-      height: 50px;
-      width: auto;
-      margin-right: 5px;
-  }
-
   .intro-logo {
       height: 80px;
       margin-bottom: 1rem;
@@ -958,13 +952,6 @@
           font-size: 1.5rem;
       }
   }
-  .navbar-logo {
-      transition: transform 0.3s ease;
-  }
-
-  .navbar-logo:hover {
-      transform: scale(1.1);
-  }
   .intro-logo {
       animation: float 3s ease-in-out infinite;
   }
@@ -972,10 +959,6 @@
   @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
-  }
-  /* 深色模式适配 */
-  [data-color-scheme="dark"] .navbar-logo {
-      filter: brightness(1.2);
   }
 
     /* 评论功能样式 */
@@ -1319,7 +1302,7 @@
   /* 通知系统样式 */
   .nbu-notification-container {
     position: relative;
-    margin-right: 1rem;
+    margin-right: 0.8rem;
   }
 
   .nbu-notification-btn {
@@ -1693,6 +1676,76 @@
         color: #667eea;
         transform: translateY(-2px);
     }
+
+    .nbu-brand-header {
+        color: white;
+        padding: 3rem 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nbu-seal-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .nbu-seal {
+        position: relative;
+        width: 120px;
+        height: 120px;
+    }
+
+    .seal-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 4px solid #978269;
+        padding: 8px;
+        background: white;
+        opacity: 0.97;
+        position: relative;
+        z-index: 2;
+    }
+
+    .seal-ring {
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        right: -8px;
+        bottom: -8px;
+        border: 2px solid #978269;
+        border-radius: 50%;
+        animation: rotate 20s linear infinite;
+    }
+
+    .seal-glow {
+        position: absolute;
+        top: -16px;
+        left: -16px;
+        right: -16px;
+        bottom: -16px;
+        background: radial-gradient(circle, #82643F 0%, transparent 70%);
+        border-radius: 50%;
+    }
+
+    .header-ornament {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, transparent, #978269, transparent);
+    }
+
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
 </style>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
@@ -1751,7 +1804,16 @@
 <div class="header-inner" style="height: 100vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <img src="/img/nbu-logo.png" srcset="/img/loading.gif" lazyload alt="NBU校徽" class="navbar-logo" href="/">
+    <!-- 通知图标 -->
+    <div class="nbu-notification-container">
+      <button class="nbu-notification-btn" onclick="toggleNotificationCenter()">
+        <span class="nbu-notification-icon">🔔</span>
+        <span id="notification-badge" class="nbu-notification-badge">0</span>
+      </button>
+      <div id="notification-center" class="nbu-notification-center">
+        <!-- 通知中心内容将通过JS动态加载 -->
+      </div>
+    </div>
 
     <!-- NBU用户认证组件 -->
     <div id="nbu-auth-widget" class="navbar-nav ml-auto align-items-center">
@@ -2108,16 +2170,6 @@
     <!-- Collapsible content -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto text-center">
-        <!-- 通知图标 -->
-        <div class="nbu-notification-container">
-          <button class="nbu-notification-btn" onclick="toggleNotificationCenter()">
-            <span class="nbu-notification-icon">🔔</span>
-            <span id="notification-badge" class="nbu-notification-badge">0</span>
-          </button>
-          <div id="notification-center" class="nbu-notification-center">
-            <!-- 通知中心内容将通过JS动态加载 -->
-          </div>
-        </div>
         
           
           
@@ -2921,12 +2973,6 @@
       }
   }
 
-    .navbar-logo {
-      height: 50px;
-      width: auto;
-      margin-right: 5px;
-  }
-
   .intro-logo {
       height: 80px;
       margin-bottom: 1rem;
@@ -3195,13 +3241,6 @@
           font-size: 1.5rem;
       }
   }
-  .navbar-logo {
-      transition: transform 0.3s ease;
-  }
-
-  .navbar-logo:hover {
-      transform: scale(1.1);
-  }
   .intro-logo {
       animation: float 3s ease-in-out infinite;
   }
@@ -3209,10 +3248,6 @@
   @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
-  }
-  /* 深色模式适配 */
-  [data-color-scheme="dark"] .navbar-logo {
-      filter: brightness(1.2);
   }
 
     /* 评论功能样式 */
@@ -3556,7 +3591,7 @@
   /* 通知系统样式 */
   .nbu-notification-container {
     position: relative;
-    margin-right: 1rem;
+    margin-right: 0.8rem;
   }
 
   .nbu-notification-btn {
@@ -3929,6 +3964,76 @@
         background: white;
         color: #667eea;
         transform: translateY(-2px);
+    }
+
+    .nbu-brand-header {
+        color: white;
+        padding: 3rem 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nbu-seal-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .nbu-seal {
+        position: relative;
+        width: 120px;
+        height: 120px;
+    }
+
+    .seal-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 4px solid #978269;
+        padding: 8px;
+        background: white;
+        opacity: 0.97;
+        position: relative;
+        z-index: 2;
+    }
+
+    .seal-ring {
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        right: -8px;
+        bottom: -8px;
+        border: 2px solid #978269;
+        border-radius: 50%;
+        animation: rotate 20s linear infinite;
+    }
+
+    .seal-glow {
+        position: absolute;
+        top: -16px;
+        left: -16px;
+        right: -16px;
+        bottom: -16px;
+        background: radial-gradient(circle, #82643F 0%, transparent 70%);
+        border-radius: 50%;
+    }
+
+    .header-ornament {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, transparent, #978269, transparent);
+    }
+
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
     }
 </style>
 
