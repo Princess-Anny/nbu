@@ -1059,7 +1059,7 @@ class ResourceDetailSystem {
     
     // 删除资源
     async deleteResource(resourceId) {
-        if (!confirm('⚠️ 确定要删除这个资源吗？此操作不可撤销！')) {
+        if (!confirm('⚠️ 确定要删除吗？此操作不可撤销！')) {
             return;
         }
         
