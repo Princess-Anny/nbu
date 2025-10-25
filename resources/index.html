@@ -1750,6 +1750,344 @@
         from { transform: rotate(0deg); }
         to { transform: rotate(360deg); }
     }
+
+    /* 画廊上传样式 */
+    .nbu-gallery-upload-area {
+        border: 2px dashed #ddd;
+        border-radius: 8px;
+        padding: 3rem 2rem;
+        text-align: center;
+        cursor: pointer;
+        transition: border-color 0.3s ease, background-color 0.3s ease;
+    }
+
+    .nbu-gallery-upload-area:hover,
+    .nbu-gallery-upload-area.dragover {
+        border-color: #3498db;
+        background-color: #f8f9fa;
+    }
+
+    .nbu-upload-placeholder i {
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .nbu-gallery-preview {
+        position: relative;
+        margin-top: 1rem;
+    }
+
+    .nbu-gallery-preview img {
+        width: 100%;
+        max-height: 300px;
+        object-fit: contain;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+    }
+
+    .nbu-remove-preview {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nbu-gallery-actions {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #e9ecef;
+    }
+
+    .nbu-gallery-section {
+        text-align: left;
+        margin-bottom: 16px;
+    }
+
+    .nbu-gallery-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: left;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+    }
+
+    /* 图片查看器样式 */
+    .nbu-image-viewer-content {
+        position: relative;
+        width: 90vw;
+        height: 90vh;
+        background: white;
+        border-radius: 12px;
+        display: flex;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .nbu-image-close-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nbu-image-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f8f9fa;
+        padding: 2rem;
+    }
+
+    .nbu-image-container img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: 8px;
+    }
+
+    .nbu-image-info {
+        width: 300px;
+        background: white;
+        padding: 2rem;
+        border-left: 1px solid #e9ecef;
+        overflow-y: auto;
+    }
+
+    .nbu-image-meta h3 {
+        margin: 0 0 1rem 0;
+        color: #2c3e50;
+        font-size: 1.5rem;
+    }
+
+    .nbu-image-meta p {
+        color: #5a6c7d;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .nbu-image-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .nbu-image-tag {
+        background: #e3f2fd;
+        color: #1976d2;
+        padding: 0.5rem 0.75rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .nbu-image-author {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #e9ecef;
+    }
+
+    .nbu-image-author .author-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .nbu-image-author span {
+        flex: 1;
+        font-weight: 500;
+        color: #2c3e50;
+    }
+
+    .nbu-image-date {
+        color: #6c757d !important;
+        font-size: 0.9rem;
+        font-weight: normal !important;
+    }
+
+    .nbu-nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s ease;
+    }
+
+    .nbu-nav-btn:hover {
+        background: rgba(0, 0, 0, 0.9);
+    }
+
+    .nbu-prev-btn {
+        left: 1rem;
+    }
+
+    .nbu-next-btn {
+        right: 1rem;
+    }
+
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+        .nbu-image-viewer-content {
+            flex-direction: column;
+            width: 95vw;
+            height: 95vh;
+        }
+        
+        .nbu-image-info {
+            width: 100%;
+            border-left: none;
+            border-top: 1px solid #e9ecef;
+            max-height: 40vh;
+        }
+        
+        .nbu-image-container {
+            padding: 1rem;
+        }
+        
+        .nbu-nav-btn {
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+        }
+    }
+
+    /* 同时优化画廊卡片中的图片显示 */
+    .gallery-image {
+        width: 100%;
+        height: 200px; /* 保持固定高度但不要裁剪 */
+        object-fit: contain; /* 改为contain显示完整图片 */
+        background: #f8f9fa;
+        cursor: pointer;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .gallery-item {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-image {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+    }
+
+    /* 图片操作按钮样式 */
+    .nbu-image-actions {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        z-index: 10;
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .nbu-action-btn {
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: background 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .nbu-action-btn:hover {
+        background: rgba(0, 0, 0, 0.9);
+    }
+
+    .nbu-delete-btn {
+        background: rgba(231, 76, 60, 0.8);
+    }
+
+    .nbu-delete-btn:hover {
+        background: rgba(231, 76, 60, 1);
+    }
+
+    /* 删除确认模态框样式 */
+    .nbu-delete-warning {
+        background: #fff5f5;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin: 1.5rem 0;
+        border-left: 4px solid #e53e3e;
+    }
+
+    .nbu-delete-warning ul {
+        margin: 0.5rem 0 0 1rem;
+        color: #744210;
+    }
+
+    .nbu-delete-warning li {
+        margin-bottom: 0.25rem;
+    }
+
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+        .nbu-image-actions {
+            top: 0.5rem;
+            left: 0.5rem;
+        }
+        
+        .nbu-action-btn {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+        }
+    }
+
+    .pic-delete-btn {
+        background: #e53e3e;
+        color: white;
+        border: none;
+        padding: 0.75rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 500;
+    }
+
+    .pic-delete-btn {
+        background: #e53e3e;
+    }
 </style>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
@@ -2254,6 +2592,130 @@
     </div>
   </div>
 </nav>
+
+<!-- 画廊上传模态框 -->
+<div id="nbu-gallery-upload-modal" class="nbu-role-modal" style="display: none;">
+  <div class="nbu-modal-overlay">
+    <div class="nbu-modal-content" style="max-width: 600px;">
+      <div class="nbu-modal-header">
+        <h3>🎨 上传图片</h3>
+      </div>
+      
+      <form id="nbu-gallery-form">
+        <div class="nbu-form-group">
+          <label for="gallery-title">作品标题 *</label>
+          <input type="text" id="gallery-title" required placeholder="给作品起个名字...">
+        </div>
+        
+        <div class="nbu-form-group">
+          <label for="gallery-description">作品描述</label>
+          <textarea id="gallery-description" rows="3" placeholder="描述一下这个作品..."></textarea>
+        </div>
+        
+        <div class="nbu-form-group">
+          <label for="gallery-tags">标签（用逗号分隔）</label>
+          <input type="text" id="gallery-tags" placeholder="立绘, 日常, 插画...">
+          <small class="form-text text-muted">多个标签用逗号分隔，如：立绘,日常,插画</small>
+        </div>
+        
+        <div class="nbu-form-group">
+          <label for="gallery-image">作品图片 *</label>
+          
+          <!-- 图片上传区域 -->
+          <div class="nbu-gallery-upload-area" id="gallery-upload-area">
+            <div class="nbu-upload-placeholder">
+              <i class="iconfont icon-image" style="font-size: 3rem; color: #6c757d;"></i>
+              <p>点击选择图片或拖拽到此处</p>
+              <small>支持 JPG, PNG, GIF，最大 10MB</small>
+            </div>
+            <input type="file" id="gallery-image" accept="image/*" style="display: none;">
+          </div>
+          
+          <!-- 图片预览 -->
+          <div id="gallery-preview" class="nbu-gallery-preview" style="display: none;">
+            <img id="gallery-preview-img" src="" srcset="/img/loading.gif" lazyload alt="预览">
+            <button type="button" onclick="clearGalleryPreview()" class="nbu-remove-preview">×</button>
+          </div>
+        </div>
+        
+        <div class="nbu-form-group">
+          <label>
+            <input type="checkbox" id="gallery-is-public" checked>
+            公开作品（其他人可以看到）
+          </label>
+        </div>
+        
+        <div class="nbu-modal-footer">
+          <button type="button" onclick="hideGalleryUploadModal()" class="nbu-cancel-btn">取消</button>
+          <button type="submit" class="nbu-verify-btn">发布作品</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- 全屏图片查看器模态框 -->
+<div id="nbu-image-viewer-modal" class="nbu-role-modal" style="display: none;">
+  <div class="nbu-modal-overlay" onclick="hideImageViewer()">
+    <div class="nbu-image-viewer-content" onclick="event.stopPropagation()">
+      <!-- 关闭按钮 -->
+      <button class="nbu-image-close-btn" onclick="hideImageViewer()">×</button>
+      
+      <!-- 操作按钮组 -->
+      <div class="nbu-image-actions">
+        <button class="nbu-action-btn nbu-delete-btn" id="delete-image-btn" onclick="confirmDeleteImage()" style="display: none;">
+          🗑️ 删除
+        </button>
+      </div>
+      
+      <!-- 图片容器 -->
+      <div class="nbu-image-container">
+        <img id="viewer-image" src="" srcset="/img/loading.gif" lazyload alt="全屏预览">
+      </div>
+      
+      <!-- 图片信息 -->
+      <div class="nbu-image-info">
+        <div class="nbu-image-meta">
+          <h3 id="viewer-title"></h3>
+          <p id="viewer-description"></p>
+          
+          <div class="nbu-image-tags" id="viewer-tags"></div>
+          
+          <div class="nbu-image-author">
+            <img id="viewer-author-avatar" src="" srcset="/img/loading.gif" lazyload alt="作者头像" class="author-avatar">
+            <span id="viewer-author-name"></span>
+            <span class="nbu-image-date" id="viewer-date"></span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 导航按钮 -->
+      <button class="nbu-nav-btn nbu-prev-btn" onclick="navigateImage(-1)">‹</button>
+      <button class="nbu-nav-btn nbu-next-btn" onclick="navigateImage(1)">›</button>
+    </div>
+  </div>
+</div>
+
+<!-- 删除确认模态框 -->
+<div id="nbu-delete-confirm-modal" class="nbu-role-modal" style="display: none;">
+  <div class="nbu-modal-overlay">
+    <div class="nbu-modal-content" style="max-width: 500px;">
+      <div class="nbu-modal-header">
+        <h3 style="color: #e74c3c;">⚠️ 确认删除</h3>
+        <p>此操作不可撤销，请谨慎操作</p>
+      </div>
+      
+      <div class="nbu-delete-warning">
+        <p><strong>确定要删除这张图片？</strong></p>
+      </div>
+      
+      <div class="nbu-modal-footer">
+        <button onclick="hideDeleteConfirmModal()" class="nbu-cancel-btn">取消</button>
+        <button onclick="deleteCurrentImage()" class="pic-delete-btn">确认删除</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   
 
@@ -4042,6 +4504,344 @@
     @keyframes rotate {
         from { transform: rotate(0deg); }
         to { transform: rotate(360deg); }
+    }
+
+    /* 画廊上传样式 */
+    .nbu-gallery-upload-area {
+        border: 2px dashed #ddd;
+        border-radius: 8px;
+        padding: 3rem 2rem;
+        text-align: center;
+        cursor: pointer;
+        transition: border-color 0.3s ease, background-color 0.3s ease;
+    }
+
+    .nbu-gallery-upload-area:hover,
+    .nbu-gallery-upload-area.dragover {
+        border-color: #3498db;
+        background-color: #f8f9fa;
+    }
+
+    .nbu-upload-placeholder i {
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .nbu-gallery-preview {
+        position: relative;
+        margin-top: 1rem;
+    }
+
+    .nbu-gallery-preview img {
+        width: 100%;
+        max-height: 300px;
+        object-fit: contain;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+    }
+
+    .nbu-remove-preview {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nbu-gallery-actions {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #e9ecef;
+    }
+
+    .nbu-gallery-section {
+        text-align: left;
+        margin-bottom: 16px;
+    }
+
+    .nbu-gallery-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: left;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+    }
+
+    /* 图片查看器样式 */
+    .nbu-image-viewer-content {
+        position: relative;
+        width: 90vw;
+        height: 90vh;
+        background: white;
+        border-radius: 12px;
+        display: flex;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .nbu-image-close-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nbu-image-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f8f9fa;
+        padding: 2rem;
+    }
+
+    .nbu-image-container img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: 8px;
+    }
+
+    .nbu-image-info {
+        width: 300px;
+        background: white;
+        padding: 2rem;
+        border-left: 1px solid #e9ecef;
+        overflow-y: auto;
+    }
+
+    .nbu-image-meta h3 {
+        margin: 0 0 1rem 0;
+        color: #2c3e50;
+        font-size: 1.5rem;
+    }
+
+    .nbu-image-meta p {
+        color: #5a6c7d;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .nbu-image-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .nbu-image-tag {
+        background: #e3f2fd;
+        color: #1976d2;
+        padding: 0.5rem 0.75rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .nbu-image-author {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #e9ecef;
+    }
+
+    .nbu-image-author .author-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .nbu-image-author span {
+        flex: 1;
+        font-weight: 500;
+        color: #2c3e50;
+    }
+
+    .nbu-image-date {
+        color: #6c757d !important;
+        font-size: 0.9rem;
+        font-weight: normal !important;
+    }
+
+    .nbu-nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s ease;
+    }
+
+    .nbu-nav-btn:hover {
+        background: rgba(0, 0, 0, 0.9);
+    }
+
+    .nbu-prev-btn {
+        left: 1rem;
+    }
+
+    .nbu-next-btn {
+        right: 1rem;
+    }
+
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+        .nbu-image-viewer-content {
+            flex-direction: column;
+            width: 95vw;
+            height: 95vh;
+        }
+        
+        .nbu-image-info {
+            width: 100%;
+            border-left: none;
+            border-top: 1px solid #e9ecef;
+            max-height: 40vh;
+        }
+        
+        .nbu-image-container {
+            padding: 1rem;
+        }
+        
+        .nbu-nav-btn {
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+        }
+    }
+
+    /* 同时优化画廊卡片中的图片显示 */
+    .gallery-image {
+        width: 100%;
+        height: 200px; /* 保持固定高度但不要裁剪 */
+        object-fit: contain; /* 改为contain显示完整图片 */
+        background: #f8f9fa;
+        cursor: pointer;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .gallery-item {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-image {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+    }
+
+    /* 图片操作按钮样式 */
+    .nbu-image-actions {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        z-index: 10;
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .nbu-action-btn {
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: background 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .nbu-action-btn:hover {
+        background: rgba(0, 0, 0, 0.9);
+    }
+
+    .nbu-delete-btn {
+        background: rgba(231, 76, 60, 0.8);
+    }
+
+    .nbu-delete-btn:hover {
+        background: rgba(231, 76, 60, 1);
+    }
+
+    /* 删除确认模态框样式 */
+    .nbu-delete-warning {
+        background: #fff5f5;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin: 1.5rem 0;
+        border-left: 4px solid #e53e3e;
+    }
+
+    .nbu-delete-warning ul {
+        margin: 0.5rem 0 0 1rem;
+        color: #744210;
+    }
+
+    .nbu-delete-warning li {
+        margin-bottom: 0.25rem;
+    }
+
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+        .nbu-image-actions {
+            top: 0.5rem;
+            left: 0.5rem;
+        }
+        
+        .nbu-action-btn {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+        }
+    }
+
+    .pic-delete-btn {
+        background: #e53e3e;
+        color: white;
+        border: none;
+        padding: 0.75rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 500;
+    }
+
+    .pic-delete-btn {
+        background: #e53e3e;
     }
 </style>
 

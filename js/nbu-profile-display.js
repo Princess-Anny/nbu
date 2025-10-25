@@ -94,6 +94,22 @@ function createProfileCardHTML(userProfile, isOtherUser = false) {
                 </div>
             </div>
 
+            <!-- 添加画廊入口 -->
+                <div class="nbu-gallery-section">
+                    <h4>🎨 画廊</h4>
+                    <div class="nbu-gallery-buttons">
+                        <a href="/gallery/?user=${userProfile.auth0_user_id}" 
+                           class="btn btn-outline-primary">
+                            ${isOtherUser ? '查看画廊' : '我的画廊'}
+                        </a>
+                        ${!isOtherUser ? `
+                            <button onclick="showUploadGalleryModal()" class="btn btn-primary">
+                                📤 上传作品
+                            </button>
+                        ` : ''}
+                    </div>
+                </div>
+
             <!-- 点赞点踩按钮区域（仅当查看他人资料时显示） -->
             ${isOtherUser ? `
                 <div class="nbu-reaction-actions">

@@ -165,6 +165,11 @@
                             <a href="/profile/?user=${encodeURIComponent(member.auth0_user_id)}" class="view-profile-btn">
                                 查看资料
                             </a>
+                            <a href="/gallery/?user=${encodeURIComponent(member.auth0_user_id)}" 
+                            class="view-profile-btn" 
+                            style="background: #9b59b6; margin-top: 0.5rem;">
+                                🎨 查看画廊
+                            </a>
                         </div>
                     </div>
                 `;
