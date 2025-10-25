@@ -5201,6 +5201,56 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* 修复活动详情内容宽度问题 */
+        .event-content {
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        /* 约束富文本编辑器内容的宽度 */
+        .event-description {
+            color: #5a6c7d;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            max-width: 100%;
+            overflow: hidden;
+            word-wrap: break-word;
+        }
+
+        /* 特别处理富文本编辑器生成的内容 */
+        .event-description * {
+            max-width: 100%;
+        }
+
+        /* 防止图片撑开容器 */
+        .event-description img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0.5rem 0;
+        }
+
+        /* 处理长URL和长单词 */
+        .event-description {
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        /* 表格响应式处理 */
+        .event-description table {
+            max-width: 100%;
+            overflow-x: auto;
+            display: block;
+        }
+
+        /* 预格式文本处理 */
+        .event-description pre {
+            max-width: 100%;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
     </style>
 </head>
 <body>
