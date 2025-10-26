@@ -475,12 +475,6 @@ function initFileUpload() {
             return;
         }
         
-        // 验证文件大小（10MB限制）
-        if (file.size > 10 * 1024 * 1024) {
-            alert('❌ 文件大小不能超过10MB');
-            return;
-        }
-        
         // 显示文件信息
         fileName.textContent = file.name;
         fileSize.textContent = this.formatFileSize(file.size);
