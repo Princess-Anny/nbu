@@ -610,7 +610,7 @@ async function uploadFileToStorage(file) {
         .from('resources')
         .upload(filePath, file, {
             cacheControl: '3600',
-            upsert: false
+            upsert: true
         });
     
     if (error) {

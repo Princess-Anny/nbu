@@ -2131,6 +2131,7 @@
 
 
   
+  <script src="/capacitor-override.js"></script>
   <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <meta name="generator" content="Hexo 8.0.0"></head>
@@ -4887,6 +4888,7 @@
 
 
   
+  <script src="/capacitor-override.js"></script>
   <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
@@ -4943,7 +4945,7 @@
             <div class="explore-card">
                 <div class="card-icon">🎉</div>
                 <h3>校园活动</h3>
-                <p>参与讲座、节日庆典、社交活动，丰富你的校园生活</p>
+                <p>参与讲座、节日庆典、社交活动</p>
                 <div class="explore-stats">
                     <span class="stat">
                         <strong id="upcoming-events-count">--</strong> 个即将开始
@@ -4956,7 +4958,7 @@
             <div class="explore-card">
                 <div class="card-icon">📚</div>
                 <h3>学术资源</h3>
-                <p>获取课件、笔记、学习资料，助力你的学术成长</p>
+                <p>课件、笔记、学习资料</p>
                 <div class="explore-stats">
                     <span class="stat">
                         <strong id="recent-resources-count">--</strong> 份资料
@@ -4964,12 +4966,25 @@
                 </div>
                 <a href="/resources/" class="btn btn-primary">学习资料</a>
             </div>
+
+            <!-- 关联网站卡片 -->
+            <div class="explore-card">
+                <div class="card-icon">🔗</div>
+                <h3>关联网站</h3>
+                <p>从不同角度认识NBU</p>
+                <div class="explore-stats">
+                    <span class="stat">
+                        1个关联网站
+                    </span>
+                </div>
+                <a href="/related/" class="btn btn-primary">查看网站</a>
+            </div>
             
             <!-- 社区成员卡片 -->
             <div class="explore-card">
                 <div class="card-icon">👥</div>
                 <h3>社区成员</h3>
-                <p>认识NBU的学生、教职人员和访客，扩展你的社交网络</p>
+                <p>认识NBU的学生、教职人员和访客</p>
                 <div class="explore-stats">
                     <span class="stat">
                         <strong id="total-members-count">--</strong> 位成员
@@ -5190,6 +5205,8 @@ document.addEventListener('DOMContentLoaded', updateHomepageStats);
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
+
+<script src="/capacitor-auth.js"></script>
 
 <!-- NBU用户认证逻辑 -->
 <script>
