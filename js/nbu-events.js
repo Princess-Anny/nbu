@@ -36,6 +36,7 @@ const supabaseAdmin_v = supabase.createClient(supabaseUrl_v, supabaseServiceKey_
                     
                     this.events = events || [];
                     this.applyViewFilter();
+                    await this.updateStatus();
                     
                     console.log(`✅ 加载成功: ${this.events.length} 个活动`);
                     this.renderEvents();
@@ -52,14 +53,13 @@ const supabaseAdmin_v = supabase.createClient(supabaseUrl_v, supabaseServiceKey_
                 switch (this.currentView) {
                     case 'upcoming':
                         this.filteredEvents = this.events.filter(event => 
-                            new Date(event.start_time) > now && event.status === 'upcoming'
+                            new Date(event.start_time) > now
                         );
                         break;
                     case 'ongoing':
                         this.filteredEvents = this.events.filter(event => 
                             new Date(event.start_time) <= now && 
-                            new Date(event.end_time) >= now && 
-                            event.status === 'ongoing'
+                            new Date(event.end_time) >= now
                         );
                         break;
                     case 'my':
@@ -68,6 +68,18 @@ const supabaseAdmin_v = supabase.createClient(supabaseUrl_v, supabaseServiceKey_
                         break;
                     default:
                         this.filteredEvents = this.events;
+                }
+            }
+            
+            async updateStatus(){
+                for(let i = 0; i<this.filteredEvents.length; i++){                   
+                    const { data, error } = await supabaseAdmin_v
+                        .from('campus_events')
+                        .update({ status: this.currentView })
+                        .eq('id', this.filteredEvents[i].id)        
+                    if (error) {
+                        throw new Error('更新活动状态失败: ' + error.message);
+                    }      
                 }
             }
             
@@ -210,6 +222,7 @@ const supabaseAdmin_v = supabase.createClient(supabaseUrl_v, supabaseServiceKey_
                         
                         this.currentView = e.target.dataset.view;
                         this.applyViewFilter();
+                        this.updateStatus();
                         this.renderEvents();
                     });
                 });
