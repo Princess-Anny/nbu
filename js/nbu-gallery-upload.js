@@ -1,7 +1,7 @@
 // nbu-gallery-upload.js - 画廊上传功能
 class GalleryUploader {
     constructor() {
-        this.maxFileSize = 10 * 1024 * 1024; // 10MB
+        this.maxFileSize = 50 * 1024 * 1024; // 50MB
         this.allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
         this.currentFile = null;
         this.init();
@@ -64,7 +64,7 @@ class GalleryUploader {
         }
         
         if (file.size > this.maxFileSize) {
-            alert('❌ 图片大小不能超过10MB');
+            alert('❌ 图片大小不能超过50MB');
             return false;
         }
         
