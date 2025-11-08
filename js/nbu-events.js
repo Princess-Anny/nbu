@@ -6,7 +6,7 @@ const supabaseAdmin_v = supabase.createClient(supabaseUrl_v, supabaseServiceKey_
             constructor() {
                 this.events = [];
                 this.filteredEvents = [];
-                this.currentView = 'upcoming';
+                this.currentView = 'all';
                 this.init();
             }
             

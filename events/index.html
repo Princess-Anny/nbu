@@ -403,6 +403,10 @@
   .btn-danger {
       background: #e53e3e;
       border-color: #e53e3e;
+      padding: 0.62rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
   }
 
   .btn-danger:hover:not(:disabled) {
@@ -414,6 +418,9 @@
       background: #a0aec0;
       border-color: #a0aec0;
       cursor: not-allowed;
+      padding: 0.62rem 1rem;
+      border-radius: 4px;
+      font-weight: 500;
   }
 
   /* 学号样式 */
@@ -1226,6 +1233,16 @@
   }
 
   .nbu-comment-user-link:hover .nbu-comment-avatar {
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .nbu-comment-user-link:hover .comment-avatar {
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .nbu-comment-user-link:hover .organizer-avatar {
       transform: scale(1.1);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
@@ -3159,6 +3176,10 @@
   .btn-danger {
       background: #e53e3e;
       border-color: #e53e3e;
+      padding: 0.62rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
   }
 
   .btn-danger:hover:not(:disabled) {
@@ -3170,6 +3191,9 @@
       background: #a0aec0;
       border-color: #a0aec0;
       cursor: not-allowed;
+      padding: 0.62rem 1rem;
+      border-radius: 4px;
+      font-weight: 500;
   }
 
   /* 学号样式 */
@@ -3982,6 +4006,16 @@
   }
 
   .nbu-comment-user-link:hover .nbu-comment-avatar {
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .nbu-comment-user-link:hover .comment-avatar {
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .nbu-comment-user-link:hover .organizer-avatar {
       transform: scale(1.1);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
@@ -5119,9 +5153,9 @@
         </div>
         
         <div class="events-view-options">
-            <button class="view-option active" data-view="upcoming">即将开始</button>
+            <button class="view-option active" data-view="all">全部活动</button>
+            <button class="view-option" data-view="upcoming">即将开始</button>
             <button class="view-option" data-view="ongoing">进行中</button>
-            <button class="view-option" data-view="all">全部活动</button>
             <button class="view-option" data-view="my">我参与的</button>
         </div>
         <div id="events-grid" class="events-grid">

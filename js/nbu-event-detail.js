@@ -212,10 +212,13 @@ const supabaseAdmin_d = supabase.createClient(supabaseUrl_d, supabaseServiceKey_
                             <div class="sidebar-card">
                                 <h4>👤 组织者</h4>
                                 <div class="organizer-info">
-                                    <img src="${event.organizer?.avatar_url || this.getDefaultAvatar()}" 
-                                         alt="${event.organizer?.oc_name || event.organizer?.display_name}" 
-                                         class="organizer-avatar"
-                                         onerror="this.src='${this.getDefaultAvatar()}'">
+                                    <a href="/profile/?user=${encodeURIComponent(event.organizer_id)}" 
+                                        class="nbu-comment-user-link">
+                                        <img src="${event.organizer?.avatar_url || this.getDefaultAvatar()}" 
+                                            alt="${event.organizer?.oc_name || event.organizer?.display_name}" 
+                                            class="organizer-avatar"
+                                            onerror="this.src='${this.getDefaultAvatar()}'">
+                                    </a>
                                     <div class="organizer-details">
                                         <h4>${event.organizer?.oc_name || event.organizer?.display_name || 'NBU成员'}</h4>
                                         <div class="organizer-role">
@@ -276,10 +279,13 @@ const supabaseAdmin_d = supabase.createClient(supabaseUrl_d, supabaseServiceKey_
                 
                 return this.comments.map(comment => `
                     <div class="comment-item">
-                        <img src="${comment.user?.avatar_url || this.getDefaultAvatar()}" 
-                             alt="${comment.user?.oc_name || comment.user?.display_name}" 
-                             class="comment-avatar"
-                             onerror="this.src='${this.getDefaultAvatar()}'">
+                        <a href="/profile/?user=${encodeURIComponent(comment.user_id)}" 
+                            class="nbu-comment-user-link">
+                            <img src="${comment.user?.avatar_url || this.getDefaultAvatar()}" 
+                                alt="${comment.user?.oc_name || comment.user?.display_name}" 
+                                class="comment-avatar"
+                                onerror="this.src='${this.getDefaultAvatar()}'">
+                        </a>
                         <div class="comment-content">
                             <div class="comment-header">
                                 <span class="comment-author">${comment.user?.oc_name || comment.user?.display_name || '用户'}</span>
